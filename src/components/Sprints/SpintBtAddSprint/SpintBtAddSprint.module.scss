@@ -1,0 +1,17 @@
+.btnSprintAdd {
+  position: absolute;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: none;
+  background-color: red;
+  color: aliceblue;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 50%;
+}
+
+.btnSprintAddText {
+  display: none;
+}

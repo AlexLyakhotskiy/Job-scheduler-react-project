@@ -1,0 +1,27 @@
+.btnConteinerTitel {
+  margin-bottom: 30px;
+}
+
+.btnConteiner {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.btnDescription {
+  margin-top: 20px;
+}
+.btnEditTitel {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: none;
+  &:hover {
+    background-color: black;
+  }
+}
+
+.title {
+  margin-right: 20px;
+}
