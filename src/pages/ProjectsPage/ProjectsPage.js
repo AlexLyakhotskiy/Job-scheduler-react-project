@@ -7,7 +7,7 @@ export default function ProjectsPage() {
   return (
     <>
       <h1>ProjectsPage</h1>
-      <Link to={`${path}/111`}>к спринтам</Link>
+      <Link to={`${path}/111/sprints`}>к спринтам</Link>
       {/* этот линк обернуть лишкой */}
       {/* <Link to={`${path}/${id}`}>к спринтам</Link> */}
     </>
