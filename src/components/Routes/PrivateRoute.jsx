@@ -9,7 +9,7 @@ export default function PrivateRoute({
   redirectedTo = '/',
   ...props
 }) {
-  const isLoggedIn = useSelector(() => '');
+  const isLoggedIn = useSelector(() => true);
 
   return (
     <Route {...props}>
