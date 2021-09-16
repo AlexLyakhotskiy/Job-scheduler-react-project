@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import TaskItem from './TaskItem/TaskItem';
 import styles from './TasksList.module.scss';
 import sprite from './sprite.svg';
+import CreateTaskForm from './TaskItem/CreateTaskForm/CreateTaskForm';
 
 const TasksList = () => {
   const tasks = useSelector(state => state.tasks.allTasks);
@@ -20,6 +21,9 @@ const TasksList = () => {
           <button type="button" className={styles.tasksBtn}>
             Create task
           </button>
+        </div>
+        <div>
+          <CreateTaskForm />
         </div>
 
         <div className={styles.tableWrapper}>

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addTask, deleteTask, fetchTasks } from './tasks-operations';
 
 const initialState = {
   allTasks: [
@@ -27,12 +28,51 @@ const initialState = {
       id: '507f1f77bcf86cd799',
     },
   ],
+  error: null,
+  loading: false,
 };
 
 const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
-  axtraReducers: {},
+  axtraReducers: {
+    [addTask.pending](state) {
+      state.loading = true;
+    },
+    [addTask.pending](state, { payload }) {
+      state.error = null;
+      state.task.push(payload);
+      state.loading = false;
+    },
+    [addTask.rejected](state, { payload }) {
+      state.error = payload;
+      state.loading = false;
+    },
+    [fetchTasks.pending](state) {
+      state.loading = true;
+    },
+    [fetchTasks.fulfilled](state, { payload }) {
+      state.error = null;
+      state.tasks = payload;
+      state.loading = false;
+    },
+    [fetchTasks.rejected](state, { payload }) {
+      state.error = payload;
+      state.loading = false;
+    },
+    [deleteTask.pending](state) {
+      state.loading = true;
+    },
+    [deleteTask.fulfilled](state, { payload }) {
+      state.error = null;
+      state.tasks.filter(task => task.id !== payload);
+      state.loading = false;
+    },
+    [deleteTask.rejected](state, { payload }) {
+      state.error = payload;
+      state.loading = false;
+    },
+  },
 });
 
 export default tasksSlice.reducer;
