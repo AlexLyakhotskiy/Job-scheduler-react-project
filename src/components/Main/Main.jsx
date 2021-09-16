@@ -1,13 +1,8 @@
 import React, { useEffect } from 'react';
 import { lazy, Suspense } from 'react';
 import { Switch, useHistory } from 'react-router';
-
-// import LoginPage from '../../pages/LoginPage';
-// import RegisterPage from '../../pages/RegisterPage';
-// import ProjectsPage from '../../pages/ProjectsPage';
-// import SprintsPage from '../../pages/SprintsPage';
-// import TasksPage from '../../pages/TasksPage';
-// import NotFoundPage from '../../pages/NotFoundPage';
+import { useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 import PrivateRoute from '../Routes/PrivateRoute';
@@ -48,10 +43,16 @@ const NotFoundPage = lazy(() =>
 
 export default function Main() {
   const history = useHistory();
+  const isLoggedIn = useSelector(() => true);
+  //  const dispatch = useDispatch();
 
   useEffect(() => {
-    history.replace('/login');
-  }, [history]);
+    (async () => {
+      // await dispatch(resetUser();
+      !isLoggedIn && history.replace('/register');
+    })();
+  }, [history, isLoggedIn]);
+
   return (
     <main>
       <Suspense fallback={<LoaderSpinner />}>
@@ -97,6 +98,7 @@ export default function Main() {
           </PublicRoute>
         </Switch>
       </Suspense>
+      <ToastContainer autoClose={3000} />
     </main>
   );
 }
