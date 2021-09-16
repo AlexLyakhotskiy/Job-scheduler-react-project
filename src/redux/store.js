@@ -11,6 +11,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
+import tasksReducer from './tasks/tasks-reducer';
+
 // примеры импорта редюсиров
 // import contactsReducer from './contacts/contacts-reducer';
 // import authReducer from './auth/auth-reducer';
@@ -34,7 +36,7 @@ export const store = configureStore({
     auth: persistReducer(persistConfigAuth, () => ''),
     projects: () => '',
     sprints: () => '',
-    tasks: () => '',
+    tasks: tasksReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
