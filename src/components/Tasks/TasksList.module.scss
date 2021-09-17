@@ -4,14 +4,20 @@ li {
   list-style: none;
 }
 
+.sideBar {
+  width: 255px;
+  border-right: 1px solid rgba(24, 28, 39, 0.1);
+}
+
 .sprintSection {
-  width: 1026px;
+  display: flex;
 }
 
-.sectionWrapper {
-  padding: 19px 86px 19px 70px;
+.mainBox {
+  margin-bottom: 20px;
+  padding-left: 70px;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.1);
 }
-
 .headerWrapper {
   display: flex;
   justify-content: space-between;
@@ -19,7 +25,6 @@ li {
 }
 
 .sectionHeader {
-  max-width: 400px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -47,14 +52,9 @@ li {
   height: 20px;
 }
 
-.tableWrapper {
-  margin-bottom: 20px;
-}
-
 .tableTitleList {
   padding: 7px 0 10px 30px;
   display: flex;
-  border-bottom: 1px solid rgba(24, 28, 39, 0.1);
 }
 
 .tableTitle {
@@ -72,4 +72,8 @@ li {
 .findIcon {
   width: 20px;
   height: 20px;
+}
+
+.tasksList {
+  padding-left: 70px;
 }
