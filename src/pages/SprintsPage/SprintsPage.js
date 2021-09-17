@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useRouteMatch, useParams } from 'react-router-dom';
+import IconBtn from '../../components/IconBtn/IconBtn';
 import { routes } from '../../routes/routes';
 
 export default function SprintsPage() {
@@ -11,6 +12,7 @@ export default function SprintsPage() {
     <>
       <h1>SprintsPage</h1>
       <Link to={`${url}/555`}>к таскам</Link>
+      <IconBtn icon="add" />
       <div>
         <Link to={routes.projects}>назад</Link>
       </div>

@@ -21,6 +21,7 @@ ol {
 ul,
 ol {
   padding-left: 0;
+  list-style: none;
 }
 
 img {
@@ -31,6 +32,10 @@ img {
 
 html {
   width: 100vw;
+}
+
+button {
+  cursor: pointer;
 }
 
 body {
