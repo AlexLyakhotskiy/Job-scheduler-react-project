@@ -5,7 +5,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://sbc-backend.goit.global';
 axios.defaults.headers.common.Authorization =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmUyOTU2OGI5YjMxYzAwMTc2MjQ3YTQiLCJzaWQiOiI2MTQ0M2UzOGY0YTZjMDNkYjhjYzhjNDgiLCJpYXQiOjE2MzE4NjIzMjgsImV4cCI6MTYzMTg2NTkyOH0.F9K9r-sePVu9UbL9geKg8iy87DzXbEpwaAJiRakWVYE';
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmUyOTU2OGI5YjMxYzAwMTc2MjQ3YTQiLCJzaWQiOiI2MTQ0NGQxNGY0YTZjMDNkYjhjYzhjNGYiLCJpYXQiOjE2MzE4NjYxMzIsImV4cCI6MTYzMTg2OTczMn0.8gZUx4c_z3PRUzSWuIgO5p4lh8-xeA9VMyauMJVZ_5I';
 
 const getProject = createAsyncThunk('/project/getProject', async () => {
   try {

@@ -1,3 +1,4 @@
+import IconBtn from '../../IconBtn/IconBtn';
 import s from './SpintBtAddSprint.module.scss';
 
 const SpintBtAddSprint = () => {
@@ -5,7 +6,7 @@ const SpintBtAddSprint = () => {
 
   return (
     <div>
-      <button className={s.btnSprintAdd}>+</button>
+      <IconBtn icon={'add'} className={s.btnSprintAdd} />
       <span className={s.btnSprintAddText}>Создать спринт</span>
     </div>
   );

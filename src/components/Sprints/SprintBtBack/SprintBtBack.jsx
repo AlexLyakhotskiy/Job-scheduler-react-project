@@ -1,13 +1,12 @@
+import Svg from '../../Svg/Svg';
 import s from './SprintBtBack.module.scss';
 
 const SprintBtBack = () => {
   return (
-    <div className={s.conteinerBtnBack}>
-      <svg width="30" height="5" className={s.arrow}>
-        <use href="./img/sprite.svg#Arrow"></use>
-      </svg>
-      <button className={s.btGoBack}>Показати проекти</button>
-    </div>
+    <button className={s.btGoBack}>
+      <Svg icon={'#icon-arrow'} className={s.arrow} />
+      <span>Показати проекти</span>
+    </button>
   );
 };
 

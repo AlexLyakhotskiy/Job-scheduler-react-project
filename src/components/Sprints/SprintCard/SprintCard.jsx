@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import sprintOperations from '../../../redux/sprint/sprin-operations';
 import allSelectors from '../../../redux/sprint/sprin-selectors';
+import IconBtn from '../../IconBtn/IconBtn';
 import s from './SprintCard.module.scss';
 
 const SprintCard = () => {
@@ -42,8 +43,9 @@ const SprintCard = () => {
                     <span>{sprint.duration}</span>
                   </li>
                 </ul>
-
-                <button className={s.sprintDelBt}>к</button>
+                <div className={s.sprintDelBt}>
+                  <IconBtn icon={'bin'} secondary />
+                </div>
               </div>
             </li>
           ))}

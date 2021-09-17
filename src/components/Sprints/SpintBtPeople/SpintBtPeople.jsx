@@ -1,3 +1,4 @@
+import Svg from '../../Svg/Svg';
 import s from './SpintBtPeople.module.scss';
 
 const SpintBtPeople = () => {
@@ -5,10 +6,10 @@ const SpintBtPeople = () => {
 
   return (
     <div className={s.conteinerPeopleAdd}>
-      <svg width="20" height="20" className={s.iconPeopleAdd}>
-        <use href="./img/sprite.svg#icon-add-people"></use>
-      </svg>
-      <button className={s.btnPeopleAdd}>Додати людей</button>
+      <button className={s.btnPeopleAdd}>
+        <Svg icon={'#icon-add-people'} className={s.iconPeopleAdd} />
+        Додати людей
+      </button>
     </div>
   );
 };
