@@ -2,6 +2,7 @@
 // import { useDispatch } from 'react-redux';
 // import { getProjects } from '../../redux/projects/projectOperations';
 import ProjectItem from '../ProjectItem/ProjectItem';
+import IconBtn from '../IconBtn/IconBtn.jsx';
 import s from '../Projects/Projects.module.scss';
 
 const Projects = () => {
@@ -48,24 +49,28 @@ const Projects = () => {
 
   return (
     <>
-      <div className={s.projectsHeader}>
-        <h1 className={s.title}>Проекти</h1>
-        <button className={s.addBtn} type="button">
-          +
-        </button>
+      <div className={s.projectsContainer}>
+        <div className={s.projectsHeader}>
+          <h1 className={s.title}>Проекти</h1>
+          <label className={s.labeladdBtn}>
+            <IconBtn onClick={() => {}} icon="add" className={s.addBtn} />
+            <span className={s.textAddBtn}>Створити проект</span>
+          </label>
+        </div>
+
+        <ul className={s.list}>
+          {projects.length > 0 &&
+            projects.map(({ title, _id, description }) => (
+              <ProjectItem
+                key={_id}
+                id={_id}
+                title={title}
+                description={description}
+                onDeleteContact={() => {}}
+              />
+            ))}
+        </ul>
       </div>
-      <ul className={s.list}>
-        {projects.length > 0 &&
-          projects.map(({ title, _id, description }) => (
-            <ProjectItem
-              key={_id}
-              id={_id}
-              title={title}
-              description={description}
-              onDeleteContact={() => {}}
-            />
-          ))}
-      </ul>
     </>
   );
 };

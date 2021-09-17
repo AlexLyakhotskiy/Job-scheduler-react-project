@@ -1,26 +1,19 @@
 import { Link, useRouteMatch } from 'react-router-dom';
-import s from '../ProjectItem/ProjectItem.module.scss';
+//import IconBtn from '../IconBtn/IconBtn';
 
-const colors = ['#8C72DF', '#FF765F', '#71DF87'];
-const randomIntegerFromInterval = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+import Svg from '../Svg/Svg';
+import s from '../ProjectItem/ProjectItem.module.scss';
 
 const ProjectItem = ({ title, id, description }) => {
   const { path } = useRouteMatch();
   return (
-    <li
-      className={s.item}
-      style={{
-        backgroundColor: colors[randomIntegerFromInterval(0, 2)],
-      }}
-    >
+    <li className={s.item}>
       <Link to={`${path}/${id}/sprints`} className={s.link}>
         <div className={s.itemWrapper}>
           <h2 className={s.projectTitle}>{title}</h2>
           <p className={s.projectDescription}>{description}</p>
           <button className={s.itemDeleteBtn} type="button" onClick={() => {}}>
-            Delete
+            <Svg icon="#icon-bin" className={s.deleteIcon} />
           </button>
         </div>
       </Link>
