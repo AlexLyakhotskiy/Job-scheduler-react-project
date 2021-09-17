@@ -1,15 +1,17 @@
 import React from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+
+import Container from '../../components/Container/Container.jsx';
+import Projects from '../../components/Projects/Projects';
 
 export default function ProjectsPage() {
-  const { path } = useRouteMatch();
-
   return (
     <>
-      <h1>ProjectsPage</h1>
-      <Link to={`${path}/111`}>к спринтам</Link>
-      {/* этот линк обернуть лишкой */}
-      {/* <Link to={`${path}/${id}`}>к спринтам</Link> */}
+      <Container>
+        <Projects />
+
+        {/* этот линк обернуть лишкой */}
+        {/* <Link to={`${path}/${id}`}>к спринтам</Link> */}
+      </Container>
     </>
   );
 }
