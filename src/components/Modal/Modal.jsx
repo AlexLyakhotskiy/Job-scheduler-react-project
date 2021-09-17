@@ -17,7 +17,7 @@ function Modal({ closeModal, children, chart = false }) {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
-  }, []);
+  }, []); /* eslint-disable-line*/
 
   function onCloseBtnClick() {
     closeModal();

@@ -1,51 +1,53 @@
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { getProjects } from '../../redux/projects/projectOperations';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getProjectsList } from '../../redux/projects/projectSelectors';
+import {
+  addProjects,
+  getProjects,
+} from '../../redux/projects/projectOperations';
 import ProjectItem from '../ProjectItem/ProjectItem';
 import IconBtn from '../IconBtn/IconBtn.jsx';
 import s from '../Projects/Projects.module.scss';
+import Modal from '../Modal/Modal';
 
 const Projects = () => {
-  const projects = [
-    {
-      title: 'Project 1',
-      description: 'short description',
-      _id: '507f1f77bcf86cd799439011',
-      members: ['test@email.com'],
-      sprints: ['507f1f77bcf86cd799439012'],
-      __v: 0,
-    },
-    {
-      title: 'Project 2',
-      description: 'short description',
-      _id: '12efff',
-      members: ['test@email.com'],
-      sprints: ['507f1f77bcf86cd799439012'],
-      __v: 0,
-    },
-    {
-      title: 'Project very long name',
-      description: 'short description',
-      _id: '13efff',
-      members: ['test@email.com'],
-      sprints: ['507f1f77bcf86cd799439012'],
-      __v: 0,
-    },
-    {
-      title: 'Project 4',
-      description: 'short description',
-      _id: '14fff',
-      members: ['test@email.com'],
-      sprints: ['507f1f77bcf86cd799439012'],
-      __v: 0,
-    },
-  ];
+  const dispatch = useDispatch();
+  const projects = useSelector(getProjectsList);
+  console.log(projects);
 
-  // const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+  const [titleInput, setTitleInput] = useState('');
+  const [descriptionInput, setDescriptionInput] = useState('');
 
-  // useEffect(() => {
-  //   dispatch(getProjects());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getProjects());
+  }, [dispatch]);
+
+  const toggleModal = () => {
+    setShowModal(prevState => !prevState);
+  };
+  const handleChange = event => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case 'title':
+        setTitleInput(value);
+        break;
+      case 'description':
+        setDescriptionInput(value);
+        break;
+      default:
+        return;
+    }
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(addProjects({ title: titleInput, description: descriptionInput }));
+    setTitleInput('');
+    setDescriptionInput('');
+    toggleModal();
+  };
 
   return (
     <>
@@ -53,7 +55,7 @@ const Projects = () => {
         <div className={s.projectsHeader}>
           <h1 className={s.title}>Проекти</h1>
           <label className={s.labeladdBtn}>
-            <IconBtn onClick={() => {}} icon="add" className={s.addBtn} />
+            <IconBtn onClick={toggleModal} icon="add" className={s.addBtn} />
             <span className={s.textAddBtn}>Створити проект</span>
           </label>
         </div>
@@ -71,6 +73,40 @@ const Projects = () => {
             ))}
         </ul>
       </div>
+      {showModal && (
+        <Modal closeModal={toggleModal}>
+          <h2>Створення проекту</h2>
+          <form className="addForm" onSubmit={handleSubmit}>
+            <input
+              className="input"
+              type="text"
+              name="title"
+              autoComplete="off"
+              autoFocus
+              placeholder="Title"
+              value={titleInput}
+              onChange={handleChange}
+            />
+            <input
+              className="input"
+              type="text"
+              name="description"
+              autoComplete="off"
+              autoFocus
+              placeholder="Description"
+              value={descriptionInput}
+              onChange={handleChange}
+            />
+
+            <button className={s.btn} type="submit">
+              Save
+            </button>
+            <button className={s.btnCencel} type="button" onClick={toggleModal}>
+              Cancel
+            </button>
+          </form>
+        </Modal>
+      )}
     </>
   );
 };
