@@ -1,5 +1,9 @@
 import React from 'react';
 
 export default function RegisterPage() {
-  return <></>;
+  return (
+    <>
+      <h1>RegisterPage</h1>
+    </>
+  );
 }
