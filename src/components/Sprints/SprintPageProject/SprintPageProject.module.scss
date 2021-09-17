@@ -1,36 +1,15 @@
-.sprintCard {
-  margin: 0 auto;
-  position: relative;
-  width: 280px;
-  height: 170px;
-  background-color: red;
-  padding: 20px;
-}
+.sprintProjectConteiner {
+  display: none;
+  width: 256px;
+  padding: 20px 27px 80px 40px;
+  background-color: yellow;
 
-.sprintTitel {
-  margin-bottom: 20px;
-}
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
 
-.sprintItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 10px;
-
-  font-style: normal;
-  font-weight: normal;
-  font-size: 10px;
-  line-height: 12px;
-}
-
-.sprintDelBt {
-  position: absolute;
-  border: none;
-  background: none;
-  right: 10px;
-  bottom: 10px;
-  &:hover {
-    background-color: #fff;
+  @media screen and (min-width: 1280px) {
+    width: 255px;
+    padding: 20px 30px 50px 55px;
   }
 }

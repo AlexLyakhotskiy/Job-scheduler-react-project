@@ -8,6 +8,8 @@ import SprintCard from '../components/Sprints/SprintCard/SprintCard';
 import sprintOperations from '../redux/sprint/sprin-operations';
 import allSelectors from '../redux/sprint/sprin-selectors';
 import SpintBtAddSprint from '../components/Sprints/SpintBtAddSprint/SpintBtAddSprint';
+import SprintPageProject from '../components/Sprints/SprintPageProject/SprintPageProject';
+import s from './SprintPage.module.scss';
 
 export default function SprintPage() {
   const dispatch = useDispatch();
@@ -25,12 +27,19 @@ export default function SprintPage() {
     <>
       <div>heder</div>
 
-      <Container className="styles.Container">
-        <SprintBtBack />
-        <SprintPageTitele />
-        <SpintBtAddSprint />
-        <SpintBtPeople />
-        {projectId && <SprintCard />}
+      <Container>
+        <div className={s.containerPageSprintProgect}>
+          <SprintPageProject />
+          <div className={s.containerPageSprint}>
+            <div className={s.pageSprintBtBack}>
+              <SprintBtBack />
+            </div>
+            <SprintPageTitele />
+            <SpintBtAddSprint />
+            <SpintBtPeople />
+            {projectId && <SprintCard />}
+          </div>
+        </div>
       </Container>
     </>
   );
