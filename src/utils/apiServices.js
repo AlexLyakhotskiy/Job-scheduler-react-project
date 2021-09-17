@@ -62,9 +62,12 @@ export async function apiRefreshUser(RefreshToken, sid) {
 // ========================= для projectOperations =============================
 
 // projectData это обьект с двумя ключами 'title' и 'description'
-export async function apiAddProject(projectData) {
+export async function apiAddProject({ title, description }) {
   try {
-    const { data } = await axios.post('/project', projectData);
+    const { data } = await axios.post('/project', {
+      title,
+      description,
+    });
     return data;
   } catch (error) {
     throw new Error(error);
@@ -72,6 +75,9 @@ export async function apiAddProject(projectData) {
 }
 
 export async function apiGetProjects() {
+  // apiToken.set(
+  //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQ0NGVmYmY0YTZjMDNkYjhjYzhjNTAiLCJzaWQiOiI2MTQ0NGYzZGY0YTZjMDNkYjhjYzhjNTEiLCJpYXQiOjE2MzE4NjY2ODUsImV4cCI6MTYzNDQ5NDY4NX0.Rx8eJEx0u1ZE2FkUrVWHVVgsn64rvOkZA3PBhfQS_gI ',
+  // );
   try {
     const { data } = await axios.get('/project');
     return data;

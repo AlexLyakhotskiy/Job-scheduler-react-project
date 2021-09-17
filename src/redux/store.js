@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import projectsReducer from './projects/projectReducer';
 
 // примеры импорта редюсиров
 // import contactsReducer from './contacts/contacts-reducer';
@@ -32,7 +33,7 @@ const persistConfigAuth = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfigAuth, () => ''),
-    projects: () => '',
+    projects: projectsReducer,
     sprints: () => '',
     tasks: () => '',
   },

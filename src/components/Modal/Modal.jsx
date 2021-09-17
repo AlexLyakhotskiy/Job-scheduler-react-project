@@ -14,7 +14,7 @@ function Modal({ closeModal, children }) {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
-  }, []);
+  }, []); /* eslint-disable-line*/
 
   function handleKeyDown(e) {
     if (e.code === 'Escape') {

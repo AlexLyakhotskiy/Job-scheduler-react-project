@@ -1,45 +1,45 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
-// import {
-//   addProjectApi,
-//   deleteProjectApi,
-//   getProjectsApi,
-// } from '../apiServices';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  apiAddProject,
+  apiRemoveProjectById,
+  apiGetProjects,
+} from '../../utils/apiServices.js';
 
-// export const getProjects = createAsyncThunk(
-//   'projects/getProjects',
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       const projectsGet = await getProjectsApi();
-//       return projectsGet;
-//     } catch (error) {
-//       return rejectWithValue(error);
-//     }
-//   },
-// );
+export const getProjects = createAsyncThunk(
+  'projects/getProjects',
+  async (_, { rejectWithValue }) => {
+    try {
+      const projectsGet = await apiGetProjects();
+      return Array.isArray(projectsGet) ? projectsGet : [];
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
 
-// export const addProjects = createAsyncThunk(
-//   'projects/addProjects',
-//   async ({ title, description }, { rejectWithValue }) => {
-//     try {
-//       const projectsAdd = await addProjectsApi({ title, description});
-//       return projectsAdd;
-//     } catch (error) {
-//       return rejectWithValue(error);
-//     }
-//   },
-// );
+export const addProjects = createAsyncThunk(
+  'projects/addProjects',
+  async ({ title, description }, { rejectWithValue }) => {
+    try {
+      const projectsAdd = await apiAddProject({ title, description });
+      return projectsAdd;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
 
-// export const deleteProjects = createAsyncThunk(
-//   'projects/deleteProjects',
-//   async (projectsId, { rejectWithValue }) => {
-//     try {
-//       await deleteProjectsApi(projectsId);
-//       return projectsId;
-//     } catch (error) {
-//       return rejectWithValue(error);
-//     }
-//   },
-// );
+export const deleteProjects = createAsyncThunk(
+  'projects/deleteProjects',
+  async (projectsId, { rejectWithValue }) => {
+    try {
+      await apiRemoveProjectById(projectsId);
+      return projectsId;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
 ///////////////////////////////
 // export const editContacts = createAsyncThunk(
 //   'contacts/editContacts',
