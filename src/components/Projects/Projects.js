@@ -2,7 +2,7 @@
 // import { useDispatch } from 'react-redux';
 // import { getProjects } from '../../redux/projects/projectOperations';
 import ProjectItem from '../ProjectItem/ProjectItem';
-import s from '../Projects/Projects.module.css';
+import s from '../Projects/Projects.module.scss';
 
 const Projects = () => {
   const projects = [

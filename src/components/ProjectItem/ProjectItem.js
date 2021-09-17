@@ -1,5 +1,5 @@
 import { Link, useRouteMatch } from 'react-router-dom';
-import s from '../ProjectItem/ProjectItem.module.css';
+import s from '../ProjectItem/ProjectItem.module.scss';
 
 const colors = ['#8C72DF', '#FF765F', '#71DF87'];
 const randomIntegerFromInterval = (min, max) => {
@@ -15,7 +15,7 @@ const ProjectItem = ({ title, id, description }) => {
         backgroundColor: colors[randomIntegerFromInterval(0, 2)],
       }}
     >
-      <Link to={`${path}/${id}}`} className={s.link}>
+      <Link to={`${path}/${id}/sprints`} className={s.link}>
         <div className={s.itemWrapper}>
           <h2 className={s.projectTitle}>{title}</h2>
           <p className={s.projectDescription}>{description}</p>

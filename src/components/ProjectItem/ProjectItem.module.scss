@@ -1,12 +1,17 @@
+@import '../../styles/variables.scss';
+
 .link {
   text-decoration: none;
   outline: none;
+  padding: 10px;
+  display: block;
+  height: 100%;
 }
 .item {
   flex-basis: calc(100% / 2 - 10px);
   margin-top: 10px;
   margin-left: 10px;
-  padding: 10px;
+
   min-height: 136px;
   border-radius: 5px;
 
@@ -33,7 +38,7 @@
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: 0.04em;
-  color: #ffffff;
+  color: var(--color-card-text);
 }
 
 .projectDescription {
