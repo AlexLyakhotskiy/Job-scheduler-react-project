@@ -1,8 +1,11 @@
 import styles from './TaskItem.module.scss';
-import sprite from '../sprite.svg';
+import IconBtn from '../../IconBtn/IconBtn';
+import { useDispatch } from 'react-redux';
+import { deleteTask } from '../../../redux/tasks/tasks-operations';
 
 const TaskItem = ({ task }) => {
-  console.log(`task`, task.title);
+  const dispatch = useDispatch();
+  console.log(`task._id`, task._id);
   return (
     <li className={styles.taskItem}>
       <ul className={styles.taskItemBox}>
@@ -11,11 +14,11 @@ const TaskItem = ({ task }) => {
         <li className={styles.taskColomn}>{task.hoursWasted}</li>
         <li className={styles.taskColomn}>{task.hoursWasted}</li>
         <li className={styles.taskColomn}>
-          <button type="button" className={styles.taskBtn}>
-            <svg className={styles.deleteIcon}>
-              <use href={sprite + '#icon-delete'} />
-            </svg>
-          </button>
+          <IconBtn
+            icon="bin"
+            secondary
+            onClick={dispatch(deleteTask(task._id))}
+          />
         </li>
       </ul>
     </li>

@@ -27,8 +27,7 @@ li {
 .sectionHeader {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 30px;
+  align-items: center;
 }
 
 .sprintTitle {
@@ -55,6 +54,7 @@ li {
 .tableTitleList {
   padding: 7px 0 10px 30px;
   display: flex;
+  align-items: center;
 }
 
 .tableTitle {

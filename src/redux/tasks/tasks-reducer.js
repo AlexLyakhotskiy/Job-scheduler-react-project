@@ -2,32 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { addTask, deleteTask, fetchTasks } from './tasks-operations';
 
 const initialState = {
-  allTasks: [
-    {
-      title: 'Task 1',
-      hoursPlanned: 1,
-      hoursWasted: 0,
-      hoursWastedPerDay: [
-        {
-          currentDay: '2020-12-31',
-          singleHoursWasted: 0,
-        },
-      ],
-      id: '507f1f77bcf86cd799439011',
-    },
-    {
-      title: 'Task 2',
-      hoursPlanned: 5,
-      hoursWasted: 6,
-      hoursWastedPerDay: [
-        {
-          currentDay: '2020-12-31',
-          singleHoursWasted: 0,
-        },
-      ],
-      id: '507f1f77bcf86cd799',
-    },
-  ],
+  allTasks: [],
   error: null,
   loading: false,
 };
@@ -35,14 +10,15 @@ const initialState = {
 const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
-  axtraReducers: {
+  extraReducers: {
     [addTask.pending](state) {
       state.loading = true;
     },
-    [addTask.pending](state, { payload }) {
+    [addTask.fulfilled](state, { payload }) {
       state.error = null;
-      state.task.push(payload);
+      state.allTasks.push(payload);
       state.loading = false;
+      console.log(`payload`, payload);
     },
     [addTask.rejected](state, { payload }) {
       state.error = payload;
@@ -53,7 +29,8 @@ const tasksSlice = createSlice({
     },
     [fetchTasks.fulfilled](state, { payload }) {
       state.error = null;
-      state.tasks = payload;
+      state.allTasks = payload;
+      console.log(`payload`, payload);
       state.loading = false;
     },
     [fetchTasks.rejected](state, { payload }) {
@@ -65,7 +42,7 @@ const tasksSlice = createSlice({
     },
     [deleteTask.fulfilled](state, { payload }) {
       state.error = null;
-      state.tasks.filter(task => task.id !== payload);
+      state.allTasks.filter(task => task.id !== payload);
       state.loading = false;
     },
     [deleteTask.rejected](state, { payload }) {

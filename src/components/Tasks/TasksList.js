@@ -1,12 +1,22 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import TaskItem from './TaskItem/TaskItem';
 import styles from './TasksList.module.scss';
 import sprite from './sprite.svg';
 import CreateTaskForm from './TaskItem/CreateTaskForm/CreateTaskForm';
 import Container from '../Container/Container';
+import { useEffect } from 'react';
+import { fetchTasks } from '../../redux/tasks/tasks-operations';
+import IconBtn from '../IconBtn/IconBtn';
 
 const TasksList = () => {
   const tasks = useSelector(state => state.tasks.allTasks);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTasks());
+  }, [dispatch]);
+  console.log(`tasks`, tasks);
+
   return (
     <Container>
       <section className={styles.sprintSection}>
@@ -18,15 +28,13 @@ const TasksList = () => {
             <div className={styles.headerWrapper}>
               <div className={styles.sectionHeader}>
                 <h2 className={styles.sprintTitle}>Sprint title</h2>
-                <button type="button" className={styles.tasksBtn}>
-                  <svg className={styles.editIcon}>
-                    <use href={sprite + '#icon-edit'} />
-                  </svg>
-                </button>
+                <IconBtn
+                  icon="pencil"
+                  secondary
+                  className={styles.iconPencil}
+                />
               </div>
-              <button type="button" className={styles.tasksBtn}>
-                Create task
-              </button>
+              <IconBtn icon="add" main className={styles.iconPencil} />
             </div>
             <div>
               <CreateTaskForm />
@@ -63,7 +71,7 @@ const TasksList = () => {
           <div>
             <ul className={styles.tasksList}>
               {tasks.map(task => (
-                <TaskItem task={task} key={task.id} />
+                <TaskItem task={task} key={task._id} />
               ))}
             </ul>
           </div>

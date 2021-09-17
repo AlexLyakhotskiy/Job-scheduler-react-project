@@ -18,7 +18,8 @@ const CreateTaskForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    dispatch(addTask({ title: task.title, hoursPlanned: task.hours }));
+    console.log(`task`, task);
+    dispatch(addTask({ title: task.title, hoursPlanned: task.hoursPlanned }));
     setTask({
       title: '',
       hoursPlanned: '',
