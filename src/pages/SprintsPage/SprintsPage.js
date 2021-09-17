@@ -1,24 +1,18 @@
 import React from 'react';
-import { Link, useLocation, useRouteMatch, useParams } from 'react-router-dom';
+import { Link, useRouteMatch, useParams } from 'react-router-dom';
+import IconBtn from '../../components/IconBtn/IconBtn';
 import { routes } from '../../routes/routes';
 
 export default function SprintsPage() {
   const { projectId } = useParams();
   const { url } = useRouteMatch();
-  const location = useLocation();
 
   console.log('projectId: ', projectId);
   return (
     <>
       <h1>SprintsPage</h1>
-      <Link
-        to={{
-          pathname: `${url}/sprints/555`,
-          state: { from: location },
-        }}
-      >
-        к таскам
-      </Link>
+      <Link to={`${url}/555`}>к таскам</Link>
+      <IconBtn icon="add" />
       <div>
         <Link to={routes.projects}>назад</Link>
       </div>

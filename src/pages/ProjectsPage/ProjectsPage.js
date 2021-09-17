@@ -8,9 +8,6 @@ export default function ProjectsPage() {
     <>
       <Container>
         <Projects />
-
-        {/* этот линк обернуть лишкой */}
-        {/* <Link to={`${path}/${id}`}>к спринтам</Link> */}
       </Container>
     </>
   );

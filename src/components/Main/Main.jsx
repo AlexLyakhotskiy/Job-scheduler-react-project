@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { lazy, Suspense } from 'react';
 import { Switch, useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 import PrivateRoute from '../Routes/PrivateRoute';
@@ -97,6 +98,7 @@ export default function Main() {
           </PublicRoute>
         </Switch>
       </Suspense>
+      <ToastContainer autoClose={3000} />
     </main>
   );
 }
