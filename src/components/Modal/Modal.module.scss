@@ -1,17 +1,93 @@
+@import '../../styles/variables.scss';
+
 .overlay {
   position: fixed;
-  top: 0;
+  top: 60px;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 60px);
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(24, 28, 39, 0.25);
   z-index: 1200;
+
+  @media screen and (min-width: 768px) {
+    top: 0;
+    height: 100vh;
+  }
+}
+
+.chartOverlay {
+  composes: overlay;
+  justify-content: center;
+}
+
+.mainOverlay {
+  composes: overlay;
+  justify-content: flex-end;
 }
 
 .modal {
-  max-width: calc(100vw - 48px);
+  position: relative;
+  overflow-x: auto;
+  background-color: var(--color-modal-background);
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.mainModal {
+  composes: modal;
+  height: 100%;
+  padding: 60px 20px;
+
+  @media screen and (min-width: 768px) {
+    width: 512px;
+    padding: 120px 30px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 530px;
+    padding: 120px 50px;
+  }
+}
+
+.chartModal {
+  composes: modal;
+  padding: 30px 20px;
+
   max-height: calc(100vh - 24px);
+  @media screen and (min-width: 768px) {
+    max-width: calc(100vw - 48px);
+    padding: 15px;
+  }
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+}
+
+.btn {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  border-radius: 50%;
+  border: none;
+  color: var(--color-main-text);
+  background-color: transparent;
+  transition: all $trans-func $trans-dur;
+
+  @media screen and (min-width: 768px) {
+    right: 10px;
+  }
+
+  &:hover,
+  &:focus {
+    color: var(--color-card-text);
+    background-color: var(--color-btn-background);
+  }
 }

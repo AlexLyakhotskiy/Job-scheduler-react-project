@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import sprintSlice from './sprint/sprin-slice';
+import projectsReducer from './projects/projectReducer';
 
 // примеры импорта редюсиров
 // import contactsReducer from './contacts/contacts-reducer';
@@ -33,8 +34,9 @@ const persistConfigAuth = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfigAuth, () => ''),
-    projects: () => '',
     sprints: sprintSlice,
+    projects: projectsReducer,
+    sprints: () => '',
     tasks: () => '',
   },
   middleware,
