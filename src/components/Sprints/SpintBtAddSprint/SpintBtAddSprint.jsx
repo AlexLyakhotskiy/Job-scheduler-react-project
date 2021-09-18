@@ -1,25 +1,23 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
+
 import IconBtn from '../../IconBtn/IconBtn';
 import Modal from '../../Modal';
 import s from './SpintBtAddSprint.module.scss';
+import sprintOperations from '../../../redux/sprint/sprin-operations';
+import { DecimationAlgorithm } from 'chart.js';
+import { useParams } from 'react-router';
 
-const SpintBtAddSprint = () => {
-  // const dispatch = useDispatch();
+const SpintBtAddSprint = ({ projectId }) => {
+  const dispatch = useDispatch();
 
   const [showModal, setShowModal] = useState(false);
   const [titleInput, setTitleInput] = useState('');
   const [valueInput, setValueInput] = useState('');
-
-  const Example = () => {
-    const [startDate, setStartDate] = useState(new Date());
-    return (
-      <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
-    );
-  };
+  const [startDate, setStartDate] = useState(new Date());
 
   // useEffect(() => {
   //   dispatch(getProjects());
@@ -39,10 +37,19 @@ const SpintBtAddSprint = () => {
     setValueInput(value);
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    // dispatch(addProjects({ title: titleInput, description: descriptionInput }));
-    setTitleInput('');
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    dispatch(
+      sprintOperations.postSprint({
+        projectId: '614650a8f4a6c03db8cc8de9',
+        body: {
+          title: titleInput,
+          endDate: '2020-12-31',
+          duration: valueInput,
+        },
+      }),
+    );
 
     toggleModal();
   };
@@ -63,23 +70,26 @@ const SpintBtAddSprint = () => {
               autoComplete="off"
               autoFocus
               placeholder="Title"
-              value={valueInput}
+              value={titleInput}
               onChange={handleChange}
             />
             <input
               className="input"
-              type="text"
+              type="number"
               name="title"
               autoComplete="off"
               autoFocus
               placeholder="Тривалисть"
-              value={titleInput}
+              value={valueInput}
               onChange={handleChangeValue}
             />
-            <input type="checkbox" checked />
-            {Example}
+            {/* <input type="checkbox" checked /> */}
+            <DatePicker
+              selected={startDate}
+              onChange={date => setStartDate(date)}
+            />
 
-            <button className={s.btnCencel} type="button" onClick={toggleModal}>
+            <button className={s.btnCencel} type="submit">
               готово
             </button>
           </form>

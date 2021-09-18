@@ -38,7 +38,7 @@ export default function SprintsPage() {
             <SprintCard />
           </div>
           <div className={s.btnDispleyNone}>
-            <SpintBtAddSprint />
+            <SpintBtAddSprint projectId={projectId} />
           </div>
         </div>
       </Container>

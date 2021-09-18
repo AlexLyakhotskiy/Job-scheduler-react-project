@@ -4,13 +4,13 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.headers.common.Authorization =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMDFlNWY0YTZjMDNkYjhjYzhiYjAiLCJzaWQiOiI2MTQ2MmRiNmY0YTZjMDNkYjhjYzhkYTIiLCJpYXQiOjE2MzE5ODkxNzQsImV4cCI6MTYzMTk5Mjc3NH0.9Jp3uznM9EZ_p-acatKUaiJNlD2b-x_CTTlF11KWqT8';
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMDFlNWY0YTZjMDNkYjhjYzhiYjAiLCJzaWQiOiI2MTQ2NGEzOWY0YTZjMDNkYjhjYzhkY2UiLCJpYXQiOjE2MzE5OTY0NzMsImV4cCI6MTYzMjAwMDA3M30.WQFOtPsWIoqGlUZ-bBeYLaeLoJghAY5ch3-DW51KoyI';
 
 const getSprint = createAsyncThunk(
   '/sprint/getSprint',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`/sprint/${id}`);
+      const { data } = await axios.get(`sprint/${id}`);
       return data;
     } catch (error) {
       if (error.response.status === 400) {
@@ -31,9 +31,9 @@ const getSprint = createAsyncThunk(
 
 const postSprint = createAsyncThunk(
   '/sprint/postSprint',
-  async (id, body, { rejectWithValue }) => {
+  async ({ projectId, body }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(`/sprint/${id}`, body);
+      const { data } = await axios.post(`/sprint/${projectId}`, body);
       return data;
     } catch (error) {
       if (error.response.status === 400) {
@@ -56,7 +56,7 @@ const patchSprint = createAsyncThunk(
   '/sprint/patchSprint',
   async (id, newTitel, { rejectWithValue }) => {
     try {
-      const { data } = await axios.patch(`/sprint/title/${id}`, newTitel);
+      const { data } = await axios.patch(`sprint/title/${id}`, newTitel);
       return data;
     } catch (error) {
       if (error.response.status === 400) {

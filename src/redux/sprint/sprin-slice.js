@@ -31,7 +31,7 @@ const sprintSlice = createSlice({
       state.isLoading = true;
     },
     [sprintOperations.postSprint.fulfilled](state, { payload }) {
-      state.items = payload;
+      state.items = [...state.items, payload];
       state.isLogIn = true;
       state.isLoading = false;
     },
