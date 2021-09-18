@@ -3,8 +3,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.headers.common.Authorization =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMDFlNWY0YTZjMDNkYjhjYzhiYjAiLCJzaWQiOiI2MTQ2NGEzOWY0YTZjMDNkYjhjYzhkY2UiLCJpYXQiOjE2MzE5OTY0NzMsImV4cCI6MTYzMjAwMDA3M30.WQFOtPsWIoqGlUZ-bBeYLaeLoJghAY5ch3-DW51KoyI';
+// axios.defaults.headers.common.Authorization =
+//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMDFlNWY0YTZjMDNkYjhjYzhiYjAiLCJzaWQiOiI2MTQ2NGEzOWY0YTZjMDNkYjhjYzhkY2UiLCJpYXQiOjE2MzE5OTY0NzMsImV4cCI6MTYzMjAwMDA3M30.WQFOtPsWIoqGlUZ-bBeYLaeLoJghAY5ch3-DW51KoyI';
 
 const getSprint = createAsyncThunk(
   '/sprint/getSprint',
