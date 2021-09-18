@@ -36,7 +36,6 @@ export const store = configureStore({
     auth: persistReducer(persistConfigAuth, () => ''),
     sprints: sprintSlice,
     projects: projectsReducer,
-    sprints: () => '',
     tasks: () => '',
   },
   middleware,

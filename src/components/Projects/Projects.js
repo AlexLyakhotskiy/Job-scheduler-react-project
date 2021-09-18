@@ -13,7 +13,6 @@ import Modal from '../Modal/Modal';
 const Projects = () => {
   const dispatch = useDispatch();
   const projects = useSelector(getProjectsList);
-  console.log(projects);
 
   const [showModal, setShowModal] = useState(false);
   const [titleInput, setTitleInput] = useState('');

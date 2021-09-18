@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch, useParams } from 'react-router-dom';
 import sprintOperations from '../../../redux/sprint/sprin-operations';
 import allSelectors from '../../../redux/sprint/sprin-selectors';
 import IconBtn from '../../IconBtn/IconBtn';
@@ -8,16 +8,12 @@ import s from './SprintCard.module.scss';
 
 const SprintCard = () => {
   const { url } = useRouteMatch();
+  const { projectId } = useParams();
   const dispatch = useDispatch();
 
-  const idProject = useSelector(state => {
-    const project = allSelectors.newProject(state);
-    return project[3]._id;
-  });
-
   useEffect(() => {
-    dispatch(sprintOperations.getSprint(idProject));
-  }, []);
+    dispatch(sprintOperations.getSprint(projectId));
+  }, [dispatch, projectId]);
 
   const sprints = useSelector(state => {
     return allSelectors.allSprints(state);
