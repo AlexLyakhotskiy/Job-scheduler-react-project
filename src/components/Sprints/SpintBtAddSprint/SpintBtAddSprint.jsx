@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 
@@ -8,8 +8,6 @@ import IconBtn from '../../IconBtn/IconBtn';
 import Modal from '../../Modal';
 import s from './SpintBtAddSprint.module.scss';
 import sprintOperations from '../../../redux/sprint/sprin-operations';
-import { DecimationAlgorithm } from 'chart.js';
-import { useParams } from 'react-router';
 
 const SpintBtAddSprint = ({ projectId }) => {
   const dispatch = useDispatch();
