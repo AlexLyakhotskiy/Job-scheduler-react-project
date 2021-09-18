@@ -3,9 +3,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://sbc-backend.goit.global';
-axios.defaults.headers.common.Authorization =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMDFlNWY0YTZjMDNkYjhjYzhiYjAiLCJzaWQiOiI2MTQ2MGQxY2Y0YTZjMDNkYjhjYzhkN2UiLCJpYXQiOjE2MzE5ODA4MjgsImV4cCI6MTYzMTk4NDQyOH0.bkZ0LQcwVw_96aObGY3-u6omlQJBEuBNlpov1rkxmyQ';
+// axios.defaults.headers.common.Authorization =
+//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMDFlNWY0YTZjMDNkYjhjYzhiYjAiLCJzaWQiOiI2MTQ2MGQxY2Y0YTZjMDNkYjhjYzhkN2UiLCJpYXQiOjE2MzE5ODA4MjgsImV4cCI6MTYzMTk4NDQyOH0.bkZ0LQcwVw_96aObGY3-u6omlQJBEuBNlpov1rkxmyQ';
 
 const getSprint = createAsyncThunk(
   '/sprint/getSprint',

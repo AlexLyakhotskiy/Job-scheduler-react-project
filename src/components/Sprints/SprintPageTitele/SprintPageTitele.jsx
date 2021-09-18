@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
+import { patchProject } from '../../../redux/projects/projectOperations';
 import IconBtn from '../../IconBtn/IconBtn';
 import SpintBtAddSprint from '../SpintBtAddSprint/SpintBtAddSprint';
 import s from './SprintPageTitele.module.scss';
 
 const SprintPageTitele = ({ nowProject, projectId }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [isInputOpen, setInputOpen] = useState(false);
   const [isProjectTitel, setProjectTitel] = useState(nowProject.title);
@@ -15,7 +16,8 @@ const SprintPageTitele = ({ nowProject, projectId }) => {
   const handelSubmit = e => {
     e.preventDefault();
     if (isProjectTitel === '') return alert('Введите название проекта');
-    // dispatch(sprintOperations.patchProject({ projectId, isProjectTitel }));
+
+    dispatch(patchProject({ projectId, titleData: { title: isProjectTitel } }));
     toggleInput();
   };
 
