@@ -1,0 +1,67 @@
+@import '../../styles/variables.scss';
+
+.wrapper {
+  position: relative;
+  padding: 15px 0 0;
+  width: 100%;
+}
+
+.input {
+  font-family: inherit;
+  position: relative;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid var(--color-input-border);
+  outline: none;
+  color: var(--color-input-text);
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color $trans-func $trans-dur;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:placeholder-shown ~ .label {
+    cursor: text;
+    top: 20px;
+  }
+
+  &:focus ~ .bottomLine::before {
+    left: 0;
+    width: 100%;
+  }
+}
+
+.bottomLine {
+  position: relative;
+
+  &::before {
+    content: '';
+    width: 0;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--color-btn-background);
+    transition: all $trans-func 500ms;
+  }
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: all $trans-func $trans-dur;
+  color: var(--color-label-input);
+}
+
+.input:focus {
+  ~ .label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: all $trans-func $trans-dur;
+    color: var(--color-label-input);
+  }
+}
