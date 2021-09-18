@@ -7,14 +7,15 @@ import styles from './IconBtn.module.scss';
 // если icon = "add" - плюс, если "chart"-график,
 // если "pencil" - крандаш, если "bin" - корзина
 export default function IconBtn({
-  onClick,
   icon,
+  onClick,
   className,
+  type = 'button',
   secondary = false,
 }) {
   return (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
       aria-label={`${icon}-button`}
       className={[

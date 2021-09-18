@@ -1,0 +1,39 @@
+.btGoBackLink {
+  text-decoration: none;
+  color: inherit;
+}
+.btGoBack {
+  margin-bottom: 40px;
+  padding: 10px 0px;
+  border: none;
+  background: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+}
+
+.btGoBackTitel {
+  @media screen and (min-width: 768px) {
+    width: 70px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+.arrow {
+  width: 30px;
+  height: 10px;
+  margin-right: 20px;
+  padding: 0;
+  @media screen and (min-width: 768px) {
+    display: block;
+    height: 34px;
+  }
+}
