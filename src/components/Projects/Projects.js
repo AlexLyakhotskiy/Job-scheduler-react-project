@@ -1,18 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProjectsList } from '../../redux/projects/projectSelectors';
+import {
+  getIsLoading,
+  getProjectsList,
+} from '../../redux/projects/projectSelectors';
 import {
   addProjects,
   getProjects,
 } from '../../redux/projects/projectOperations';
 import ProjectItem from '../ProjectItem/ProjectItem';
 import IconBtn from '../IconBtn/IconBtn.jsx';
-import s from '../Projects/Projects.module.scss';
 import Modal from '../Modal/Modal';
+import LoaderSpinner from '../LoaderSpinner/LoaderSpinner.jsx';
+import s from '../Projects/Projects.module.scss';
 
 const Projects = () => {
   const dispatch = useDispatch();
   const projects = useSelector(getProjectsList);
+  const isLoading = useSelector(getIsLoading);
 
   const [showModal, setShowModal] = useState(false);
   const [titleInput, setTitleInput] = useState('');
@@ -58,6 +63,8 @@ const Projects = () => {
             <span className={s.textAddBtn}>Створити проект</span>
           </label>
         </div>
+
+        {isLoading && <LoaderSpinner />}
 
         <ul className={s.list}>
           {projects.length > 0 &&

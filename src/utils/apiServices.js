@@ -62,12 +62,9 @@ export async function apiRefreshUser(RefreshToken, sid) {
 // ========================= для projectOperations =============================
 
 // projectData это обьект с двумя ключами 'title' и 'description'
-export async function apiAddProject({ title, description }) {
+export async function apiAddProject(projectData) {
   try {
-    const { data } = await axios.post('/project', {
-      title,
-      description,
-    });
+    const { data } = await axios.post('/project', projectData);
     return data;
   } catch (error) {
     throw new Error(error);
