@@ -1,18 +1,15 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getProjects } from '../../../redux/projects/projectOperations';
-import { getProjectsList } from '../../../redux/projects/projectSelectors';
 import { routes } from '../../../routes/routes';
 import SpintBtAddProject from '../SpintBtAddProject/SpintBtAddProject';
 import SprintBtBack from '../SprintBtBack/SprintBtBack';
 
 import s from './SprintPageProject.module.scss';
 
-const SprintPageProject = () => {
+const SprintPageProject = ({ projects }) => {
   const dispatch = useDispatch();
-
-  const projects = useSelector(getProjectsList);
 
   useEffect(() => {
     if (!projects?.length) dispatch(getProjects());

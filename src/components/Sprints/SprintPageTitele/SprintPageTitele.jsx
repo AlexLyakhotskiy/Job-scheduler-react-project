@@ -1,33 +1,31 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
-import { getProjectsList } from '../../../redux/projects/projectSelectors';
-import sprintOperations from '../../../redux/sprint/sprin-operations';
 import IconBtn from '../../IconBtn/IconBtn';
 import SpintBtAddSprint from '../SpintBtAddSprint/SpintBtAddSprint';
 import s from './SprintPageTitele.module.scss';
 
-const SprintPageTitele = () => {
-  const dispatch = useDispatch();
-  const [isInputOpen, setInputlOpen] = useState(false);
-  const inputlOpen = () => setInputlOpen(state => !state);
-  const projects = useSelector(getProjectsList);
-  const { projectId } = useParams();
-  const nowProject = projects.find(project => project?._id === projectId);
-  const [isProjectTitel, setProjectTitel] = useState(nowProject?.title);
+const SprintPageTitele = ({ nowProject, projectId }) => {
+  // const dispatch = useDispatch();
 
-  const onSubmit = isProjectTitel =>
-    dispatch(sprintOperations.patchProject({ projectId, isProjectTitel }));
+  const [isInputOpen, setInputOpen] = useState(false);
+  const [isProjectTitel, setProjectTitel] = useState(nowProject.title);
+  const toggleInput = () => setInputOpen(state => !state);
 
   const handelSubmit = e => {
     e.preventDefault();
     if (isProjectTitel === '') return alert('Введите название проекта');
-    onSubmit(isProjectTitel);
-    inputlOpen();
-    return;
+    // dispatch(sprintOperations.patchProject({ projectId, isProjectTitel }));
+    toggleInput();
   };
 
+  useEffect(() => {
+    setProjectTitel(nowProject.title);
+    setInputOpen(false);
+  }, [projectId, nowProject.title]);
+
   const handleIputChange = e => {
+    console.log(e.currentTarget.value);
     setProjectTitel(e.currentTarget.value);
   };
 
@@ -37,8 +35,8 @@ const SprintPageTitele = () => {
         <div className={s.btnConteiner}>
           {!isInputOpen && (
             <>
-              <h1 className={s.title}>{nowProject?.title}</h1>
-              <IconBtn icon={'pencil'} secondary onClick={inputlOpen} />
+              <h1 className={s.title}>{nowProject.title}</h1>
+              <IconBtn icon={'pencil'} secondary onClick={toggleInput} />
             </>
           )}
 
@@ -47,17 +45,12 @@ const SprintPageTitele = () => {
               <input
                 autoFocus
                 type="text"
-                maxlength="12"
+                maxLength="12"
                 value={isProjectTitel}
                 onChange={handleIputChange}
                 className={s.editorInput}
               />
-              <IconBtn
-                icon={'pencil'}
-                secondary
-                type="submit"
-                onClick={inputlOpen}
-              />
+              <IconBtn icon={'pencil'} secondary type="submit" />
             </form>
           )}
         </div>
@@ -66,9 +59,8 @@ const SprintPageTitele = () => {
           <SpintBtAddSprint />
         </div>
       </div>
-      {nowProject?.description && (
-        <p className={s.btnDescription}>{nowProject?.description}</p>
-      )}
+
+      <p className={s.btnDescription}>{nowProject.description}</p>
     </div>
   );
 };

@@ -7,19 +7,33 @@ import SprintCard from '../../components/Sprints/SprintCard/SprintCard';
 import SpintBtAddSprint from '../../components/Sprints/SpintBtAddSprint/SpintBtAddSprint';
 import SprintPageProject from '../../components/Sprints/SprintPageProject/SprintPageProject';
 import s from './SprintsPage.module.scss';
+import { useSelector } from 'react-redux';
+import { getProjectsList } from '../../redux/projects/projectSelectors';
+import { useParams } from 'react-router';
 
 export default function SprintsPage() {
+  const projects = useSelector(getProjectsList);
+  const { projectId } = useParams();
+
+  const getCurrentProject = () =>
+    projects.find(project => project?._id === projectId);
+
   return (
     <>
       <h1>HEADER</h1>
       <Container>
         <div className={s.containerPageSprintProgect}>
-          <SprintPageProject />
+          <SprintPageProject projects={projects} />
           <div className={s.containerPageSprint}>
             <div className={s.pageSprintBtBack}>
               <SprintBtBack />
             </div>
-            <SprintPageTitele />
+            {getCurrentProject() && (
+              <SprintPageTitele
+                nowProject={getCurrentProject()}
+                projectId={projectId}
+              />
+            )}
             <SpintBtPeople />
             <SprintCard />
           </div>
