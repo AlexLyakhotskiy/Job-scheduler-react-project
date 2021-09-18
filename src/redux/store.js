@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import sprintSlice from './sprint/sprin-slice';
 import allProjectsReducers from './projects/projectReducer';
 
 // примеры импорта редюсиров
@@ -33,8 +34,8 @@ const persistConfigAuth = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfigAuth, () => ''),
+    sprints: sprintSlice,
     projects: allProjectsReducers,
-    sprints: () => '',
     tasks: () => '',
   },
   middleware,
