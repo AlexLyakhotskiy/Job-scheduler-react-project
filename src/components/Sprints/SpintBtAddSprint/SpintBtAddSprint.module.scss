@@ -1,17 +1,27 @@
 .btnSprintAdd {
-  position: absolute;
-  cursor: pointer;
-  width: 44px;
-  height: 44px;
-  border: none;
-  background: none;
-  background-color: red;
-  color: aliceblue;
+  position: fixed;
   right: 20px;
   bottom: 20px;
-  border-radius: 50%;
+  @media screen and (min-width: 768px) {
+    position: static;
+  }
+  @media screen and (min-width: 768px) {
+    margin-right: 20px;
+  }
 }
 
 .btnSprintAddText {
   display: none;
+  @media screen and (min-width: 1280px) {
+    display: block;
+  }
+}
+
+.conteinerBtnAddSrint {
+  text-align: center;
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

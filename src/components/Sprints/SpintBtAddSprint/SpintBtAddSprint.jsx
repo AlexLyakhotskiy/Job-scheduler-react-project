@@ -5,7 +5,7 @@ const SpintBtAddSprint = () => {
   //  открывать модалку с создвнием + запрос на сервер
 
   return (
-    <div>
+    <div className={s.conteinerBtnAddSrint}>
       <IconBtn icon={'add'} className={s.btnSprintAdd} />
       <span className={s.btnSprintAddText}>Создать спринт</span>
     </div>

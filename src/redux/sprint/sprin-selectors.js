@@ -1,12 +1,15 @@
 const newProject = state => {
-  return state?.sprints?.project;
+  return state?.sprints.projects;
 };
 
 const allSprints = state => {
-  console.log(state?.sprints);
-  return state?.sprints;
+  return state?.sprints?.sprints?.sprints;
 };
 
-const allSelectors = { newProject, allSprints };
+const isLogIn = state => {
+  return state?.sprints?.isLogIn;
+};
+
+const allSelectors = { newProject, allSprints, isLogIn };
 
 export default allSelectors;

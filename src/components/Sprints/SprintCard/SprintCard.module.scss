@@ -1,11 +1,22 @@
 .sprintCardList {
   margin: 0 auto;
   width: 280px;
+  @media screen and (min-width: 768px) {
+    margin-left: 0;
+    width: 452px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 0;
+    width: 870px;
+    justify-content: start;
+  }
 }
 
 .sprintCard {
-  position: relative;
-  margin: 0 auto;
   width: 280px;
   height: 170px;
   background-color: var(--color-card-background);
@@ -13,10 +24,52 @@
 
   box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
   border-radius: 5px;
+  @media screen and (min-width: 768px) {
+    width: 216px;
+    height: 295px;
+    padding: 18px 20px 40px 20px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 270px;
+    height: 224px;
+    padding: 18px 30px 40px 30px;
+  }
 }
 
+.sprintCardItem {
+  position: relative;
+  margin-bottom: 10px;
+
+  @media screen and (min-width: 768px) {
+    &:nth-child(2n + 1) {
+      margin-right: 20px;
+    }
+    margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    &:nth-child(2n + 1) {
+      margin-right: 0px;
+    }
+    &:not(:nth-child(3n)) {
+      margin-right: 30px;
+    }
+    margin-bottom: 30px;
+  }
+}
 .sprintTitel {
+  font-size: 16px;
+  line-height: 20px;
+  font-style: normal;
+  font-weight: 500;
+  max-width: 176px;
   margin-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 28px;
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 
 .sprintItem {
@@ -30,20 +83,30 @@
   font-weight: normal;
   font-size: 10px;
   line-height: 12px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
 
 .sprintDelBt {
   position: absolute;
-  cursor: pointer;
   border: none;
   background: none;
   right: 10px;
   bottom: 10px;
-  &:hover {
-    background-color: #fff;
+}
+
+.sprintText {
+  width: 90px;
+  @media screen and (min-width: 1280px) {
+    width: 130px;
   }
 }
 
-ul {
-  list-style: none;
+.sprintCardLink {
+  text-decoration: none;
+  color: inherit;
 }

@@ -5,7 +5,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://sbc-backend.goit.global';
 axios.defaults.headers.common.Authorization =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmUyOTU2OGI5YjMxYzAwMTc2MjQ3YTQiLCJzaWQiOiI2MTQ0NGQxNGY0YTZjMDNkYjhjYzhjNGYiLCJpYXQiOjE2MzE4NjYxMzIsImV4cCI6MTYzMTg2OTczMn0.8gZUx4c_z3PRUzSWuIgO5p4lh8-xeA9VMyauMJVZ_5I';
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMDFlNWY0YTZjMDNkYjhjYzhiYjAiLCJzaWQiOiI2MTQ1YWIyNWY0YTZjMDNkYjhjYzhjZjYiLCJpYXQiOjE2MzE5NTU3NDksImV4cCI6MTYzMTk1OTM0OX0.QKBiobDlPgZRK5-tAlaytO507e-ZuDhDt0MDdgARU20';
 
 const getProject = createAsyncThunk('/project/getProject', async () => {
   try {
@@ -37,19 +37,22 @@ const getSprint = createAsyncThunk('/sprint/getSprint', async id => {
   }
 });
 
-const patchSprint = createAsyncThunk('/sprint/patchSprint}', async ({ id }) => {
-  try {
-    const { data } = await axios.patch(`/sprint/title/${id}`);
-    return data;
-  } catch (error) {
-    console.log(error.message);
-  }
-});
+const patchSprint = createAsyncThunk(
+  '/sprint/patchSprint}',
+  async ({ id, newTitel }) => {
+    try {
+      const { data } = await axios.patch(`/sprint/title/${id}`, newTitel);
+      return data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+);
 
-const delSprint = createAsyncThunk('/sprint', async id => {
+const delSprint = createAsyncThunk('/sprint/delSprint', async id => {
   try {
-    const { data } = await axios.delete(`/sprint/${id}`);
-    return data;
+    await axios.delete(`/sprint/${id}`);
+    return id;
   } catch (error) {
     console.log(error.message);
   }

@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useRouteMatch, useParams } from 'react-router-dom';
-// import IconBtn from '../../components/IconBtn/IconBtn';
-import { routes } from '../../routes/routes';
+import { useRouteMatch, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Container from '../../components/Container/Container';
 import SpintBtPeople from '../../components/Sprints/SpintBtPeople/SpintBtPeople';
@@ -15,25 +13,14 @@ import SprintPageProject from '../../components/Sprints/SprintPageProject/Sprint
 import s from './SprintsPage.module.scss';
 
 export default function SprintsPage() {
-  const { projectId } = useParams();
-  const { url } = useRouteMatch();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(sprintOperations.getProject());
-  }, [dispatch]);
-
-  const projectIdall = useSelector(state => {
-    const project = allSelectors.newProject(state);
-    return project.id;
-  });
-
-  console.log('projectId: ', projectId);
+  }, []);
   return (
     <>
-      <h1>SprintsPage</h1>
-      <Link to={`${url}/555`}>к таскам</Link>
-      {/* <IconBtn icon="add" /> */}
+      <h1>HEADER</h1>
       <Container>
         <div className={s.containerPageSprintProgect}>
           <SprintPageProject />
@@ -42,16 +29,14 @@ export default function SprintsPage() {
               <SprintBtBack />
             </div>
             <SprintPageTitele />
-            <SpintBtAddSprint />
             <SpintBtPeople />
-            {projectIdall && <SprintCard />}
+            <SprintCard />
+          </div>
+          <div className={s.btnDispleyNone}>
+            <SpintBtAddSprint />
           </div>
         </div>
       </Container>
-
-      <div>
-        <Link to={routes.projects}>назад</Link>
-      </div>
     </>
   );
 }
