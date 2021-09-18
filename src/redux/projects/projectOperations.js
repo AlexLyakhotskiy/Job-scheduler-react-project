@@ -3,6 +3,7 @@ import {
   apiAddProject,
   apiRemoveProjectById,
   apiGetProjects,
+  apiChangeProjectTitleById,
 } from '../../utils/apiServices.js';
 
 export const getProjects = createAsyncThunk(
@@ -21,8 +22,8 @@ export const addProjects = createAsyncThunk(
   'projects/addProjects',
   async ({ title, description }, { rejectWithValue }) => {
     try {
-      const projectsAdd = await apiAddProject({ title, description });
-      return projectsAdd;
+      const { id, ...rest } = await apiAddProject({ title, description });
+      return { _id: id, ...rest };
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -40,35 +41,18 @@ export const deleteProjects = createAsyncThunk(
     }
   },
 );
-///////////////////////////////
-// export const editContacts = createAsyncThunk(
-//   'contacts/editContacts',
-//   async ({ editContactId, name, number }, { rejectWithValue }) => {
-//     try {
-//       const contactsEdit = await editContactsApi({
-//         editContactId,
-//         name,
-//         number,
-//       });
-//       return contactsEdit;
-//     } catch (error) {
-//       return rejectWithValue(error);
-//     }
-//   },
-// );
 
-// // export const editContacts =
-// //   ({ editContactId, name, number }) =>
-// //   async dispatch => {
-// //     dispatch(editContactsReguests());
-// //     try {
-// //       const contactsEdit = await editContactsApi({
-// //         editContactId,
-// //         name,
-// //         number,
-// //       });
-// //       dispatch(editContactsSuccess(contactsEdit));
-// //     } catch (error) {
-// //       dispatch(editContactsError(error));
-// //     }
-// //   };
+export const patchProject = createAsyncThunk(
+  'projects/changeProject',
+  async ({ projectId, titleData }, { rejectWithValue }) => {
+    try {
+      const projectsEdit = await apiChangeProjectTitleById(
+        projectId,
+        titleData,
+      );
+      return { title: projectsEdit.newTitle, projectId };
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
