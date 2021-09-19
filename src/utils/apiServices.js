@@ -13,13 +13,13 @@ const apiToken = {
   },
 };
 
-// (async () => {
-//   const data = await apiLoginUser({
-//     email: 'altest@gmail.com',
-//     password: 'qwer123',
-//   });
-//   console.log(data);
-// })();
+(async () => {
+  const data = await apiLoginUser({
+    email: 'altest@gmail.com',
+    password: 'qwer123',
+  });
+  console.log(data);
+})();
 
 // ========================= для authOperations =============================
 
