@@ -49,7 +49,7 @@
     bottom: 0;
     right: 0;
     background-color: inherit;
-    transition: all $trans-func 500ms;
+    transition: all $trans-func $trans-dur;
   }
 }
 
