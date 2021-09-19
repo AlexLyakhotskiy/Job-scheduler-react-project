@@ -1,12 +1,12 @@
 import React from 'react';
-import CancelBtn from './CancelBtn/CancelBtn';
+import Header from './Header/Header';
 
 import Main from './Main/Main';
 
 function App() {
   return (
     <>
-      <CancelBtn />
+      <Header />
       <Main />
     </>
   );

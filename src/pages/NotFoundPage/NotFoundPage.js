@@ -11,9 +11,9 @@ export default function NotFoundPage() {
   return (
     <Container className={styles.container}>
       <div className={styles.wrapper}>
-        <h1>404 Oops! Page not found</h1>
-        <Link to={routes.projects} className={styles.link}>
-          Врменное решение пока нету логина, ссылка на проекты
+        <h1>404 Ой! Сторінка не знайдена</h1>
+        <Link to={routes.register} className={styles.link}>
+          Можливо ви загубились? натисніть щоб повернутись до сайту.
         </Link>
       </div>
     </Container>
