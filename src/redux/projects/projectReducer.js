@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 
 import {
+  addProjectMembers,
   addProjects,
   deleteProjects,
   getProjects,
@@ -14,6 +15,12 @@ const projectsReducer = createReducer([], {
   [patchProject.fulfilled]: (state, { payload }) =>
     state.map(item =>
       item._id === payload.projectId ? { ...item, title: payload.title } : item,
+    ),
+  [addProjectMembers.fulfilled]: (state, { payload }) =>
+    state.map(item =>
+      item._id === payload.projectId
+        ? { ...item, members: payload.members }
+        : item,
     ),
   [deleteProjects.fulfilled]: (state, { payload }) =>
     state.filter(project => project._id !== payload),
@@ -32,6 +39,9 @@ const isLoadingReducer = createReducer(false, {
   [patchProject.pending]: () => true,
   [patchProject.fulfilled]: () => false,
   [patchProject.rejected]: () => false,
+  [addProjectMembers.pending]: () => true,
+  [addProjectMembers.fulfilled]: () => false,
+  [addProjectMembers.rejected]: () => false,
 });
 
 const setError = (_, { payload }) => payload;
@@ -46,6 +56,8 @@ const errorReducer = createReducer(null, {
   [deleteProjects.rejected]: setError,
   [patchProject.pending]: resetError,
   [patchProject.rejected]: setError,
+  [addProjectMembers.pending]: resetError,
+  [addProjectMembers.rejected]: setError,
 });
 
 const allProjectsReducers = combineReducers({
