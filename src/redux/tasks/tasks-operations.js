@@ -4,9 +4,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://sbc-backend.goit.global';
 
 const token =
-  (axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMTk1ZmY0YTZjMDNkYjhjYzhiZDMiLCJzaWQiOiI2MTQ3Nzc2MmY0YTZjMDNkYjhjYzhlZjYiLCJpYXQiOjE2MzIwNzM1NzAsImV4cCI6MTYzMjA3NzE3MH0.ipDYbxWzhYCnHgrwQGqnHYlu_agMx7u5BLmpMfofE2c`);
-
-// const sprintId = '61470248f4a6c03db8cc8e40';
+  (axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMTk1ZmY0YTZjMDNkYjhjYzhiZDMiLCJzaWQiOiI2MTQ3YTdkOWY0YTZjMDNkYjhjYzhmY2QiLCJpYXQiOjE2MzIwODU5NzcsImV4cCI6MTYzMjA4OTU3N30.QHL59Gu0ZjzPA_3f3zwKMNFu8-GvPhAu6tiIvxmhJ7o`);
 
 export const addTask = createAsyncThunk(
   'tasks/addTask',
@@ -52,6 +50,7 @@ export const editTask = createAsyncThunk(
         date: task.date,
         hours: task.hours,
         id: task.id,
+        newWastedHours: data.newWastedHours,
       };
     } catch (error) {
       return rejectWithValue(error.message);
@@ -70,3 +69,10 @@ export const deleteTask = createAsyncThunk(
     }
   },
 );
+
+// export const changeIndexCurrentDay = createAsyncThunk(
+//   'tasks/changeIndexCurrentDay',
+//   index => {
+//     return index;
+//   },
+// );

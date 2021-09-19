@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { filterByDate, filterChange } from './tasks-actions';
+import { changeIndexCurrentDay, filterChange } from './tasks-actions';
 import { addTask, deleteTask, editTask, fetchTasks } from './tasks-operations';
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
   filter: '',
   error: null,
   loading: false,
-  filteredTasksByDate: [],
+  currentDayIndex: null,
 };
 
 const tasksSlice = createSlice({
@@ -65,8 +65,7 @@ const tasksSlice = createSlice({
         }
         return day;
       });
-      const newHoursWasted =
-        Number(editTask.hoursWasted) + Number(payload.hours);
+      const newHoursWasted = payload.newWastedHours;
       editTask = {
         ...editTask,
         hoursWastedPerDay: newHoursWastedPerDay,
@@ -83,8 +82,8 @@ const tasksSlice = createSlice({
     [filterChange](state, { payload }) {
       state.filter = payload;
     },
-    [filterByDate](state, { payload }) {
-      state.filteredTasksByDate = payload;
+    [changeIndexCurrentDay](state, { payload }) {
+      state.currentDayIndex = payload;
     },
   },
 });
