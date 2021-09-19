@@ -1,0 +1,23 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+.link {
+  display: inline-block;
+  color: inherit;
+  margin-top: 15px;
+
+  transition: color linear 250ms;
+
+  &:hover,
+  &:focus {
+    color: #ff7300;
+  }
+}

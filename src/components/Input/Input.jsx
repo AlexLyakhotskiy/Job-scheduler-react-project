@@ -8,25 +8,36 @@ import styles from './Input.module.scss';
 // проп className для отступов или изменения размера инпута,
 // но что бы изменить ширину нужно использовать сложный селектор
 // ниже есть пример как использовать этот компонент
-export default function Input({ formik, name, className = '' }) {
+// проп label для описания инпута которое будет над инпутом
+export default function Input({
+  formik,
+  name,
+  label,
+  className = '',
+  type = 'text',
+}) {
   const inputId = shortid.generate();
+  const isError = formik.errors[name] && formik.touched[name];
   return (
     <div className={`${styles.wrapper} ${className}`}>
       <input
-        type="text"
-        className={styles.input}
+        type={type}
+        className={`${styles.input} ${isError && styles.inputError}`}
         placeholder="smth"
         name={name}
         id={inputId}
         onChange={formik.handleChange}
         value={formik.values[name]}
       />
-      <div className={styles.bottomLine}></div>
-      {formik.errors[name] && formik.touched[name] && (
-        <span className={styles.error}>{formik.errors[name]}</span>
-      )}
-      <label htmlFor={inputId} className={styles.label}>
-        Name
+      <div
+        className={`${styles.bottomLine} ${isError && styles.bottomLineError}`}
+      ></div>
+      {isError && <span className={styles.error}>{formik.errors[name]}</span>}
+      <label
+        htmlFor={inputId}
+        className={`${styles.label} ${isError && styles.labelError}`}
+      >
+        {label}
       </label>
     </div>
   );
@@ -60,7 +71,7 @@ export default function Input({ formik, name, className = '' }) {
 //   return (
 //     <>
 //       <form onSubmit={formik.handleSubmit}>
-//         <Input formik={formik} name="nameYourInput" />
+//         <Input formik={formik} name="nameYourInput" label="Ваше ім'я" />
 //         <Button />
 //       </form>
 //     </>

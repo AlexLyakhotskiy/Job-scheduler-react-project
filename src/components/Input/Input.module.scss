@@ -33,8 +33,13 @@
   }
 }
 
+.inputError {
+  border-color: var(--color-input-error);
+}
+
 .bottomLine {
   position: relative;
+  background-color: var(--color-btn-background);
 
   &::before {
     content: '';
@@ -43,9 +48,13 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    background-color: var(--color-btn-background);
+    background-color: inherit;
     transition: all $trans-func 500ms;
   }
+}
+
+.bottomLineError {
+  background-color: var(--color-input-error);
 }
 
 .label {
@@ -56,12 +65,29 @@
   color: var(--color-label-input);
 }
 
+.labelError {
+  color: var(--color-input-error);
+}
+
 .input:focus {
   ~ .label {
     position: absolute;
     top: 0;
     display: block;
     transition: all $trans-func $trans-dur;
-    color: var(--color-label-input);
+    color: var(--color-btn-background);
+  }
+  ~ .labelError {
+    color: var(--color-input-error);
+  }
+}
+
+.error {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--color-input-error);
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
   }
 }
