@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
+import TasksList from '../../components/Tasks/TasksList';
 import { routes } from '../../routes/routes';
 
 export default function TasksPage() {
@@ -8,9 +9,9 @@ export default function TasksPage() {
   console.log('sprintId: ', sprintId);
   return (
     <>
-      <h1>TasksPage</h1>
       <div>
         <Link to={`${routes.projects}/${projectId}/sprints`}>назад</Link>
+        <TasksList />
       </div>
     </>
   );
