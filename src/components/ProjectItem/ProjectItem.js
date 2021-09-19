@@ -1,13 +1,8 @@
 import { Link, useRouteMatch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-//import IconBtn from '../IconBtn/IconBtn';
-
+import { deleteProjects } from '../../redux/projects/projectOperations';
 import Svg from '../Svg/Svg';
 import s from '../ProjectItem/ProjectItem.module.scss';
-import {
-  deleteProjects,
-  patchProject,
-} from '../../redux/projects/projectOperations';
 
 const ProjectItem = ({ title, id, description }) => {
   const { path } = useRouteMatch();
@@ -26,16 +21,6 @@ const ProjectItem = ({ title, id, description }) => {
         onClick={() => dispatch(deleteProjects(id))}
       >
         <Svg icon="#icon-bin" className={s.deleteIcon} />
-      </button>
-      <button
-        type="button"
-        onClick={() =>
-          dispatch(
-            patchProject({ projectId: id, titleData: { title: 'нова назва' } }),
-          )
-        }
-      >
-        реД
       </button>
     </li>
   );
