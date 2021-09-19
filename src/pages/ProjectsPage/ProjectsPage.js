@@ -1,9 +1,14 @@
 import React from 'react';
 
+import Container from '../../components/Container/Container.jsx';
+import Projects from '../../components/Projects/Projects';
+
 export default function ProjectsPage() {
   return (
     <>
-      <h1>ProjectsPage</h1>
+      <Container>
+        <Projects />
+      </Container>
     </>
   );
 }

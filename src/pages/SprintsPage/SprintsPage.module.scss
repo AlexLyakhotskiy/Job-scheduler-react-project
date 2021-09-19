@@ -1,0 +1,21 @@
+.containerPageSprintProgect {
+  display: flex;
+}
+
+.containerPageSprint {
+  width: 280px;
+  @media screen and (min-width: 768px) {
+    margin-left: 20px;
+    width: 452px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: 70px;
+  }
+}
+
+.pageSprintBtBack,
+.btnDispleyNone {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
