@@ -25,7 +25,7 @@ const middleware = [
   }),
 ];
 
-const persistConfigAuth = {
+export const persistConfigAuth = {
   key: 'auth',
   storage,
   whitelist: ['token'],

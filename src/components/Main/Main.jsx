@@ -48,7 +48,8 @@ export default function Main() {
 
   useEffect(() => {
     (async () => {
-      // await dispatch(resetUser();
+      // await dispatch(resetUser());
+      // const emptyPath = history.location.pathname === '/';
       !isLoggedIn && history.replace('/register');
     })();
   }, [history, isLoggedIn]);
