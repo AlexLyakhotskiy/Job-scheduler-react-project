@@ -92,11 +92,11 @@ export async function apiGetProjects() {
 }
 
 // ContributorEmail это обьект с одним ключом 'email'
-export async function apiAddContributorProjectById(projectId, ContributorData) {
+export async function apiAddContributorProjectById(projectId, contributorData) {
   try {
-    const { data } = await axios.post(
+    const { data } = await axios.patch(
       `/project/contributor/${projectId}`,
-      ContributorData,
+      contributorData,
     );
     return data;
   } catch (error) {
