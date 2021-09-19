@@ -1,5 +1,5 @@
 .container {
-  height: 100vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,10 +14,11 @@
   color: inherit;
   margin-top: 15px;
 
-  transition: color linear 250ms;
+  transition: all linear 250ms;
 
   &:hover,
   &:focus {
     color: #ff7300;
+    text-shadow: 3px 3px 5px #ff7300;
   }
 }
