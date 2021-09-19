@@ -80,9 +80,9 @@ export async function apiAddProject(projectData) {
 }
 
 export async function apiGetProjects() {
-  apiToken.set(
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQ0NGVmYmY0YTZjMDNkYjhjYzhjNTAiLCJzaWQiOiI2MTQ0NGYzZGY0YTZjMDNkYjhjYzhjNTEiLCJpYXQiOjE2MzE4NjY2ODUsImV4cCI6MTYzNDQ5NDY4NX0.Rx8eJEx0u1ZE2FkUrVWHVVgsn64rvOkZA3PBhfQS_gI ',
-  );
+  // apiToken.set(
+  //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQ0NGVmYmY0YTZjMDNkYjhjYzhjNTAiLCJzaWQiOiI2MTQ0NGYzZGY0YTZjMDNkYjhjYzhjNTEiLCJpYXQiOjE2MzE4NjY2ODUsImV4cCI6MTYzNDQ5NDY4NX0.Rx8eJEx0u1ZE2FkUrVWHVVgsn64rvOkZA3PBhfQS_gI ',
+  // );
   try {
     const { data } = await axios.get('/project');
     return data;
@@ -93,9 +93,6 @@ export async function apiGetProjects() {
 
 // ContributorEmail это обьект с одним ключом 'email'
 export async function apiAddContributorProjectById(projectId, contributorData) {
-  apiToken.set(
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQ0NGVmYmY0YTZjMDNkYjhjYzhjNTAiLCJzaWQiOiI2MTQ0NGYzZGY0YTZjMDNkYjhjYzhjNTEiLCJpYXQiOjE2MzE4NjY2ODUsImV4cCI6MTYzNDQ5NDY4NX0.Rx8eJEx0u1ZE2FkUrVWHVVgsn64rvOkZA3PBhfQS_gI ',
-  );
   try {
     const { data } = await axios.patch(
       `/project/contributor/${projectId}`,
