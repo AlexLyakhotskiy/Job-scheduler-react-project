@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import projectsReducer from './projects/projectReducer';
 
 import tasksReducer from './tasks/tasks-reducer';
 
@@ -34,7 +35,7 @@ const persistConfigAuth = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfigAuth, () => ''),
-    projects: () => '',
+    projects: projectsReducer,
     sprints: () => '',
     tasks: tasksReducer,
   },

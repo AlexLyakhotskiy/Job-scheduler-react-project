@@ -4,9 +4,9 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://sbc-backend.goit.global';
 
 const token =
-  (axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQ0NzE5OGY0YTZjMDNkYjhjYzhjNzAiLCJzaWQiOiI2MTQ0YTk0MGY0YTZjMDNkYjhjYzhjYjYiLCJpYXQiOjE2MzE4ODk3MjgsImV4cCI6MTYzMTg5MzMyOH0.rl79MMIEsKJFQBY9uLUGQcSvx8xuGSznYYPxu5a7sq4`);
+  (axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1ZmUyOTU2OGI5YjMxYzAwMTc2MjQ3YTQiLCJzaWQiOiI2MTQ2ODg0ZGY0YTZjMDNkYjhjYzhlMjQiLCJpYXQiOjE2MzIwMTIzNjUsImV4cCI6MTYzMjAxNTk2NX0.k2O5T_z7omyv0x6yWV9bi3ADnt8Ht-MCfL3GgoEhED4`);
 
-const sprintId = '6144767af4a6c03db8cc8c74';
+const sprintId = '61467b93f4a6c03db8cc8e1b';
 
 export const addTask = createAsyncThunk(
   'tasks/addTask',
@@ -29,6 +29,21 @@ export const fetchTasks = createAsyncThunk(
         return rejectWithValue(data.message);
       }
       console.log(`data`, data);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const editTask = createAsyncThunk(
+  'tasks/editTasks',
+  async (task, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch(`/task/${task.id}`, {
+        date: task.date,
+        hours: task.hours,
+      });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
