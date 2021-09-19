@@ -1,7 +1,7 @@
 import { Formik, Form, Field } from 'formik';
 import css from './AddProjectsForm.module.scss';
 
-export default function AddProjectsForm({ onClose }) {
+export default function AddProjectsForm() {
   return (
     <Formik>
       <Form className={css.formProject} autoComplete="off">
