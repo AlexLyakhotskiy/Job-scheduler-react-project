@@ -13,6 +13,14 @@ const apiToken = {
   },
 };
 
+// (async () => {
+//   const data = await apiLoginUser({
+//     email: 'altest@gmail.com',
+//     password: 'qwer123',
+//   });
+//   console.log(data);
+// })();
+
 // ========================= для authOperations =============================
 
 // userData это обьект с двумя ключами 'email' и 'password'
