@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { filterChange } from './tasks-actions';
+import { filterByDate, filterChange } from './tasks-actions';
 import { addTask, deleteTask, editTask, fetchTasks } from './tasks-operations';
 
 const initialState = {
@@ -7,6 +7,7 @@ const initialState = {
   filter: '',
   error: null,
   loading: false,
+  filteredTasksByDate: [],
 };
 
 const tasksSlice = createSlice({
@@ -43,6 +44,7 @@ const tasksSlice = createSlice({
     [deleteTask.fulfilled](state, { payload }) {
       state.error = null;
       const removeIndex = state.allTasks.findIndex(({ id }) => id === payload);
+      console.log(`removeIndex`, removeIndex);
       state.allTasks.splice(removeIndex, 1);
       state.loading = false;
     },
@@ -55,7 +57,23 @@ const tasksSlice = createSlice({
     },
     [editTask.fulfilled](state, { payload }) {
       state.error = null;
-      state.allTasks.map(task => (task.id === payload.id ? payload : task));
+      const editIndex = state.allTasks.findIndex(({ id }) => id === payload.id);
+      let editTask = state.allTasks[editIndex];
+      const newHoursWastedPerDay = editTask.hoursWastedPerDay.map(day => {
+        if (day.currentDay === payload.date) {
+          return { ...day, singleHoursWasted: payload.hours };
+        }
+        return day;
+      });
+      const newHoursWasted =
+        Number(editTask.hoursWasted) + Number(payload.hours);
+      editTask = {
+        ...editTask,
+        hoursWastedPerDay: newHoursWastedPerDay,
+        hoursWasted: newHoursWasted,
+      };
+      state.allTasks[editIndex] = editTask;
+      console.log(`editTask`, editTask);
       state.loading = false;
     },
     [editTask.rejected](state, { payload }) {
@@ -64,6 +82,9 @@ const tasksSlice = createSlice({
     },
     [filterChange](state, { payload }) {
       state.filter = payload;
+    },
+    [filterByDate](state, { payload }) {
+      state.filteredTasksByDate = payload;
     },
   },
 });

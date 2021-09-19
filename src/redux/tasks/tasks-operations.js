@@ -4,15 +4,18 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://sbc-backend.goit.global';
 
 const token =
-  (axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMTk1ZmY0YTZjMDNkYjhjYzhiZDMiLCJzaWQiOiI2MTQ3MDc4Y2Y0YTZjMDNkYjhjYzhlNDYiLCJpYXQiOjE2MzIwNDQ5NDAsImV4cCI6MTYzMjA0ODU0MH0.oXLs6pI4ssTb5Q2cl2k68l7oHXnmRO99i8v6fE7xG8c`);
+  (axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMTk1ZmY0YTZjMDNkYjhjYzhiZDMiLCJzaWQiOiI2MTQ3Nzc2MmY0YTZjMDNkYjhjYzhlZjYiLCJpYXQiOjE2MzIwNzM1NzAsImV4cCI6MTYzMjA3NzE3MH0.ipDYbxWzhYCnHgrwQGqnHYlu_agMx7u5BLmpMfofE2c`);
 
-const sprintId = '61470248f4a6c03db8cc8e40';
+// const sprintId = '61470248f4a6c03db8cc8e40';
 
 export const addTask = createAsyncThunk(
   'tasks/addTask',
   async (task, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(`task/${sprintId}`, task);
+      const { data } = await axios.post(`task/${task.sprintId}`, {
+        title: task.title,
+        hoursPlanned: task.hoursPlanned,
+      });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -22,14 +25,14 @@ export const addTask = createAsyncThunk(
 
 export const fetchTasks = createAsyncThunk(
   'tasks/fetchTasks',
-  async (_, { rejectWithValue }) => {
+  async (sprintId, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(`task/${sprintId}`);
       if (data.message) {
         return rejectWithValue(data.message);
       }
       console.log(`data`, data);
-      return data;
+      return data.map(item => ({ ...item, id: item._id }));
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -44,7 +47,12 @@ export const editTask = createAsyncThunk(
         date: task.date,
         hours: task.hours,
       });
-      return data;
+      console.log(`data`, data);
+      return {
+        date: task.date,
+        hours: task.hours,
+        id: task.id,
+      };
     } catch (error) {
       return rejectWithValue(error.message);
     }

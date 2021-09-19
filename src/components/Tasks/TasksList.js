@@ -15,6 +15,8 @@ import TitleEditForm from './SprintTitle/TitleEditForm/TitleEditForm';
 import SprintTitle from './SprintTitle/SprintTitle';
 import FindForm from './FindForm/FindForm';
 import Chart from './Chart/Chart';
+import { useParams } from 'react-router';
+import SprintPagination from '../../redux/tasks/SprintPagination/SprintPagination';
 
 const initialState = {
   title: '',
@@ -28,14 +30,16 @@ const TasksList = () => {
   const [title, setTitle] = useState('Sprint title'); // исправить (инф должна приходить со Store)
   const [task, setTask] = useState({ ...initialState });
 
+  const { sprintId } = useParams();
+
   const [openTitleInp, setOpenTitleInp] = useState(false);
   const [openFindInp, setOpenFindInp] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [showChart, setShowChart] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchTasks());
-  }, [dispatch]);
+    dispatch(fetchTasks(sprintId));
+  }, [dispatch, sprintId]);
 
   const toggleChart = () => {
     if (tasks.length > 2) {
@@ -67,7 +71,13 @@ const TasksList = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    dispatch(addTask({ title: task.title, hoursPlanned: task.hoursPlanned }));
+    dispatch(
+      addTask({
+        title: task.title,
+        hoursPlanned: task.hoursPlanned,
+        sprintId: sprintId,
+      }),
+    );
     toggleModal();
     setTask({
       title: '',
@@ -84,6 +94,7 @@ const TasksList = () => {
         <div className={styles.sectionWrapper}>
           <div className={styles.mainBox}>
             <div className={styles.headerWrapper}>
+              {tasks.length > 0 && <SprintPagination tasks={tasks} />}
               <div className={styles.sectionHeader}>
                 {!openTitleInp ? (
                   <SprintTitle toggleInput={toggleInputTitle} title={title} />

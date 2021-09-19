@@ -3,18 +3,17 @@ import IconBtn from '../../IconBtn/IconBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTask, editTask } from '../../../redux/tasks/tasks-operations';
 import moment from 'moment';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+const currentDay = moment().format('YYYY-MM-DD');
 
 const TaskItem = ({ task }) => {
   const dispatch = useDispatch();
   const [newTask, setNewTask] = useState({
-    date: `${moment().format('YYYY-MM-DD')}`,
+    date: currentDay,
     hours: task.hoursWastedPerDay[0].singleHoursWasted,
-    id: task._id,
+    id: task._id || task.id,
   });
-
-  console.log(`task`, task);
-  console.log(`singleHoursWasted`, task.hoursWastedPerDay[0].singleHoursWasted);
 
   const onChange = e => {
     const { value } = e.target;
@@ -31,6 +30,7 @@ const TaskItem = ({ task }) => {
         }),
       );
     }
+    console.log(`newTask`, newTask);
   };
 
   return (

@@ -9,7 +9,6 @@ const FindForm = ({ toggleFindInput }) => {
   const textInput = useRef(null);
 
   const onSubmit = e => {
-    console.log(`textInput`, textInput.current.value);
     e.preventDefault();
     toggleFindInput();
     dispatch(filterChange(textInput.current.value));

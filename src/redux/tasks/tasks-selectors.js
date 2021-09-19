@@ -2,8 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 
 export const getTasksSelector = state => state.tasks.allTasks;
 export const getFilterSelector = state => state.tasks.filter;
-
-console.log(`getFilterSelector`, getFilterSelector);
+export const getfilterByDateSelector = state => state.tasks.filterByDate;
 
 export const getFilterTasksSelector = createSelector(
   [getTasksSelector, getFilterSelector],
@@ -19,3 +18,10 @@ export const getFilterTasksSelector = createSelector(
     }
   },
 );
+
+// export const getFilterTasksByDateSelector = createSelector(
+//   [getTasksSelector, getFilterSelector],
+//   (tasks, filter) => {
+
+//   }
+// );
