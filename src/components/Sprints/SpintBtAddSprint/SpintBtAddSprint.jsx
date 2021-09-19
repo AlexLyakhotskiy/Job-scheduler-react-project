@@ -40,10 +40,10 @@ const SpintBtAddSprint = ({ projectId }) => {
 
     dispatch(
       sprintOperations.postSprint({
-        projectId: '614650a8f4a6c03db8cc8de9',
+        projectId: '61449ee3f4a6c03db8cc8cb1',
         body: {
           title: titleInput,
-          endDate: '2020-12-31',
+          endDate: '2021-11-29',
           duration: valueInput,
         },
       }),
