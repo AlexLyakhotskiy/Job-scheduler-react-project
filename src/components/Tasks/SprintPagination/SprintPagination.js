@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentDayIndexSelector } from '../tasks-selectors';
-import { changeIndexCurrentDay } from '../tasks-actions';
+import { getCurrentDayIndexSelector } from '../../../redux/tasks/tasks-selectors';
+import { changeIndexCurrentDay } from '../../../redux/tasks/tasks-actions';
 
 const SprintPagination = ({ tasks }) => {
   const currentDayIndex = useSelector(getCurrentDayIndexSelector);

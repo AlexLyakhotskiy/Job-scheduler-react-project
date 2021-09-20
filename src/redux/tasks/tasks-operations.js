@@ -4,7 +4,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://sbc-backend.goit.global';
 
 const token =
-  (axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMTk1ZmY0YTZjMDNkYjhjYzhiZDMiLCJzaWQiOiI2MTQ3YTdkOWY0YTZjMDNkYjhjYzhmY2QiLCJpYXQiOjE2MzIwODU5NzcsImV4cCI6MTYzMjA4OTU3N30.QHL59Gu0ZjzPA_3f3zwKMNFu8-GvPhAu6tiIvxmhJ7o`);
+  (axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMTk1ZmY0YTZjMDNkYjhjYzhiZDMiLCJzaWQiOiI2MTQ3ZDA2M2Y0YTZjMDNkYjhjYzhmZTEiLCJpYXQiOjE2MzIwOTYzNTUsImV4cCI6MTYzMjA5OTk1NX0.Z2fglbQ1lV7PetLhHwLSAHbsA1rDetgpWyZLsnY_gOU`);
 
 export const addTask = createAsyncThunk(
   'tasks/addTask',
@@ -69,10 +69,3 @@ export const deleteTask = createAsyncThunk(
     }
   },
 );
-
-// export const changeIndexCurrentDay = createAsyncThunk(
-//   'tasks/changeIndexCurrentDay',
-//   index => {
-//     return index;
-//   },
-// );

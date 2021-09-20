@@ -11,7 +11,6 @@ import {
   getTasksSelector,
 } from '../../redux/tasks/tasks-selectors';
 import Modal from '../Modal/Modal';
-import TitleEditForm from './SprintTitle/TitleEditForm/TitleEditForm';
 import SprintTitle from './SprintTitle/SprintTitle';
 import FindForm from './FindForm/FindForm';
 import Chart from './Chart/Chart';
@@ -27,12 +26,11 @@ const TasksList = () => {
   const tasks = useSelector(getTasksSelector);
   const dispatch = useDispatch();
   const filteredTasks = useSelector(getFilterTasksSelector);
-  const [title, setTitle] = useState('Sprint title'); // исправить (инф должна приходить со Store)
+  const sprints = useSelector(state => state.sprints.items);
   const [task, setTask] = useState({ ...initialState });
 
   const { sprintId } = useParams();
 
-  const [openTitleInp, setOpenTitleInp] = useState(false);
   const [openFindInp, setOpenFindInp] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [showChart, setShowChart] = useState(false);
@@ -40,6 +38,9 @@ const TasksList = () => {
   useEffect(() => {
     dispatch(fetchTasks(sprintId));
   }, [dispatch, sprintId]);
+
+  const getCurrentSprint = () =>
+    sprints.find(sprint => sprint?._id === sprintId);
 
   const toggleChart = () => {
     if (tasks.length > 2) {
@@ -51,17 +52,8 @@ const TasksList = () => {
     setOpenModal(prev => !prev);
   };
 
-  const toggleInputTitle = () => {
-    setOpenTitleInp(prev => !prev);
-  };
-
   const toggleFindInput = () => {
     setOpenFindInp(prev => !prev);
-  };
-
-  const onChangeTitle = e => {
-    const sprintTitle = e.target.value;
-    setTitle(sprintTitle);
   };
 
   const onHandleChange = e => {
@@ -96,16 +88,10 @@ const TasksList = () => {
             <div className={styles.headerWrapper}>
               {tasks.length > 0 && <SprintPagination tasks={tasks} />}
               <div className={styles.sectionHeader}>
-                {!openTitleInp ? (
-                  <SprintTitle toggleInput={toggleInputTitle} title={title} />
-                ) : (
-                  <TitleEditForm
-                    onChangeTitle={onChangeTitle}
-                    toggleInput={toggleInputTitle}
-                    title={title}
-                    setTitle={setTitle}
-                  />
-                )}
+                <SprintTitle
+                  currentSprint={getCurrentSprint()}
+                  sprintId={sprintId}
+                />
               </div>
               <IconBtn
                 onClick={toggleModal}
