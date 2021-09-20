@@ -4,6 +4,7 @@ axios.defaults.baseURL = 'https://sbc-backend.goit.global/';
 
 // обьект с двумя мотодами, добавить токен в заголовок запроса
 //     и обнулить токен из заголовка запроса
+
 const apiToken = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -12,14 +13,6 @@ const apiToken = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
-
-// (async () => {
-//   const data = await apiLoginUser({
-//     email: 'altest@gmail.com',
-//     password: 'qwer123',
-//   });
-//   console.log(data);
-// })();
 
 // ========================= для authOperations =============================
 
@@ -60,7 +53,7 @@ export async function apiRefreshUser(RefreshToken, sid) {
   try {
     apiToken.set(RefreshToken);
     const { data } = await axios.post('/auth/refresh', { sid });
-    apiToken.set(data.accessToken);
+    apiToken.set(data.newAccessToken);
     return data;
   } catch (error) {
     throw new Error(error);
@@ -80,9 +73,6 @@ export async function apiAddProject(projectData) {
 }
 
 export async function apiGetProjects() {
-  // apiToken.set(
-  //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQ0NGVmYmY0YTZjMDNkYjhjYzhjNTAiLCJzaWQiOiI2MTQ0NGYzZGY0YTZjMDNkYjhjYzhjNTEiLCJpYXQiOjE2MzE4NjY2ODUsImV4cCI6MTYzNDQ5NDY4NX0.Rx8eJEx0u1ZE2FkUrVWHVVgsn64rvOkZA3PBhfQS_gI ',
-  // );
   try {
     const { data } = await axios.get('/project');
     return data;
@@ -92,11 +82,11 @@ export async function apiGetProjects() {
 }
 
 // ContributorEmail это обьект с одним ключом 'email'
-export async function apiAddContributorProjectById(projectId, ContributorData) {
+export async function apiAddContributorProjectById(projectId, contributorData) {
   try {
-    const { data } = await axios.post(
+    const { data } = await axios.patch(
       `/project/contributor/${projectId}`,
-      ContributorData,
+      contributorData,
     );
     return data;
   } catch (error) {

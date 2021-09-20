@@ -13,6 +13,7 @@ import IconBtn from '../IconBtn/IconBtn.jsx';
 import Modal from '../Modal/Modal';
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner.jsx';
 import s from '../Projects/Projects.module.scss';
+import AddProjectsForm from '../AddProjectsForm/AddProjectsForm';
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -82,6 +83,7 @@ const Projects = () => {
       {showModal && (
         <Modal closeModal={toggleModal}>
           <h2>Створення проекту</h2>
+          <AddProjectsForm />
           <form className="addForm" onSubmit={handleSubmit}>
             <input
               className="input"

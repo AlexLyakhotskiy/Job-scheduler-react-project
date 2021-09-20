@@ -21,7 +21,7 @@ const SpintBtPeople = () => {
 
       {showModal && (
         <Modal closeModal={toggleModal}>
-          <FormAddPeople toggleModal = {() => toggleModal()} />
+          <FormAddPeople toggleModal={() => toggleModal()} />
         </Modal>
       )}
     </>

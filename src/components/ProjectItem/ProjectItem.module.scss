@@ -23,11 +23,24 @@
   min-height: 136px;
   border-radius: 5px;
 
-  &:nth-child(4n + 1) {
+  &:nth-child(3n + 1) {
     background-color: #8c72df;
     color: #8c72df;
+  }
+
+  &:nth-child(3n + 2) {
+    background-color: #ff765f;
+    color: #ff765f;
+  }
+
+  &:nth-child(3n + 3) {
+    background-color: #71df87;
+    color: #71df87;
+  }
+
+  &:nth-child(4n + 1) {
     @media screen and (min-width: 768px) {
-      background-image: url('./Group777.svg');
+      background-image: url('../../icons/Group777.svg');
       background-repeat: repeat-x;
       background-position: left 25px;
     }
@@ -37,10 +50,8 @@
   }
 
   &:nth-child(4n + 2) {
-    background-color: #ff765f;
-    color: #ff765f;
     @media screen and (min-width: 768px) {
-      background-image: url('./Group777.svg');
+      background-image: url('../../icons/Group777.svg');
       background-repeat: repeat-x;
       background-position: -236px 25px;
     }
@@ -50,28 +61,24 @@
   }
 
   &:nth-child(4n + 3) {
-    background-color: #71df87;
-    color: #71df87;
     @media screen and (min-width: 768px) {
-      background-image: url('./Group777.svg');
+      background-image: url('../../icons/Group777.svg');
       background-repeat: repeat-x;
       background-position: -472px 25px;
     }
     @media screen and (min-width: 1280px) {
-      background-position: -770px 76px;
+      background-position: -18px 76px;
     }
   }
 
   &:nth-child(4n + 4) {
-    background-color: #b4f866;
-    color: #b4f866;
     @media screen and (min-width: 768px) {
-      background-image: url('./Group777.svg');
+      background-image: url('../../icons/Group777.svg');
       background-repeat: repeat-x;
       background-position: -472px 25px;
     }
     @media screen and (min-width: 1280px) {
-      background-position: -1070px 76px;
+      background-position: -318px 76px;
     }
   }
 
@@ -87,6 +94,12 @@
     margin-top: 30px;
     margin-left: 30px;
     min-height: 270px;
+  }
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    box-shadow: $shadow-project-hover;
   }
 }
 

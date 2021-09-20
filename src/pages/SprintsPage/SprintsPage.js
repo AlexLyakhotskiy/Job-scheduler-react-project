@@ -34,7 +34,7 @@ export default function SprintsPage() {
                 projectId={projectId}
               />
             )}
-            <SpintBtPeople />
+            <SpintBtPeople projectId={projectId} />
             <SprintCard />
           </div>
           <div className={s.btnDispleyNone}>
