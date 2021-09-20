@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addProjects } from '../../../redux/projects/projectOperations';
+import AddProjectsForm from '../../AddProjectsForm/AddProjectsForm';
 import IconBtn from '../../IconBtn/IconBtn';
 import Modal from '../../Modal';
 import s from './SpintBtAddProject.module.scss';
@@ -46,36 +47,7 @@ const SpintBtAddProject = () => {
       </div>
       {showModal && (
         <Modal closeModal={toggleModal}>
-          <h2>Створення проекту</h2>
-          <form className="addForm" onSubmit={handleSubmit}>
-            <input
-              className="input"
-              type="text"
-              name="title"
-              autoComplete="off"
-              autoFocus
-              placeholder="Title"
-              value={titleInput}
-              onChange={handleChange}
-            />
-            <input
-              className="input"
-              type="text"
-              name="description"
-              autoComplete="off"
-              autoFocus
-              placeholder="Description"
-              value={descriptionInput}
-              onChange={handleChange}
-            />
-
-            <button className={s.btn} type="submit">
-              Save
-            </button>
-            <button className={s.btnCencel} type="button" onClick={toggleModal}>
-              Cancel
-            </button>
-          </form>
+          <AddProjectsForm closeModal={toggleModal} />
         </Modal>
       )}
     </>
