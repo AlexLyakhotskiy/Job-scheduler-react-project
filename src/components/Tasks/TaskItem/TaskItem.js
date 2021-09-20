@@ -14,9 +14,12 @@ const TaskItem = ({ task }) => {
     if (value > 0) {
       dispatch(
         editTask({
-          date: currentDayIndex
-            ? task.hoursWastedPerDay[currentDayIndex - 1].currentDay
-            : '',
+          date:
+            currentDayIndex &&
+            task.hoursWastedPerDay &&
+            task.hoursWastedPerDay[currentDayIndex - 1]
+              ? task.hoursWastedPerDay[currentDayIndex - 1].currentDay
+              : '',
           hours: value,
           id: task.id,
         }),
@@ -36,12 +39,14 @@ const TaskItem = ({ task }) => {
               type="number"
               name="hours"
               value={
-                currentDayIndex
+                currentDayIndex &&
+                task.hoursWastedPerDay &&
+                task.hoursWastedPerDay[currentDayIndex - 1]
                   ? task.hoursWastedPerDay[currentDayIndex - 1]
                       .singleHoursWasted
                   : ''
               }
-              max="12"
+              max="8"
               onChange={onChange}
             />
           </form>

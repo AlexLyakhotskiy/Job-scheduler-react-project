@@ -7,7 +7,7 @@ import { useParams } from 'react-router';
 
 const SprintTitle = ({ sprints }) => {
   const dispatch = useDispatch();
-  const { sprintId, projectId } = useParams();
+  const { sprintId } = useParams();
   const [title, setTitle] = useState('');
   const [openTitleInp, setOpenTitleInp] = useState(false);
 
@@ -16,9 +16,8 @@ const SprintTitle = ({ sprints }) => {
     : '';
 
   useEffect(() => {
-    dispatch(sprintOperations.getSprint(projectId));
     setTitle(currentSprint.title);
-  }, [currentSprint.title, dispatch, projectId]);
+  }, [currentSprint.title]);
 
   const toggleInputTitle = () => {
     setOpenTitleInp(prev => !prev);
@@ -26,7 +25,7 @@ const SprintTitle = ({ sprints }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    dispatch(sprintOperations.patchSprint(sprintId, title));
+    dispatch(sprintOperations.patchSprint({ id: sprintId, newTitle: title }));
     toggleInputTitle();
   };
 

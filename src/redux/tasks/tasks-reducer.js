@@ -45,16 +45,12 @@ const tasksSlice = createSlice({
     [deleteTask.fulfilled](state, { payload }) {
       state.error = null;
       const removeIndex = state.allTasks.findIndex(({ id }) => id === payload);
-      console.log(`removeIndex`, removeIndex);
       state.allTasks.splice(removeIndex, 1);
       state.loading = false;
     },
     [deleteTask.rejected](state, { payload }) {
       state.error = payload;
       state.loading = false;
-    },
-    [editTask.pending](state) {
-      state.loading = true;
     },
     [editTask.fulfilled](state, { payload }) {
       state.error = null;
@@ -73,8 +69,6 @@ const tasksSlice = createSlice({
         hoursWasted: newHoursWasted,
       };
       state.allTasks[editIndex] = editTask;
-      console.log(`editTask`, editTask);
-      state.loading = false;
     },
     [editTask.rejected](state, { payload }) {
       state.error = payload;
@@ -84,7 +78,6 @@ const tasksSlice = createSlice({
       state.filter = payload;
     },
     [changeIndexCurrentDay](state, { payload }) {
-      console.log(`payload`, payload);
       state.currentDayIndex = payload;
     },
   },

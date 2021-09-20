@@ -29,7 +29,6 @@ export const fetchTasks = createAsyncThunk(
       if (data.message) {
         return rejectWithValue(data.message);
       }
-      console.log(`data`, data);
       return data.map(item => ({ ...item, id: item._id }));
     } catch (error) {
       return rejectWithValue(error.message);
@@ -45,7 +44,6 @@ export const editTask = createAsyncThunk(
         date: task.date,
         hours: task.hours,
       });
-      console.log(`data`, data);
       return {
         date: task.date,
         hours: task.hours,
