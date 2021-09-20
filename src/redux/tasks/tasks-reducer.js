@@ -83,6 +83,7 @@ const tasksSlice = createSlice({
       state.filter = payload;
     },
     [changeIndexCurrentDay](state, { payload }) {
+      console.log(`payload`, payload);
       state.currentDayIndex = payload;
     },
   },

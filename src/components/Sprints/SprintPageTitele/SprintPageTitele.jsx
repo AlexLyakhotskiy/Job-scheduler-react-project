@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
 import { patchProject } from '../../../redux/projects/projectOperations';
 import IconBtn from '../../IconBtn/IconBtn';
 import SpintBtAddSprint from '../SpintBtAddSprint/SpintBtAddSprint';
@@ -10,7 +9,7 @@ const SprintPageTitele = ({ nowProject, projectId }) => {
   const dispatch = useDispatch();
 
   const [isInputOpen, setInputOpen] = useState(false);
-  const [isProjectTitel, setProjectTitel] = useState(nowProject.title);
+  const [isProjectTitel, setProjectTitel] = useState('title');
   const toggleInput = () => setInputOpen(state => !state);
 
   const handelSubmit = e => {

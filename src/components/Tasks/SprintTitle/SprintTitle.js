@@ -9,9 +9,9 @@ const SprintTitle = ({ currentSprint, sprintId }) => {
   const [title, setTitle] = useState('');
   const [openTitleInp, setOpenTitleInp] = useState(false);
 
-  useEffect(() => {
-    setTitle(currentSprint.title);
-  }, [currentSprint.title]);
+  // useEffect(() => {
+  //   setTitle(currentSprint.title);
+  // }, [currentSprint.title]);
 
   const toggleInputTitle = () => {
     setOpenTitleInp(prev => !prev);
@@ -32,7 +32,7 @@ const SprintTitle = ({ currentSprint, sprintId }) => {
     <>
       {!openTitleInp ? (
         <div>
-          <h2 className={styles.sprintTitle}>{currentSprint.title}</h2>
+          <h2 className={styles.sprintTitle}>{title}</h2>
           <IconBtn
             onClick={toggleInputTitle}
             icon="pencil"

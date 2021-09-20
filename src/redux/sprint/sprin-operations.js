@@ -59,6 +59,7 @@ const patchSprint = createAsyncThunk(
       const { data } = await axios.patch(`/sprint/title/${id}`, {
         title: newTitle,
       });
+      console.log(`data`, data);
       return { title: newTitle, id };
     } catch (error) {
       if (error.response.status === 400) {

@@ -15,7 +15,7 @@ import SprintTitle from './SprintTitle/SprintTitle';
 import FindForm from './FindForm/FindForm';
 import Chart from './Chart/Chart';
 import { useParams } from 'react-router';
-import SprintPagination from '../../redux/tasks/SprintPagination/SprintPagination';
+import SprintPagination from './SprintPagination/SprintPagination';
 
 const initialState = {
   title: '',
@@ -30,6 +30,7 @@ const TasksList = () => {
   const [task, setTask] = useState({ ...initialState });
 
   const { sprintId } = useParams();
+  console.log(`sprintId`, sprintId);
 
   const [openFindInp, setOpenFindInp] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -39,8 +40,7 @@ const TasksList = () => {
     dispatch(fetchTasks(sprintId));
   }, [dispatch, sprintId]);
 
-  const getCurrentSprint = () =>
-    sprints.find(sprint => sprint?._id === sprintId);
+  // const getCurrentSprint = () => {sprints.find(sprint => sprint?._id === sprintId);}
 
   const toggleChart = () => {
     if (tasks.length > 2) {
@@ -89,7 +89,7 @@ const TasksList = () => {
               {tasks.length > 0 && <SprintPagination tasks={tasks} />}
               <div className={styles.sectionHeader}>
                 <SprintTitle
-                  currentSprint={getCurrentSprint()}
+                  // currentSprint={getCurrentSprint()}
                   sprintId={sprintId}
                 />
               </div>
