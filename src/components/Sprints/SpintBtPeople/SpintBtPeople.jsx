@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Modal from '../../Modal';
 import Svg from '../../Svg/Svg';
 import s from './SpintBtPeople.module.scss';
+import FormAddPeople from '../FormAddPeople/FormAddPeople';
 
 const SpintBtPeople = () => {
   const [showModal, setShowModal] = useState(false);
@@ -20,7 +21,7 @@ const SpintBtPeople = () => {
 
       {showModal && (
         <Modal closeModal={toggleModal}>
-          <h2>Добавить email</h2>
+          <FormAddPeople toggleModal = {() => toggleModal()} />
         </Modal>
       )}
     </>

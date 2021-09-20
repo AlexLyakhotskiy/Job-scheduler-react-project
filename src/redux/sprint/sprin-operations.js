@@ -4,7 +4,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.headers.common.Authorization =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMDFlNWY0YTZjMDNkYjhjYzhiYjAiLCJzaWQiOiI2MTQ2ZjYyMGY0YTZjMDNkYjhjYzhlMmYiLCJpYXQiOjE2MzIwNDA0ODAsImV4cCI6MTYzMjA0NDA4MH0.N1lbbZDoNluFEhSFaJhU-KLGQlCNt-B2LiAkmVf8G9Q';
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMDFlNWY0YTZjMDNkYjhjYzhiYjAiLCJzaWQiOiI2MTQ4MjQ4OWY0YTZjMDNkYjhjYzhmZTQiLCJpYXQiOjE2MzIxMTc4OTcsImV4cCI6MTYzMjEyMTQ5N30.VRI5Cn2Hw0kHNrJRMHVBwvGuZ4PVmrDLOBip4i9e4wM';
 
 const getSprint = createAsyncThunk(
   '/sprint/getSprint',
