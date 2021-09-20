@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { lazy, Suspense } from 'react';
-import { Switch, useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
+import { Switch } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
@@ -42,18 +41,6 @@ const NotFoundPage = lazy(() =>
 );
 
 export default function Main() {
-  const history = useHistory();
-  const isLoggedIn = useSelector(() => true);
-  //  const dispatch = useDispatch();
-
-  useEffect(() => {
-    (async () => {
-      // await dispatch(resetUser());
-      // const emptyPath = history.location.pathname === '/';
-      !isLoggedIn && history.replace('/register');
-    })();
-  }, [history, isLoggedIn]);
-
   return (
     <main>
       <Suspense fallback={<LoaderSpinner />}>
