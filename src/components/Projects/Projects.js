@@ -4,10 +4,7 @@ import {
   getIsLoading,
   getProjectsList,
 } from '../../redux/projects/projectSelectors';
-import {
-  addProjects,
-  getProjects,
-} from '../../redux/projects/projectOperations';
+import { getProjects } from '../../redux/projects/projectOperations';
 import ProjectItem from '../ProjectItem/ProjectItem';
 import IconBtn from '../IconBtn/IconBtn.jsx';
 import Modal from '../Modal/Modal';
@@ -21,8 +18,6 @@ const Projects = () => {
   const isLoading = useSelector(getIsLoading);
 
   const [showModal, setShowModal] = useState(false);
-  const [titleInput, setTitleInput] = useState('');
-  const [descriptionInput, setDescriptionInput] = useState('');
 
   useEffect(() => {
     dispatch(getProjects());
@@ -30,28 +25,6 @@ const Projects = () => {
 
   const toggleModal = () => {
     setShowModal(prevState => !prevState);
-  };
-  const handleChange = event => {
-    const { name, value } = event.target;
-
-    switch (name) {
-      case 'title':
-        setTitleInput(value);
-        break;
-      case 'description':
-        setDescriptionInput(value);
-        break;
-      default:
-        return;
-    }
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    dispatch(addProjects({ title: titleInput, description: descriptionInput }));
-    setTitleInput('');
-    setDescriptionInput('');
-    toggleModal();
   };
 
   return (
@@ -82,37 +55,7 @@ const Projects = () => {
       </div>
       {showModal && (
         <Modal closeModal={toggleModal}>
-          <h2>Створення проекту</h2>
-          <AddProjectsForm />
-          <form className="addForm" onSubmit={handleSubmit}>
-            <input
-              className="input"
-              type="text"
-              name="title"
-              autoComplete="off"
-              autoFocus
-              placeholder="Title"
-              value={titleInput}
-              onChange={handleChange}
-            />
-            <input
-              className="input"
-              type="text"
-              name="description"
-              autoComplete="off"
-              autoFocus
-              placeholder="Description"
-              value={descriptionInput}
-              onChange={handleChange}
-            />
-
-            <button className={s.btn} type="submit">
-              Save
-            </button>
-            <button className={s.btnCencel} type="button" onClick={toggleModal}>
-              Cancel
-            </button>
-          </form>
+          <AddProjectsForm closeModal={toggleModal} />
         </Modal>
       )}
     </>

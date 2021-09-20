@@ -1,52 +1,53 @@
-//import { Formik, Form, Field } from 'formik';
-
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Input from '../Input/Input.jsx';
 import Button from '../Button/Button.jsx';
 import CancelBtn from '../CancelBtn/CancelBtn.jsx';
-import css from './AddProjectsForm.module.scss';
+import { addProjects } from '../../redux/projects/projectOperations';
+import s from './AddProjectsForm.module.scss';
 
 const validationSchema = Yup.object().shape({
-  nameYourInput: Yup.string()
-    .min(2, 'Занадто коротка назва, мін 2 символа!')
-    .max(16, 'Занадто довга назва, макс 16 символів!')
+  title: Yup.string()
+    .min(4, 'Занадто коротка назва, мін 2 символа!')
+    .max(20, 'Занадто довга назва, макс 20 символів!')
+    .required("Поле обов'язкове!"),
+  description: Yup.string()
+    .min(4, 'Занадто короткий опис, мін 2 символа!')
+    .max(70, 'Занадто довгий опис, макс 70 символів!')
     .required("Поле обов'язкове!"),
 });
 
-export default function AddProjectsForm() {
+export default function AddProjectsForm({ closeModal }) {
+  const dispatch = useDispatch();
   const formik = useFormik({
-    initialValues: { nameYourInput: '' },
+    initialValues: { title: '', description: '' },
     validationSchema,
-    onSubmit: values => {
-      console.log(values);
+    onSubmit: data => {
+      dispatch(addProjects(data));
+      closeModal();
     },
   });
 
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
-        <Input formik={formik} name="nameYourInput" label="Назва проекту" />
-        <Input formik={formik} name="nameYourInput" label="Опис" />
-        <Button />
-        <CancelBtn />
+        <h2 className={s.formTitle}>Створення проекту</h2>
+        <Input
+          formik={formik}
+          name="title"
+          label="Назва проекту"
+          className={s.titleInput}
+        />
+        <Input
+          formik={formik}
+          name="description"
+          label="Опис"
+          className={s.descInput}
+        />
+        <Button className={s.btnSubmit} />
+        <CancelBtn onClick={closeModal} />
       </form>
     </>
-
-    // <Formik>
-    //   <Form className={css.formProject} autoComplete="off">
-    //     <label className={css.nameLabel}>
-    //       <Field name="title" placeholder=" " className={css.nameInp} />
-    //       <span className={css.nameLabelText}>Назва проекту</span>
-    //     </label>
-
-    //     <label className={css.descrLabel}>
-    //       <Field name="description" placeholder=" " className={css.descrInp} />
-    //       <span className={css.descrLabelText}>Опис</span>
-    //     </label>
-    //     <Button />
-    //     <CancelBtn />
-    //   </Form>
-    // </Formik>
   );
 }
