@@ -64,6 +64,10 @@ const authSlice = createSlice({
       state.loading = false;
     },
     [logout.rejected](state, { payload }) {
+      state.user = null;
+      state.token = null;
+      state.refreshToken = null;
+      state.sid = null;
       state.error = payload;
       state.loading = false;
     },
