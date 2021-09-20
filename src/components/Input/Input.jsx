@@ -28,6 +28,7 @@ export default function Input({
         name={name}
         id={inputId}
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         value={formik.values[name]}
       />
       <div

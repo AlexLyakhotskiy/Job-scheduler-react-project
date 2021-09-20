@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
 import { Link } from 'react-router-dom';
 
 import Container from '../../components/Container/Container';
@@ -10,6 +10,9 @@ import { routes } from '../../routes/routes';
 
 import styles from './NotFoundPage.module.scss';
 import Button from '../../components/Button/Button';
+import moment from 'moment';
+import ua from 'date-fns/locale/uk';
+registerLocale('ua', ua);
 
 export default function NotFoundPage() {
   return (
@@ -26,24 +29,29 @@ export default function NotFoundPage() {
 }
 
 const validationSchema = yup.object({
-  date: yup.date('111').required('222'),
+  date: yup.date().nullable().required("Це поле обов'язкове"),
 });
 
 function Test() {
   const [isActiveLastDay, setIsActiveLastDay] = useState(false);
   const formik = useFormik({
-    initialValues: { date: '' },
+    initialValues: { date: null },
     validationSchema,
-    onSubmit: values => console.log(`values`, values),
+    onSubmit: ({ date }) => {
+      const formatedDate = moment(date).format('YYYY-M-D');
+      console.log(`values`, formatedDate);
+    },
   });
 
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
         <DatePicker
-          dateFormat="dd MMM"
+          dateFormat="dd MMMM"
           minDate={isActiveLastDay ? new Date() : null}
           selected={formik.values.date}
+          onBlur={() => formik.setFieldTouched('date', true)}
+          locale={ua}
           onChange={date => formik.setFieldValue('date', date)}
         />
         <input
