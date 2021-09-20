@@ -35,6 +35,7 @@ const tasksSlice = createSlice({
       state.loading = false;
     },
     [fetchTasks.rejected](state, { payload }) {
+      state.allTasks = [];
       state.error = payload;
       state.loading = false;
     },

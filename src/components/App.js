@@ -4,7 +4,6 @@ import { useHistory } from 'react-router';
 
 import Header from './Header/Header';
 import Main from './Main/Main';
-import TasksList from './Tasks/TasksList';
 
 import { resetUser } from '../redux/auth/auth-operations';
 import { getIsResetingUser } from '../redux/auth/auth-selectors';

@@ -37,7 +37,6 @@ const persistConfigAuth = {
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(persistConfigAuth, () => ''),
     tasks: tasksReducer,
     auth: persistReducer(persistConfigAuth, authReducer),
     sprints: sprintSlice,

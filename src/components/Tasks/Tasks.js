@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import TaskItem from './TaskItem/TaskItem';
-import styles from './TasksList.module.scss';
+import styles from './Tasks.module.scss';
 import sprite from './sprite.svg';
 import Container from '../Container/Container';
 import { useEffect, useState } from 'react';
@@ -16,13 +16,14 @@ import FindForm from './FindForm/FindForm';
 import Chart from './Chart/Chart';
 import { useParams } from 'react-router';
 import SprintPagination from './SprintPagination/SprintPagination';
+import SideBar from './SideBar/SideBar';
 
 const initialState = {
   title: '',
   hoursPlanned: '',
 };
 
-const TasksList = () => {
+const Tasks = () => {
   const tasks = useSelector(getTasksSelector);
   const dispatch = useDispatch();
   const filteredTasks = useSelector(getFilterTasksSelector);
@@ -30,7 +31,6 @@ const TasksList = () => {
   const [task, setTask] = useState({ ...initialState });
 
   const { sprintId } = useParams();
-  console.log(`sprintId`, sprintId);
 
   const [openFindInp, setOpenFindInp] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -39,8 +39,6 @@ const TasksList = () => {
   useEffect(() => {
     dispatch(fetchTasks(sprintId));
   }, [dispatch, sprintId]);
-
-  // const getCurrentSprint = () => {sprints.find(sprint => sprint?._id === sprintId);}
 
   const toggleChart = () => {
     if (tasks.length > 2) {
@@ -81,17 +79,14 @@ const TasksList = () => {
     <Container>
       <section className={styles.sprintSection}>
         <div className={styles.sideBar}>
-          <button type="button">GoBack</button>
+          <SideBar sprints={sprints} />
         </div>
         <div className={styles.sectionWrapper}>
           <div className={styles.mainBox}>
             <div className={styles.headerWrapper}>
               {tasks.length > 0 && <SprintPagination tasks={tasks} />}
               <div className={styles.sectionHeader}>
-                <SprintTitle
-                  // currentSprint={getCurrentSprint()}
-                  sprintId={sprintId}
-                />
+                <SprintTitle sprints={sprints} sprintId={sprintId} />
               </div>
               <IconBtn
                 onClick={toggleModal}
@@ -196,4 +191,4 @@ const TasksList = () => {
   );
 };
 
-export default TasksList;
+export default Tasks;

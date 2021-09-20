@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import IconBtn from '../../IconBtn/IconBtn';
-import styles from '../TasksList.module.scss';
+import styles from '../Tasks.module.scss';
 import sprintOperations from '../../../redux/sprint/sprin-operations';
+import { useParams } from 'react-router';
 
-const SprintTitle = ({ currentSprint, sprintId }) => {
+const SprintTitle = ({ sprints }) => {
   const dispatch = useDispatch();
+  const { sprintId, projectId } = useParams();
   const [title, setTitle] = useState('');
   const [openTitleInp, setOpenTitleInp] = useState(false);
 
-  // useEffect(() => {
-  //   setTitle(currentSprint.title);
-  // }, [currentSprint.title]);
+  const currentSprint = sprints
+    ? sprints.find(sprint => sprint._id === sprintId)
+    : '';
+
+  useEffect(() => {
+    dispatch(sprintOperations.getSprint(projectId));
+    setTitle(currentSprint.title);
+  }, [currentSprint.title, dispatch, projectId]);
 
   const toggleInputTitle = () => {
     setOpenTitleInp(prev => !prev);

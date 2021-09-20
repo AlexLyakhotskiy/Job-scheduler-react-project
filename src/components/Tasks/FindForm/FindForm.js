@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterChange } from '../../../redux/tasks/tasks-actions';
 import sprite from '../sprite.svg';
-import styles from '../TasksList.module.scss';
+import styles from '../Tasks.module.scss';
 
 const FindForm = ({ toggleFindInput }) => {
   const dispatch = useDispatch();

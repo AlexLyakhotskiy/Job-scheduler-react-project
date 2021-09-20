@@ -10,28 +10,19 @@ const SprintPagination = ({ tasks }) => {
 
   const duration = tasks[0].hoursWastedPerDay.length;
 
-  // const findCurrentDay = () => {
-  //   const currentDay = moment().format('YYYY-MM-DD');
-  //   console.log(`currentDay`, currentDay);
-  //   const day = tasks[0].hoursWastedPerDay.findIndex(
-  //     day => day.currentDay === currentDay,
-  //   );
-  //   if (day >= 0) return day;
-  //   return duration - 1;
-  // };
+  const findCurrentDay = () => {
+    const currentDay = moment().format('YYYY-MM-DD');
+    console.log(`currentDay`, currentDay);
+    const day = tasks[0].hoursWastedPerDay.findIndex(
+      day => day.currentDay === currentDay,
+    );
+    if (day >= 0) return day;
+    return duration - 1;
+  };
 
   useEffect(() => {
-    const findCurrentDay = () => {
-      const currentDay = moment().format('YYYY-MM-DD');
-      console.log(`currentDay`, currentDay);
-      const day = tasks[0].hoursWastedPerDay.findIndex(
-        day => day.currentDay === currentDay,
-      );
-      if (day >= 0) return day;
-      return duration - 1;
-    };
     dispatch(changeIndexCurrentDay(findCurrentDay() + 1));
-  }, [dispatch, duration, tasks]);
+  }, [dispatch]);
 
   const currentDate = currentDayIndex
     ? tasks[0].hoursWastedPerDay[currentDayIndex - 1].currentDay

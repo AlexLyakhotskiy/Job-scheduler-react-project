@@ -9,6 +9,7 @@ const TaskItem = ({ task }) => {
   const dispatch = useDispatch();
 
   const onChange = e => {
+    e.preventDefault();
     const { value } = e.target;
     if (value > 0) {
       dispatch(
@@ -17,7 +18,7 @@ const TaskItem = ({ task }) => {
             ? task.hoursWastedPerDay[currentDayIndex - 1].currentDay
             : '',
           hours: value,
-          id: task._id || task.id,
+          id: task.id,
         }),
       );
     }
