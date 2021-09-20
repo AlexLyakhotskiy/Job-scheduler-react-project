@@ -12,6 +12,7 @@ import { useState } from 'react';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Поле обов'язкове!"),
+  //   date: Yup.date(),
   //   data: Yup.string().required("Поле обов'язкове!"),
   days: Yup.number().required("Поле обов'язкове!"),
 });
@@ -19,14 +20,14 @@ const validationSchema = Yup.object().shape({
 export default function FormAddSprint() {
   //   const dispatch = useDispatch();
 
-  const [startDate, setStartDate] = useState();
+  //   const [startDate, setStartDate] = useState();
 
   const formik = useFormik({
-    initialValues: { title: '', days: '' },
+    initialValues: { title: '', days: '', date: '' },
     validationSchema,
     onSubmit: values => {
       console.log(values);
-      console.log(startDate);
+      //   console.log(startDate);
       //   dispatch(
       //     sprintOperations.postSprint({
       //       projectId: '61449ee3f4a6c03db8cc8cb1',
@@ -53,9 +54,15 @@ export default function FormAddSprint() {
         <div>
           <input type="checkbox" name="dataChek" />
           <DatePicker
-            name="data"
-            selected={startDate}
-            onChange={date => setStartDate(date)}
+            name="date"
+            formik={formik}
+            // selected={formik.values.date}
+            // value={formik.values.date}
+            onChange={(date, dateString) => {
+              console.log(date);
+              console.log(dateString);
+              formik.setFieldValue('date', dateString);
+            }}
           />
           <Input
             formik={formik}

@@ -20,7 +20,6 @@ export default function SprintsPage() {
 
   return (
     <>
-      <h1>HEADER</h1>
       <Container>
         <div className={s.containerPageSprintProgect}>
           <SprintPageProject projects={projects} />

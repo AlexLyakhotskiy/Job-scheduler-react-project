@@ -46,7 +46,9 @@ const sprintSlice = createSlice({
       state.isLoading = true;
     },
     [sprintOperations.patchSprint.fulfilled](state, { payload }) {
-      state.items.titel = payload.title;
+      state.items = state.items.map(el =>
+        el._id === payload.id ? { ...el, title: payload.newTitle } : el,
+      );
       state.isLogIn = true;
       state.isLoading = false;
     },
