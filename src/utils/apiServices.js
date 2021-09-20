@@ -4,6 +4,7 @@ axios.defaults.baseURL = 'https://sbc-backend.goit.global/';
 
 // обьект с двумя мотодами, добавить токен в заголовок запроса
 //     и обнулить токен из заголовка запроса
+
 const apiToken = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -12,14 +13,6 @@ const apiToken = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
-
-// (async () => {
-//   const data = await apiLoginUser({
-//     email: 'altest@gmail.com',
-//     password: 'qwer123',
-//   });
-//   console.log(data);
-// })();
 
 // ========================= для authOperations =============================
 
@@ -60,7 +53,7 @@ export async function apiRefreshUser(RefreshToken, sid) {
   try {
     apiToken.set(RefreshToken);
     const { data } = await axios.post('/auth/refresh', { sid });
-    apiToken.set(data.accessToken);
+    apiToken.set(data.newAccessToken);
     return data;
   } catch (error) {
     throw new Error(error);
