@@ -4,13 +4,13 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // axios.defaults.headers.common.Authorization =
-//   'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMDFlNWY0YTZjMDNkYjhjYzhiYjAiLCJzaWQiOiI2MTQ2MGQxY2Y0YTZjMDNkYjhjYzhkN2UiLCJpYXQiOjE2MzE5ODA4MjgsImV4cCI6MTYzMTk4NDQyOH0.bkZ0LQcwVw_96aObGY3-u6omlQJBEuBNlpov1rkxmyQ';
+// 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMDFlNWY0YTZjMDNkYjhjYzhiYjAiLCJzaWQiOiI2MTQ4MjQ4OWY0YTZjMDNkYjhjYzhmZTQiLCJpYXQiOjE2MzIxMTc4OTcsImV4cCI6MTYzMjEyMTQ5N30.VRI5Cn2Hw0kHNrJRMHVBwvGuZ4PVmrDLOBip4i9e4wM';
 
 const getSprint = createAsyncThunk(
   '/sprint/getSprint',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`/sprint/${id}`);
+      const { data } = await axios.get(`sprint/${id}`);
       return data;
     } catch (error) {
       if (error.response.status === 400) {
@@ -31,9 +31,9 @@ const getSprint = createAsyncThunk(
 
 const postSprint = createAsyncThunk(
   '/sprint/postSprint',
-  async (id, body, { rejectWithValue }) => {
+  async ({ projectId, body }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post(`/sprint/${id}`, body);
+      const { data } = await axios.post(`/sprint/${projectId}`, body);
       return data;
     } catch (error) {
       if (error.response.status === 400) {
@@ -54,10 +54,13 @@ const postSprint = createAsyncThunk(
 
 const patchSprint = createAsyncThunk(
   '/sprint/patchSprint',
-  async (id, newTitel, { rejectWithValue }) => {
+  async ({ id, newTitel }, { rejectWithValue }) => {
     try {
-      const { data } = await axios.patch(`/sprint/title/${id}`, newTitel);
-      return data;
+      console.log(id);
+
+      const { data } = await axios.patch(`sprint/title/${id}`, newTitel);
+      console.log(data);
+      return { data, id };
     } catch (error) {
       if (error.response.status === 400) {
         return rejectWithValue('Bad request (invalid id) / No token provided');

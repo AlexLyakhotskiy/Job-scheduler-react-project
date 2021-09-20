@@ -1,14 +1,84 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addProjects } from '../../../redux/projects/projectOperations';
 import IconBtn from '../../IconBtn/IconBtn';
+import Modal from '../../Modal';
 import s from './SpintBtAddProject.module.scss';
 
 const SpintBtAddProject = () => {
-  //  открывать модалку с создвнием + запрос на сервер
+  const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => {
+    setShowModal(state => !state);
+  };
+
+  const [titleInput, setTitleInput] = useState('');
+  const [descriptionInput, setDescriptionInput] = useState('');
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case 'title':
+        setTitleInput(value);
+        break;
+      case 'description':
+        setDescriptionInput(value);
+        break;
+      default:
+        return;
+    }
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(addProjects({ title: titleInput, description: descriptionInput }));
+    setTitleInput('');
+    setDescriptionInput('');
+    toggleModal();
+  };
 
   return (
-    <div className={s.conteinerBtnAddProj}>
-      <IconBtn icon={'add'} className={s.btnProjAdd} />
-      <span className={s.btnSprintAddText}>Створити проект</span>
-    </div>
+    <>
+      <div className={s.conteinerBtnAddProj}>
+        <IconBtn icon={'add'} className={s.btnProjAdd} onClick={toggleModal} />
+        <span className={s.btnSprintAddText}>Створити проект</span>
+      </div>
+      {showModal && (
+        <Modal closeModal={toggleModal}>
+          <h2>Створення проекту</h2>
+          <form className="addForm" onSubmit={handleSubmit}>
+            <input
+              className="input"
+              type="text"
+              name="title"
+              autoComplete="off"
+              autoFocus
+              placeholder="Title"
+              value={titleInput}
+              onChange={handleChange}
+            />
+            <input
+              className="input"
+              type="text"
+              name="description"
+              autoComplete="off"
+              autoFocus
+              placeholder="Description"
+              value={descriptionInput}
+              onChange={handleChange}
+            />
+
+            <button className={s.btn} type="submit">
+              Save
+            </button>
+            <button className={s.btnCencel} type="button" onClick={toggleModal}>
+              Cancel
+            </button>
+          </form>
+        </Modal>
+      )}
+    </>
   );
 };
 
