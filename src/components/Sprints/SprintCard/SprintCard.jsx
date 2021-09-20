@@ -22,41 +22,50 @@ const SprintCard = () => {
   const deleteSprint = id => dispatch(sprintOperations.delSprint(id));
 
   return (
-    <div>
-      <ul className={s.sprintCardList}>
-        {sprints?.length > 0 &&
-          sprints?.map(sprint => (
-            <li key={sprint._id} className={s.sprintCardItem}>
-              <Link to={`${url}/${sprint._id}`} className={s.sprintCardLink}>
-                <div className={s.sprintCard}>
-                  <h2 className={s.sprintTitel}>{sprint.title}</h2>
-                  <ul>
-                    <li className={s.sprintItem}>
-                      <span className={s.sprintText}>Дата початку</span>
-                      <span>{sprint.startDate}</span>
-                    </li>
-                    <li className={s.sprintItem}>
-                      <span className={s.sprintText}>Дата закінченя</span>
-                      <span>{sprint.endDate}</span>
-                    </li>
-                    <li className={s.sprintItem}>
-                      <span className={s.sprintText}>Тривалість</span>
-                      <span>{sprint.duration}</span>
-                    </li>
-                  </ul>
-                </div>
-              </Link>
-              <div className={s.sprintDelBt}>
-                <IconBtn
-                  icon={'bin'}
-                  secondary
-                  onClick={() => deleteSprint(sprint._id)}
-                />
-              </div>
-            </li>
-          ))}
-      </ul>
-    </div>
+    <>
+      {!sprints ? (
+        <h1> Пока у вас нет спринтов</h1>
+      ) : (
+        <div>
+          <ul className={s.sprintCardList}>
+            {sprints?.length > 0 &&
+              sprints.map(sprint => (
+                <li key={sprint._id} className={s.sprintCardItem}>
+                  <Link
+                    to={`${url}/${sprint._id}`}
+                    className={s.sprintCardLink}
+                  >
+                    <div className={s.sprintCard}>
+                      <h2 className={s.sprintTitel}>{sprint.title}</h2>
+                      <ul>
+                        <li className={s.sprintItem}>
+                          <span className={s.sprintText}>Дата початку</span>
+                          <span>{sprint.startDate}</span>
+                        </li>
+                        <li className={s.sprintItem}>
+                          <span className={s.sprintText}>Дата закінченя</span>
+                          <span>{sprint.endDate}</span>
+                        </li>
+                        <li className={s.sprintItem}>
+                          <span className={s.sprintText}>Тривалість</span>
+                          <span>{sprint.duration}</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </Link>
+                  <div className={s.sprintDelBt}>
+                    <IconBtn
+                      icon={'bin'}
+                      secondary
+                      onClick={() => deleteSprint(sprint._id)}
+                    />
+                  </div>
+                </li>
+              ))}
+          </ul>
+        </div>
+      )}
+    </>
   );
 };
 

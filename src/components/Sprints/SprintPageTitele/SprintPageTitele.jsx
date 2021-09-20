@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
 import { patchProject } from '../../../redux/projects/projectOperations';
 import IconBtn from '../../IconBtn/IconBtn';
 import SpintBtAddSprint from '../SpintBtAddSprint/SpintBtAddSprint';
