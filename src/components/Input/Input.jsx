@@ -1,5 +1,6 @@
 import React from 'react';
 import shortid from 'shortid';
+//import shortid from 'shortid';
 
 import styles from './Input.module.scss';
 

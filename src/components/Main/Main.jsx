@@ -9,6 +9,8 @@ import PublicRoute from '../Routes/PublicRoute';
 
 import { routes } from '../../routes/routes';
 
+import styles from './Main.module.scss';
+
 const LoginPage = lazy(() =>
   import(
     '../../pages/LoginPage/LoginPage' /* webpackChunkName: "login-page" */
@@ -39,10 +41,15 @@ const NotFoundPage = lazy(() =>
     '../../pages/NotFoundPage/NotFoundPage' /* webpackChunkName: "not-found-page" */
   ),
 );
+const OurTeamPage = lazy(() =>
+  import(
+    '../../pages/OurTeamPage/OurTeamPage' /* webpackChunkName: "team-page" */
+  ),
+);
 
 export default function Main() {
   return (
-    <main>
+    <main className={styles.main}>
       <Suspense fallback={<LoaderSpinner />}>
         <Switch>
           <PublicRoute
@@ -80,6 +87,10 @@ export default function Main() {
           <PrivateRoute path={routes.tasks} redirectedTo={routes.register}>
             <TasksPage />
           </PrivateRoute>
+
+          <PublicRoute path={routes.ourTeam}>
+            <OurTeamPage />
+          </PublicRoute>
 
           <PublicRoute>
             <NotFoundPage />
