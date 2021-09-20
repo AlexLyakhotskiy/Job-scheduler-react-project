@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 
 import Header from './Header/Header';
 import Main from './Main/Main';
+import Footer from './Footer/Footer';
 
 import { resetUser } from '../redux/auth/auth-operations';
 import { getIsResetingUser } from '../redux/auth/auth-selectors';
@@ -25,6 +26,7 @@ function App() {
       <>
         <Header />
         <Main />
+        <Footer />
       </>
     )
   );
