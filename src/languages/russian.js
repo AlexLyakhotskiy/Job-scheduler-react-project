@@ -1,4 +1,11 @@
+import { registerLocale } from 'react-datepicker';
+import ru from 'date-fns/locale/ru';
+
+const calendarLocale = 'ru';
+registerLocale(calendarLocale, ru);
+
 export const russian = {
+  calendarLocale,
   title: 'russian',
   originalTitle: 'RU',
   //originalTitle: 'русский',

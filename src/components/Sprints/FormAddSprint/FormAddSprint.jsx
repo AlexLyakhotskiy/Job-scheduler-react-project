@@ -5,9 +5,11 @@ import Input from '../../Input/Input';
 import Button from '../../Button/Button';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import 'react-datepicker/dist/react-datepicker.css';
-import { useDispatch } from 'react-redux';
+import './calendar.css';
+import { useDispatch, useSelector } from 'react-redux';
 import sprintOperations from '../../../redux/sprint/sprin-operations';
+import { getLanguage } from '../../../redux/userSettings/userSettingsSelectors.js';
+import { languages } from '../../../languages';
 import { useParams } from 'react-router';
 import CancelBtn from '../../CancelBtn/CancelBtn';
 
@@ -19,6 +21,8 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function FormAddSprint({ toggleModal }) {
+  const { calendarLocale } = languages[useSelector(getLanguage)];
+  console.log('locale ==> ', calendarLocale);
   const dispatch = useDispatch();
   const { projectId } = useParams();
 
@@ -67,8 +71,10 @@ export default function FormAddSprint({ toggleModal }) {
               <span className={s.datePickerLabel}>Дата закінчення</span>
             </label>
             <DatePicker
+              locale={calendarLocale}
               id="datePicker"
               name="date"
+              dateFormatCalendar="LLLL"
               autocomplete="off"
               minDate={null}
               dateFormat="dd MMM"
