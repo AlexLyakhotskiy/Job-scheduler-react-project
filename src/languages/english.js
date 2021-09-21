@@ -92,4 +92,8 @@ export const english = {
       btnCancel: 'Cancel',
     },
   },
+  errors: {
+    error409: 'Provided email already exists',
+    error403: 'Email or Password is wrong',
+  },
 };

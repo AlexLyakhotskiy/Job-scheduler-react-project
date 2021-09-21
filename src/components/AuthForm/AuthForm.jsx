@@ -75,70 +75,72 @@ const AuthForm = () => {
   }
 
   return (
-    <Container className={styles.container}>
-      <div className={styles.wrapper}>
-        <div className={styles.authContainer}>
-          <h2 className={styles.title}>
-            {isRegisterForm()
-              ? curLanguage.auth.authForm.signUpTitle
-              : curLanguage.auth.authForm.signInTitle}
-          </h2>
-          <form onSubmit={formik.handleSubmit}>
-            <Input
-              formik={formik}
-              name="email"
-              label={curLanguage.auth.authForm.email}
-              className={styles.input}
-            />
-            <Input
-              formik={formik}
-              name="password"
-              label={curLanguage.auth.authForm.password}
-              type="password"
-              className={styles.input}
-            />
-            {isRegisterForm() && (
+    <section className={styles.section}>
+      <Container className={styles.container}>
+        <div className={styles.wrapper}>
+          <div className={styles.authContainer}>
+            <h2 className={styles.title}>
+              {isRegisterForm()
+                ? curLanguage.auth.authForm.signUpTitle
+                : curLanguage.auth.authForm.signInTitle}
+            </h2>
+            <form onSubmit={formik.handleSubmit}>
               <Input
                 formik={formik}
-                name="confirmPassword"
-                label={curLanguage.auth.authForm.confirmPassword}
+                name="email"
+                label={curLanguage.auth.authForm.email}
+                className={styles.input}
+              />
+              <Input
+                formik={formik}
+                name="password"
+                label={curLanguage.auth.authForm.password}
                 type="password"
                 className={styles.input}
               />
-            )}
-            <Button
-              title={
-                isRegisterForm()
-                  ? curLanguage.auth.authForm.btnSignUp
-                  : curLanguage.auth.authForm.btnSignIn
-              }
-              className={styles.btn}
-            />
-          </form>
-          <div className={styles.linkWrapper}>
-            {isRegisterForm() ? (
-              <>
-                <span className={styles.text}>
-                  {curLanguage.auth.authForm.signUpQuestion}
-                </span>
-                <Link to={routes.login} className={styles.link}>
-                  {curLanguage.auth.authForm.signUpLink}
-                </Link>
-              </>
-            ) : (
-              <>
-                <span className={styles.text}>
-                  {curLanguage.auth.authForm.signInQuestion}
-                </span>
-                <Link to={routes.register} className={styles.link}>
-                  {curLanguage.auth.authForm.signInLink}
-                </Link>
-              </>
-            )}
+              {isRegisterForm() && (
+                <Input
+                  formik={formik}
+                  name="confirmPassword"
+                  label={curLanguage.auth.authForm.confirmPassword}
+                  type="password"
+                  className={styles.input}
+                />
+              )}
+              <Button
+                title={
+                  isRegisterForm()
+                    ? curLanguage.auth.authForm.btnSignUp
+                    : curLanguage.auth.authForm.btnSignIn
+                }
+                className={styles.btn}
+              />
+            </form>
+            <div className={styles.linkWrapper}>
+              {isRegisterForm() ? (
+                <>
+                  <span className={styles.text}>
+                    {curLanguage.auth.authForm.signUpQuestion}
+                  </span>
+                  <Link to={routes.login} className={styles.link}>
+                    {curLanguage.auth.authForm.signUpLink}
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <span className={styles.text}>
+                    {curLanguage.auth.authForm.signInQuestion}
+                  </span>
+                  <Link to={routes.register} className={styles.link}>
+                    {curLanguage.auth.authForm.signInLink}
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </section>
   );
 };
 

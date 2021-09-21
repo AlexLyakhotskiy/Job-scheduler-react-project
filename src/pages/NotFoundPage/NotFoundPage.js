@@ -11,8 +11,19 @@ import { routes } from '../../routes/routes';
 import styles from './NotFoundPage.module.scss';
 import Button from '../../components/Button/Button';
 import moment from 'moment';
-import ua from 'date-fns/locale/uk';
-registerLocale('ua', ua);
+
+import { getLanguage } from '../../redux/userSettings/userSettingsSelectors';
+import { useSelector } from 'react-redux';
+
+import ukrainian from 'date-fns/locale/uk';
+import russian from 'date-fns/locale/ru';
+registerLocale('ua', ukrainian);
+registerLocale('ua', russian);
+
+const chooseLang = {
+  ukrainian: ukrainian,
+  russian: russian,
+};
 
 export default function NotFoundPage() {
   return (
@@ -34,6 +45,7 @@ const validationSchema = yup.object({
 
 function Test() {
   const [isActiveLastDay, setIsActiveLastDay] = useState(false);
+  const currentLang = useSelector(getLanguage);
   const formik = useFormik({
     initialValues: { date: null },
     validationSchema,
@@ -51,7 +63,7 @@ function Test() {
           minDate={isActiveLastDay ? new Date() : null}
           selected={formik.values.date}
           onBlur={() => formik.setFieldTouched('date', true)}
-          locale={ua}
+          locale={chooseLang[currentLang]}
           onChange={date => formik.setFieldValue('date', date)}
         />
         <input

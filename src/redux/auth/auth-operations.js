@@ -9,10 +9,11 @@ import {
 
 export const signUp = createAsyncThunk(
   'auth/signUp',
-  async (user, { rejectWithValue }) => {
+  async (user, { rejectWithValue, getState }) => {
+    const currentLang = getState().userSettings.language;
     try {
-      await apiRegisterUser(user);
-      const data = await apiLoginUser(user);
+      await apiRegisterUser(user, currentLang);
+      const data = await apiLoginUser(user, currentLang);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -22,9 +23,10 @@ export const signUp = createAsyncThunk(
 
 export const signIn = createAsyncThunk(
   'auth/signIn',
-  async (user, { rejectWithValue }) => {
+  async (user, { rejectWithValue, getState }) => {
+    const currentLang = getState().userSettings.language;
     try {
-      return await apiLoginUser(user);
+      return await apiLoginUser(user, currentLang);
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -48,7 +50,7 @@ export const resetUser = createAsyncThunk('auth/reset', async (_, thunk) => {
   const stateToken = state.auth.refreshToken;
 
   if (!stateToken) {
-    return thunk.rejectWithValue('oops');
+    return thunk.rejectWithValue(null);
   }
 
   const stateSid = state.auth.sid;
