@@ -61,7 +61,6 @@ export const patchProject = createAsyncThunk(
 export const addProjectMembers = createAsyncThunk(
   'projects/addMembers',
   async ({ projectId, contributorData }, { rejectWithValue }) => {
-    console.log(contributorData);
     try {
       const addMember = await apiAddContributorProjectById(
         projectId,
