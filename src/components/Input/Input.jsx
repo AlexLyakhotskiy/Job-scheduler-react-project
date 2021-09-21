@@ -1,6 +1,5 @@
 import React from 'react';
 import shortid from 'shortid';
-//import shortid from 'shortid';
 
 import styles from './Input.module.scss';
 
@@ -24,7 +23,7 @@ export default function Input({
       <input
         type={type}
         className={`${styles.input} ${isError && styles.inputError}`}
-        placeholder="smth"
+        placeholder=" "
         name={name}
         id={inputId}
         onChange={formik.handleChange}
