@@ -5,7 +5,7 @@ import Input from '../../Input/Input';
 import Button from '../../Button/Button';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import 'react-datepicker/dist/react-datepicker.css';
+import './calendar.css';
 import { useDispatch } from 'react-redux';
 import sprintOperations from '../../../redux/sprint/sprin-operations';
 import { useParams } from 'react-router';
@@ -69,7 +69,8 @@ export default function FormAddSprint({ toggleModal }) {
             <DatePicker
               id="datePicker"
               name="date"
-              autocomplete="off"
+          dateFormatCalendar="LLLL"    
+	  autocomplete="off"
               minDate={null}
               dateFormat="dd MMM"
               className={s.date}
