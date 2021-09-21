@@ -1,0 +1,27 @@
+.btnSprintAdd {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  @media screen and (min-width: 768px) {
+    position: static;
+  }
+  @media screen and (min-width: 768px) {
+    margin-right: 20px;
+  }
+}
+
+.btnSprintAddText {
+  display: none;
+  @media screen and (min-width: 1280px) {
+    display: block;
+  }
+}
+
+.conteinerBtnAddSrint {
+  text-align: center;
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

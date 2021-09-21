@@ -4,4 +4,5 @@ export const routes = {
   projects: '/projects',
   sprints: '/projects/:projectId/sprints',
   tasks: '/projects/:projectId/sprints/:sprintId',
+  ourTeam: '/ourteam',
 };

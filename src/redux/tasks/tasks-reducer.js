@@ -1,49 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addTask, deleteTask, fetchTasks } from './tasks-operations';
+import { changeIndexCurrentDay, filterChange } from './tasks-actions';
+import { addTask, deleteTask, editTask, fetchTasks } from './tasks-operations';
 
 const initialState = {
-  allTasks: [
-    {
-      title: 'Task 1',
-      hoursPlanned: 1,
-      hoursWasted: 0,
-      hoursWastedPerDay: [
-        {
-          currentDay: '2020-12-31',
-          singleHoursWasted: 0,
-        },
-      ],
-      id: '507f1f77bcf86cd799439011',
-    },
-    {
-      title: 'Task 2',
-      hoursPlanned: 5,
-      hoursWasted: 6,
-      hoursWastedPerDay: [
-        {
-          currentDay: '2020-12-31',
-          singleHoursWasted: 0,
-        },
-      ],
-      id: '507f1f77bcf86cd799',
-    },
-  ],
+  allTasks: [],
   filter: '',
   error: null,
   loading: false,
-  sprintId: '0qW36CAdtUCw5HB0DJaG',
+  currentDayIndex: null,
 };
 
 const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
-  axtraReducers: {
+  extraReducers: {
     [addTask.pending](state) {
       state.loading = true;
     },
-    [addTask.pending](state, { payload }) {
+    [addTask.fulfilled](state, { payload }) {
       state.error = null;
-      state.task.push(payload);
+      state.allTasks.push(payload);
       state.loading = false;
     },
     [addTask.rejected](state, { payload }) {
@@ -55,10 +31,11 @@ const tasksSlice = createSlice({
     },
     [fetchTasks.fulfilled](state, { payload }) {
       state.error = null;
-      state.tasks = payload;
+      state.allTasks = payload;
       state.loading = false;
     },
     [fetchTasks.rejected](state, { payload }) {
+      state.allTasks = [];
       state.error = payload;
       state.loading = false;
     },
@@ -67,17 +44,43 @@ const tasksSlice = createSlice({
     },
     [deleteTask.fulfilled](state, { payload }) {
       state.error = null;
-      state.tasks.filter(task => task.id !== payload);
+      const removeIndex = state.allTasks.findIndex(({ id }) => id === payload);
+      state.allTasks.splice(removeIndex, 1);
       state.loading = false;
     },
     [deleteTask.rejected](state, { payload }) {
       state.error = payload;
       state.loading = false;
     },
+    [editTask.fulfilled](state, { payload }) {
+      state.error = null;
+      const editIndex = state.allTasks.findIndex(({ id }) => id === payload.id);
+      let editTask = state.allTasks[editIndex];
+      const newHoursWastedPerDay = editTask.hoursWastedPerDay.map(day => {
+        if (day.currentDay === payload.date) {
+          return { ...day, singleHoursWasted: payload.hours };
+        }
+        return day;
+      });
+      const newHoursWasted = payload.newWastedHours;
+      editTask = {
+        ...editTask,
+        hoursWastedPerDay: newHoursWastedPerDay,
+        hoursWasted: newHoursWasted,
+      };
+      state.allTasks[editIndex] = editTask;
+    },
+    [editTask.rejected](state, { payload }) {
+      state.error = payload;
+      state.loading = false;
+    },
+    [filterChange](state, { payload }) {
+      state.filter = payload;
+    },
+    [changeIndexCurrentDay](state, { payload }) {
+      state.currentDayIndex = payload;
+    },
   },
-  // [filterChange](state, { payload }) {
-  //   state.filter = payload;
-  // },
 });
 
 export default tasksSlice.reducer;

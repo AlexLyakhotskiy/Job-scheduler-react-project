@@ -1,0 +1,29 @@
+.conteinerPeopleAdd {
+  margin-bottom: 30px;
+}
+
+.iconPeopleAdd {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.btnPeopleAdd {
+  display: flex;
+
+  border: none;
+  background: none;
+  text-decoration: underline;
+
+  font-size: 18px;
+  line-height: 22px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    & use {
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    font-weight: 500;
+  }
+}

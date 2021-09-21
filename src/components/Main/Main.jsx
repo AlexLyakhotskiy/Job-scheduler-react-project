@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { lazy, Suspense } from 'react';
-import { Switch, useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
+import { Switch } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
@@ -9,6 +8,8 @@ import PrivateRoute from '../Routes/PrivateRoute';
 import PublicRoute from '../Routes/PublicRoute';
 
 import { routes } from '../../routes/routes';
+
+import styles from './Main.module.scss';
 
 const LoginPage = lazy(() =>
   import(
@@ -40,21 +41,15 @@ const NotFoundPage = lazy(() =>
     '../../pages/NotFoundPage/NotFoundPage' /* webpackChunkName: "not-found-page" */
   ),
 );
+const OurTeamPage = lazy(() =>
+  import(
+    '../../pages/OurTeamPage/OurTeamPage' /* webpackChunkName: "team-page" */
+  ),
+);
 
 export default function Main() {
-  const history = useHistory();
-  const isLoggedIn = useSelector(() => true);
-  //  const dispatch = useDispatch();
-
-  useEffect(() => {
-    (async () => {
-      // await dispatch(resetUser();
-      !isLoggedIn && history.replace('/register');
-    })();
-  }, [history, isLoggedIn]);
-
   return (
-    <main>
+    <main className={styles.main}>
       <Suspense fallback={<LoaderSpinner />}>
         <Switch>
           <PublicRoute
@@ -92,6 +87,10 @@ export default function Main() {
           <PrivateRoute path={routes.tasks} redirectedTo={routes.register}>
             <TasksPage />
           </PrivateRoute>
+
+          <PublicRoute path={routes.ourTeam}>
+            <OurTeamPage />
+          </PublicRoute>
 
           <PublicRoute>
             <NotFoundPage />

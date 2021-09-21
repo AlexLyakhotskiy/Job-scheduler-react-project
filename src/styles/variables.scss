@@ -3,19 +3,27 @@ $mainFont: 'Montserrat', sans-serif;
 //animation
 $trans-func: linear;
 $trans-dur: 250ms;
+//shadow
 $shadow-auth: 0px 6px 26px rgba(0, 5, 97, 0.1);
 $shadow-btn: 0px 3px 4px rgba(255, 107, 8, 0.3);
 $shadow-project-hover: 0px 4px 4px rgba(0, 0, 0, 0.25);
 $shadow-modal: 0px 6px 26px rgba(0, 5, 97, 0.1);
-
 //colors
 @mixin light-theme {
   --color-main-text: #000000;
   --color-main-title: #181c27;
   --color-main-background: #f1f2f7;
+  --color-auth-background: #fafafa;
 
-  --color-input-text: rgba(24, 28, 39, 0.6);
+  --color-card-background: #ffffff;
   --color-card-text: #ffffff;
+  --color-modal-background: #ffffff;
+
+  --color-input-text: #181c27;
+  --color-label-input: rgba(24, 28, 39, 0.6);
+  --color-input-border: rgba(24, 28, 39, 0.2);
+  --color-input-background: #ffffff;
+  --color-input-error: #ff0000;
 
   --color-btn-text: #ffffff;
   --color-secondary-btn-background: #a6a6a6;
