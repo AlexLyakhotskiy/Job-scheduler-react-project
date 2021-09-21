@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import sprintOperations from '../../../redux/sprint/sprin-operations';
 import { useParams } from 'react-router';
 import CancelBtn from '../../CancelBtn/CancelBtn';
+import { useState } from 'react';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Поле обов'язкове!"),
@@ -21,6 +22,8 @@ const validationSchema = Yup.object().shape({
 export default function FormAddSprint({ toggleModal }) {
   const dispatch = useDispatch();
   const { projectId } = useParams();
+
+  const [check, setCheck] = useState(false);
 
   const formik = useFormik({
     initialValues: { title: '', duration: '', date: new Date() },
@@ -53,10 +56,11 @@ export default function FormAddSprint({ toggleModal }) {
         />
         <input
           className={s.checkbox}
-          name="color"
+          name="check"
           type="checkbox"
           id="green"
           value="green"
+          onChange={() => setCheck(!check)}
         />
         <label className={s.checkboxLabel} htmlFor="green">
           Попередні дні
@@ -70,7 +74,7 @@ export default function FormAddSprint({ toggleModal }) {
               id="datePicker"
               name="date"
               autocomplete="off"
-              minDate={null}
+              minDate={check ? new Date() : null}
               dateFormat="dd MMM"
               className={s.date}
               selected={formik.values.date}

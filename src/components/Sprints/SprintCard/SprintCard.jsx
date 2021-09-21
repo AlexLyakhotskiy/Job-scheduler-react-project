@@ -31,7 +31,10 @@ const SprintCard = () => {
           <ul className={s.sprintCardList}>
             {sprints?.length > 0 &&
               sprints.map(sprint => (
-                <li key={sprint._id} className={s.sprintCardItem}>
+                <li
+                  key={sprint._id}
+                  className={`${s.sprintCardItem} ${s.slitVertical}`}
+                >
                   <Link
                     to={`${url}/${sprint._id}`}
                     className={s.sprintCardLink}

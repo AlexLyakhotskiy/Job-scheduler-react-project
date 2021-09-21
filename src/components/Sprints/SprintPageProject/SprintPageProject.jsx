@@ -26,7 +26,7 @@ const SprintPageProject = ({ projects }) => {
                 to={`${routes.projects}/${project._id}/sprints`}
                 className={s.projectLink}
               >
-                <span>{project.title}</span>
+                <span className={s.title}>{project.title}</span>
               </Link>
             </li>
           ))}
