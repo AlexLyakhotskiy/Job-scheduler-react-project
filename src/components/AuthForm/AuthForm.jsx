@@ -104,21 +104,23 @@ const AuthForm = () => {
               className={styles.btn}
             />
           </form>
-          {isRegisterForm() ? (
-            <>
-              <span className={styles.text}>Маєте акаунт?</span>
-              <Link to={routes.login} className={styles.link}>
-                увійти
-              </Link>
-            </>
-          ) : (
-            <>
-              <span className={styles.text}>Немає акаунту?</span>
-              <Link to={routes.register} className={styles.link}>
-                зареєструватись
-              </Link>
-            </>
-          )}
+          <div className={styles.linkWrapper}>
+            {isRegisterForm() ? (
+              <>
+                <span className={styles.text}>Маєте акаунт?</span>
+                <Link to={routes.login} className={styles.link}>
+                  увійти
+                </Link>
+              </>
+            ) : (
+              <>
+                <span className={styles.text}>Немає акаунту?</span>
+                <Link to={routes.register} className={styles.link}>
+                  зареєструватись
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </Container>
