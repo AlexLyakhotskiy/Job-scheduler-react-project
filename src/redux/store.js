@@ -13,6 +13,12 @@ import storage from 'redux-persist/lib/storage';
 
 import sprintSlice from './sprint/sprin-slice';
 import allProjectsReducers from './projects/projectReducer';
+
+import tasksReducer from './tasks/tasks-reducer';
+
+// примеры импорта редюсиров
+// import contactsReducer from './contacts/contacts-reducer';
+// import authReducer from './auth/auth-reducer';
 import authReducer from './auth/auth-reducer';
 import { userSettingsReducer } from './userSettings/userSettingsReducer';
 
@@ -38,6 +44,7 @@ const persistConfigUserSettings = {
 
 export const store = configureStore({
   reducer: {
+    tasks: tasksReducer,
     auth: persistReducer(persistConfigAuth, authReducer),
     userSettings: persistReducer(
       persistConfigUserSettings,
@@ -45,7 +52,6 @@ export const store = configureStore({
     ),
     sprints: sprintSlice,
     projects: allProjectsReducers,
-    tasks: () => '',
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

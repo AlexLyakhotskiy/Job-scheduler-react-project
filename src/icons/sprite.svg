@@ -47,5 +47,8 @@
 <path fill="#fff" style="fill: var(--color2, #fff); stroke: var(--color2, #fff)" stroke="#fff" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" stroke-width="0.7619" d="M74.033 9.542h2.968v13.42h-2.968v-13.42z"></path>
 <path fill="#fff" style="fill: var(--color2, #fff); stroke: var(--color2, #fff)" stroke="#fff" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="10" stroke-width="0.7619" d="M85.783 12.265h-4.106v-2.722h11.179v2.722h-4.105v10.697h-2.968v-10.697z"></path>
 </symbol>
+<symbol id="icon-heart" viewBox="0 0 32 32">
+<path fill="#ff6b09" style="fill: var(--color1, #ff6b09)" d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z"></path>
+</symbol>
 </defs>
 </svg>
