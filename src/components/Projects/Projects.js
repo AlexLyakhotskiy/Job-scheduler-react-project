@@ -11,11 +11,13 @@ import Modal from '../Modal/Modal';
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner.jsx';
 import s from '../Projects/Projects.module.scss';
 import AddProjectsForm from '../AddProjectsForm/AddProjectsForm';
+import { getCurrentLanguage } from '../../redux/userSettings/userSettingsSelectors';
 
 const Projects = () => {
   const dispatch = useDispatch();
   const projects = useSelector(getProjectsList);
   const isLoading = useSelector(getIsLoading);
+  const curLanguage = useSelector(getCurrentLanguage);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -31,10 +33,12 @@ const Projects = () => {
     <>
       <div className={s.projectsContainer}>
         <div className={s.projectsHeader}>
-          <h1 className={s.title}>Проекти</h1>
+          <h1 className={s.title}>{curLanguage.projects.pageTitle}</h1>
           <label className={s.labeladdBtn}>
             <IconBtn onClick={toggleModal} icon="add" className={s.addBtn} />
-            <span className={s.textAddBtn}>Створити проект</span>
+            <span className={s.textAddBtn}>
+              {curLanguage.projects.pageAddBtn}
+            </span>
           </label>
         </div>
 
