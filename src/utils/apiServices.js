@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { languages } from '../languages/';
+
 axios.defaults.baseURL = 'https://sbc-backend.goit.global/';
 
 // обьект с двумя мотодами, добавить токен в заголовок запроса
@@ -17,23 +19,29 @@ const apiToken = {
 // ========================= для authOperations =============================
 
 // userData это обьект с двумя ключами 'email' и 'password'
-export async function apiRegisterUser(userData) {
+export async function apiRegisterUser(userData, lang) {
   try {
     const { data } = await axios.post('/auth/register', userData);
     apiToken.set(data.accessToken);
     return data;
   } catch (error) {
+    if (error.response.status === 409) {
+      throw new Error(languages[lang].errors.error409);
+    }
     throw new Error(error);
   }
 }
 
 // userData это обьект с двумя ключами 'email' и 'password'
-export async function apiLoginUser(userData) {
+export async function apiLoginUser(userData, lang) {
   try {
     const { data } = await axios.post('/auth/login', userData);
     apiToken.set(data.accessToken);
     return data;
   } catch (error) {
+    if (error.response.status === 403) {
+      throw new Error(languages[lang].errors.error403);
+    }
     throw new Error(error);
   }
 }

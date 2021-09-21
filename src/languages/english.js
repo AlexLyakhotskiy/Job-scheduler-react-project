@@ -1,4 +1,11 @@
+import { registerLocale } from 'react-datepicker';
+import en from 'date-fns/locale/en-GB';
+
+const calendarLocale = 'en';
+registerLocale(calendarLocale, en);
+
 export const english = {
+  calendarLocale,
   title: 'english',
   originalTitle: 'EN',
   //originalTitle: 'english',
@@ -91,5 +98,9 @@ export const english = {
       btnAdd: 'Create',
       btnCancel: 'Cancel',
     },
+  },
+  errors: {
+    error409: 'Provided email already exists',
+    error403: 'Email or Password is wrong',
   },
 };
