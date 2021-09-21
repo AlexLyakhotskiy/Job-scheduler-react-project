@@ -15,19 +15,15 @@ const validationSchema = Yup.object().shape({
   title: Yup.string().required("Поле обов'язкове!"),
   //   date: Yup.date(),
   date: Yup.date().required("Поле обов'язкове!"),
-  duration: Yup.number().required("Поле обов'язкове!"),
+  duration: Yup.number().required("Поле обов'язкове!").min(2, 'Min is 2 day'),
 });
 
 export default function FormAddSprint({ toggleModal }) {
   const dispatch = useDispatch();
   const { projectId } = useParams();
 
-  //стартовая дата в форме
-  const startDate = moment().format('D MMM');
-  console.log(startDate);
-
   const formik = useFormik({
-    initialValues: { title: '', duration: '', date: '' },
+    initialValues: { title: '', duration: '', date: new Date() },
     validationSchema,
     onSubmit: ({ title, duration, date }) => {
       const endDate = moment(date).format('YYYY-M-D');
@@ -75,6 +71,7 @@ export default function FormAddSprint({ toggleModal }) {
               name="date"
               autocomplete="off"
               minDate={null}
+              dateFormat="dd MMM"
               className={s.date}
               selected={formik.values.date}
               onChange={date => {
