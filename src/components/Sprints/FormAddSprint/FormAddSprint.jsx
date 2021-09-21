@@ -12,11 +12,11 @@ import { getLanguage } from '../../../redux/userSettings/userSettingsSelectors.j
 import { languages } from '../../../languages';
 import { useParams } from 'react-router';
 import CancelBtn from '../../CancelBtn/CancelBtn';
+import { useState } from 'react';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Поле обов'язкове!"),
-  //   date: Yup.date(),
-  date: Yup.date().required("Поле обов'язкове!"),
+  date: Yup.date().nullable().required("Поле обов'язкове!"),
   duration: Yup.number().required("Поле обов'язкове!").min(2, 'Min is 2 day'),
 });
 
@@ -25,6 +25,8 @@ export default function FormAddSprint({ toggleModal }) {
   console.log('locale ==> ', calendarLocale);
   const dispatch = useDispatch();
   const { projectId } = useParams();
+
+  const [check, setCheck] = useState(false);
 
   const formik = useFormik({
     initialValues: { title: '', duration: '', date: new Date() },
@@ -57,10 +59,11 @@ export default function FormAddSprint({ toggleModal }) {
         />
         <input
           className={s.checkbox}
-          name="color"
+          name="check"
           type="checkbox"
           id="green"
           value="green"
+          onChange={() => setCheck(!check)}
         />
         <label className={s.checkboxLabel} htmlFor="green">
           Попередні дні
@@ -71,12 +74,13 @@ export default function FormAddSprint({ toggleModal }) {
               <span className={s.datePickerLabel}>Дата закінчення</span>
             </label>
             <DatePicker
+              onBlur={() => formik.setFieldTouched('date', true)}
               locale={calendarLocale}
               id="datePicker"
               name="date"
               dateFormatCalendar="LLLL"
               autocomplete="off"
-              minDate={null}
+              minDate={check ? null : new Date()}
               dateFormat="dd MMM"
               className={s.date}
               selected={formik.values.date}
@@ -84,6 +88,9 @@ export default function FormAddSprint({ toggleModal }) {
                 formik.setFieldValue('date', date);
               }}
             />
+            {formik.errors.date && formik.touched.date && (
+              <span className={s.errorsDate}>{formik.errors.date}</span>
+            )}
           </div>
 
           <Input
