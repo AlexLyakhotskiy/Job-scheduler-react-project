@@ -1,11 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://sbc-backend.goit.global';
-
-const token =
-  (axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MTQzMTk1ZmY0YTZjMDNkYjhjYzhiZDMiLCJzaWQiOiI2MTQ4NDkwN2Y0YTZjMDNkYjhjYzkwMmQiLCJpYXQiOjE2MzIxMjcyMzksImV4cCI6MTYzMjEzMDgzOX0.c8QXZGKQ4tQ7UeumdW553v4ImDdazP8xignforOhZso`);
-
 export const addTask = createAsyncThunk(
   'tasks/addTask',
   async (task, { rejectWithValue }) => {
