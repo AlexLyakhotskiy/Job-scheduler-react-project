@@ -15,12 +15,14 @@ export default function UserMenu() {
   const handleLogOut = () => dispatch(logout());
 
   return (
-    <div className={styles.userContainer}>
-      <p className={styles.text}>{email.slice(0, email.indexOf('@'))}</p>
-      <button className={styles.btn} type="button" onClick={handleLogOut}>
-        <Svg icon="#icon-exit" className={styles.icon} />
-        <span className={styles.btnText}>Log Out</span>
-      </button>
-    </div>
+    <>
+      <div className={styles.userContainer}>
+        <p className={styles.text}>{email.slice(0, email.indexOf('@'))}</p>
+        <button className={styles.btn} type="button" onClick={handleLogOut}>
+          <Svg icon="#icon-exit" className={styles.icon} />
+          <span className={styles.btnText}>Log Out</span>
+        </button>
+      </div>
+    </>
   );
 }

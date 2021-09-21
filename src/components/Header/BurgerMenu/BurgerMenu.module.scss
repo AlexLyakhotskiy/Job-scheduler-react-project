@@ -1,31 +1,67 @@
-@import '../../styles/variables.scss';
+@import '../../../styles/variables.scss';
 
-.header {
-  padding-top: 14px;
-  padding-bottom: 16px;
-
-  border-bottom: 1px solid var(--color-input-border);
-
-  @media screen and (min-width: 768px) {
-    padding: 19px 0;
-  }
+/* стилизуем кнопку */
+.menu__btn {
+  display: flex; /* используем flex для центрирования содержимого */
+  align-items: center; /* центрируем содержимое кнопки */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+  border: 0px;
+}
+/* добавляем "гамбургер" */
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  height: 4px;
+  background-color: var(--color-main-title);
+  border-radius: 3px;
+}
+.menu__btn > span::before {
+  content: '';
+  top: -8px;
+}
+.menu__btn > span::after {
+  content: '';
+  top: 8px;
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  transition-duration: 0.25s;
+}
+.menu__box {
+  transition-duration: 0.25s;
+}
+.menu__item {
+  transition-duration: 0.25s;
 }
 
-///////////////////@at-root
+/////
 .userContainer {
-  display: inline-flex;
+  display: block;
   align-items: center;
+  display: block;
+  position: fixed;
+  width: 150px;
+  right: 50px;
+  top: 0px;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  background-color: #cad8e2;
 }
 
 .text {
-  margin-right: 20px;
-
   color: var(--color-main-title);
   font-weight: 600;
   font-size: 14px;
