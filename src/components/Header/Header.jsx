@@ -8,6 +8,7 @@ import UserMenu from './UserMenu/UserMenu';
 import { getIsLoggedIn } from '../../redux/auth/auth-selectors';
 
 import styles from './Header.module.scss';
+import SelectLang from './SelectLang/SelectLang';
 
 export default function Header() {
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -15,7 +16,10 @@ export default function Header() {
     <header className={styles.header}>
       <Container className={styles.container}>
         <Logo />
-        {isLoggedIn && <UserMenu />}
+        <div>
+          {isLoggedIn && <UserMenu />}
+          <SelectLang />
+        </div>
       </Container>
     </header>
   );

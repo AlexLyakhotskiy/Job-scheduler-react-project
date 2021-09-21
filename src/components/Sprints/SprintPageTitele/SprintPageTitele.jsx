@@ -9,7 +9,7 @@ const SprintPageTitele = ({ nowProject, projectId }) => {
   const dispatch = useDispatch();
 
   const [isInputOpen, setInputOpen] = useState(false);
-  const [isProjectTitel, setProjectTitel] = useState(nowProject.title);
+  const [isProjectTitel, setProjectTitel] = useState('title');
   const toggleInput = () => setInputOpen(state => !state);
 
   const handelSubmit = e => {
@@ -26,7 +26,6 @@ const SprintPageTitele = ({ nowProject, projectId }) => {
   }, [projectId, nowProject.title]);
 
   const handleIputChange = e => {
-    console.log(e.currentTarget.value);
     setProjectTitel(e.currentTarget.value);
   };
 
