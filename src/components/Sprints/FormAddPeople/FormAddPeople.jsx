@@ -32,8 +32,6 @@ export default function FormAddPeople({ toggleModal }) {
           contributorData: values,
         }),
       );
-
-      toggleModal();
     },
   });
 
@@ -62,7 +60,7 @@ export default function FormAddPeople({ toggleModal }) {
 
         <Button className={s.btnAddPeople} />
       </form>
-      <CancelBtn onClick={() => toggleModal()} />
+      <CancelBtn onClick={toggleModal} />
     </>
   );
 }

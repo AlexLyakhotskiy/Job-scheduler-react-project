@@ -16,6 +16,14 @@
     align-items: center;
     justify-content: start;
   }
+  &:active,
+  &:hover,
+  &:focus {
+    font-weight: 550;
+    & .arrow {
+      fill: var(--color-btn-background-hover);
+    }
+  }
 }
 
 .btGoBackTitel {
