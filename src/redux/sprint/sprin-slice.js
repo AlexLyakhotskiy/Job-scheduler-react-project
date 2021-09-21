@@ -4,7 +4,7 @@ import sprintOperations from './sprin-operations';
 const initialState = {
   items: null,
   isLoading: false,
-  titelProject: null,
+
   error: null,
 };
 
