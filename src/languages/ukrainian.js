@@ -1,11 +1,11 @@
-import {registerLocale} from 'react-datepicker'
-import uk from 'date-fns/locale/uk'
+import { registerLocale } from 'react-datepicker';
+import uk from 'date-fns/locale/uk';
 
-const calendarLocale='uk'
-registerLocale(calendarLocale,uk)
+const calendarLocale = 'uk';
+registerLocale(calendarLocale, uk);
 
 export const ukrainian = {
-	calendarLocale,
+  calendarLocale,
   title: 'ukrainian',
   originalTitle: 'UA',
   //originalTitle: 'українська',
