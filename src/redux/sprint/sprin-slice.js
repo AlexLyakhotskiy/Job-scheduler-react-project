@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { sprintClearState } from './sprin-actions';
 import sprintOperations from './sprin-operations';
 
 const initialState = {
@@ -12,12 +13,17 @@ const sprintSlice = createSlice({
   name: 'sprints',
   initialState,
   extraReducers: {
+    [sprintClearState](state) {
+      state.items = null;
+    },
+
     // getSprint
     [sprintOperations.getSprint.pending](state, { payload }) {
       state.isLoading = true;
     },
     [sprintOperations.getSprint.fulfilled](state, { payload }) {
       state.items = payload.sprints;
+
       state.isLoading = false;
       state.isLogIn = true;
     },
@@ -32,7 +38,7 @@ const sprintSlice = createSlice({
     },
     [sprintOperations.postSprint.fulfilled](state, { payload }) {
       const newPayload = { ...payload, _id: payload.id };
-      state.items = [...state?.items, newPayload];
+      state.items = [...(state.items || []), newPayload];
       state.isLogIn = true;
       state.isLoading = false;
     },

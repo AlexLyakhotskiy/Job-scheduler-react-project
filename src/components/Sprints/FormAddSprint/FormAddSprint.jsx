@@ -14,8 +14,7 @@ import { useState } from 'react';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Поле обов'язкове!"),
-  //   date: Yup.date(),
-  date: Yup.date().required("Поле обов'язкове!"),
+  date: Yup.date().nullable().required("Поле обов'язкове!"),
   duration: Yup.number().required("Поле обов'язкове!").min(2, 'Min is 2 day'),
 });
 
@@ -71,10 +70,11 @@ export default function FormAddSprint({ toggleModal }) {
               <span className={s.datePickerLabel}>Дата закінчення</span>
             </label>
             <DatePicker
+              onBlur={() => formik.setFieldTouched('date', true)}
               id="datePicker"
               name="date"
               autocomplete="off"
-              minDate={check ? new Date() : null}
+              minDate={check ? null : new Date()}
               dateFormat="dd MMM"
               className={s.date}
               selected={formik.values.date}
@@ -82,6 +82,9 @@ export default function FormAddSprint({ toggleModal }) {
                 formik.setFieldValue('date', date);
               }}
             />
+            {formik.errors.date && formik.touched.date && (
+              <span className={s.errorsDate}>{formik.errors.date}</span>
+            )}
           </div>
 
           <Input

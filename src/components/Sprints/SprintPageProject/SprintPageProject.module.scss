@@ -27,7 +27,7 @@
   margin-bottom: 150px;
 
   @media screen and (min-width: 1280px) {
-    max-height: 320px;
+    max-height: 440px;
   }
 }
 .title {
@@ -57,11 +57,9 @@
     height: 35px;
   }
 
-  &:active,
-  &:hover,
-  &:focus {
+  &:hover {
     & span {
-      font-weight: 550;
+      color: var(--color-btn-background-hover);
     }
     &::before {
       z-index: -1;
@@ -97,6 +95,11 @@
   height: 36px;
   border-radius: 6px;
   z-index: -1;
+}
+.active {
+  & .title {
+    font-weight: 700;
+  }
 }
 
 //Стили скрола

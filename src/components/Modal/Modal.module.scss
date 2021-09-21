@@ -91,3 +91,66 @@
     background-color: var(--color-btn-background);
   }
 }
+
+//Анимация закрытия модалки
+.closeModalAnimate {
+  -webkit-animation: closeModalAnimate 0.45s
+    cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  animation: modal 0.45s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+@-webkit-keyframes closeModalAnimate {
+  0% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+    transform: rotate3d(1, 1, 0, 0deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate3d(1, 1, 0, 70deg);
+    transform: rotate3d(1, 1, 0, 70deg);
+    opacity: 0;
+  }
+}
+@keyframes closeModalAnimate {
+  0% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+    transform: rotate3d(1, 1, 0, 0deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate3d(1, 1, 0, 70deg);
+    transform: rotate3d(1, 1, 0, 70deg);
+    opacity: 0;
+  }
+}
+// Анимация открытия модалки
+
+.modal {
+  -webkit-animation: modal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: modal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes modal {
+  0% {
+    -webkit-transform: rotateX(-30deg) translateX(300px) skewX(30deg);
+    transform: rotateX(-30deg) translateX(300px) skewX(30deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0deg) translateX(0) skewX(0deg);
+    transform: rotateX(0deg) translateX(0) skewX(0deg);
+    opacity: 1;
+  }
+}
+@keyframes modal {
+  0% {
+    -webkit-transform: rotateX(-30deg) translateX(300px) skewX(30deg);
+    transform: rotateX(-30deg) translateX(300px) skewX(30deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0deg) translateX(0) skewX(0deg);
+    transform: rotateX(0deg) translateX(0) skewX(0deg);
+    opacity: 1;
+  }
+}
