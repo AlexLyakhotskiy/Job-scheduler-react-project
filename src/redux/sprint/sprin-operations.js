@@ -54,12 +54,12 @@ const postSprint = createAsyncThunk(
 
 const patchSprint = createAsyncThunk(
   '/sprint/patchSprint',
-  async ({ id, newTitle }, { rejectWithValue }) => {
+  async ({ id, title }, { rejectWithValue }) => {
     try {
       const { data } = await axios.patch(`sprint/title/${id}`, {
-        title: newTitle,
+        title: title,
       });
-      return { data, id };
+      return { ...data, id };
     } catch (error) {
       if (error.response.status === 400) {
         return rejectWithValue('Bad request (invalid id) / No token provided');

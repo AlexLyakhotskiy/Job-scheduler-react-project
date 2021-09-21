@@ -8,8 +8,6 @@ const SprintPagination = ({ tasks }) => {
   const currentDayIndex = useSelector(getCurrentDayIndexSelector);
   const dispatch = useDispatch();
 
-  console.log(`tasks`, tasks);
-
   const duration = tasks[0].hoursWastedPerDay.length;
 
   const findCurrentDay = () => {
@@ -24,12 +22,6 @@ const SprintPagination = ({ tasks }) => {
   useEffect(() => {
     dispatch(changeIndexCurrentDay(findCurrentDay() + 1));
   }, [tasks]);
-
-  console.log(`currentDayIndex`, currentDayIndex);
-  console.log(
-    `tasks[0].hoursWastedPerDay[currentDayIndex - 1]`,
-    tasks[0].hoursWastedPerDay[currentDayIndex - 1],
-  );
 
   const currentDate =
     currentDayIndex &&

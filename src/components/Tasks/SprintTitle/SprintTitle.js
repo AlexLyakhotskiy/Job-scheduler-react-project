@@ -25,7 +25,7 @@ const SprintTitle = ({ sprints }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    dispatch(sprintOperations.patchSprint({ id: sprintId, newTitle: title }));
+    dispatch(sprintOperations.patchSprint({ id: sprintId, title: title }));
     toggleInputTitle();
   };
 

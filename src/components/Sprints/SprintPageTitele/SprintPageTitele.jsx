@@ -26,7 +26,6 @@ const SprintPageTitele = ({ nowProject, projectId }) => {
   }, [projectId, nowProject.title]);
 
   const handleIputChange = e => {
-    console.log(e.currentTarget.value);
     setProjectTitel(e.currentTarget.value);
   };
 

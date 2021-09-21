@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import TaskItem from './TaskItem/TaskItem';
 import styles from './Tasks.module.scss';
-import Container from '../Container/Container';
 import { useEffect, useState } from 'react';
 import { addTask, fetchTasks } from '../../redux/tasks/tasks-operations';
+import AddTaskForm from './AddTaskForm/AddTaskForm';
 import IconBtn from '../IconBtn/IconBtn';
 import {
   getFilterTasksSelector,
@@ -17,14 +17,13 @@ import { useParams } from 'react-router';
 import SprintPagination from './SprintPagination/SprintPagination';
 import SideBar from './SideBar/SideBar';
 import TableHeader from './TableHeader/TableHeader';
-import Loader from 'react-loader-spinner';
 import sprintOperations from '../../redux/sprint/sprin-operations';
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 
-const initialState = {
-  title: '',
-  hoursPlanned: '',
-};
+// const initialState = {
+//   title: '',
+//   hoursPlanned: '',
+// };
 
 const Tasks = () => {
   const tasks = useSelector(getTasksSelector);
@@ -36,7 +35,6 @@ const Tasks = () => {
   const { sprintId, projectId } = useParams();
   const dispatch = useDispatch();
 
-  const [task, setTask] = useState({ ...initialState });
   const [openModal, setOpenModal] = useState(false);
   const [showChart, setShowChart] = useState(false);
 
@@ -54,29 +52,6 @@ const Tasks = () => {
   const toggleModal = () => {
     setOpenModal(prev => !prev);
   };
-
-  const onHandleChange = e => {
-    const { name, value } = e.target;
-    setTask({ ...task, [name]: value });
-  };
-
-  const onSubmit = e => {
-    e.preventDefault();
-    dispatch(
-      addTask({
-        title: task.title,
-        hoursPlanned: task.hoursPlanned,
-        sprintId: sprintId,
-      }),
-    );
-    toggleModal();
-    setTask({
-      title: '',
-      hoursPlanned: '',
-    });
-  };
-
-  console.log('tasks', tasks);
 
   return (
     <section className={styles.sprintSection}>
@@ -134,31 +109,7 @@ const Tasks = () => {
       )}
       {openModal && (
         <Modal closeModal={toggleModal}>
-          <h2>Створення задачі</h2>
-          <form className={styles.addForm} onSubmit={onSubmit}>
-            <input
-              className={styles.formInp}
-              type="text"
-              name="title"
-              value={task.title}
-              onChange={onHandleChange}
-              required
-            ></input>
-            <input
-              className={styles.formInp}
-              type="number"
-              name="hoursPlanned"
-              value={task.hoursPlanned}
-              onChange={onHandleChange}
-              required
-            ></input>
-            <button className={styles.formSaveBtn} type="submit">
-              Готово
-            </button>
-            <button className={styles.formCancelBtn} onClick={toggleModal}>
-              Відміна
-            </button>
-          </form>
+          <AddTaskForm toggleModal={toggleModal} sprintId={sprintId} />
         </Modal>
       )}
     </section>
