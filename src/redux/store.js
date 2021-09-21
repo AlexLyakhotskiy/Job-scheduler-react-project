@@ -14,6 +14,7 @@ import storage from 'redux-persist/lib/storage';
 import sprintSlice from './sprint/sprin-slice';
 import allProjectsReducers from './projects/projectReducer';
 import authReducer from './auth/auth-reducer';
+import { userSettingsReducer } from './userSettings/userSettingsReducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -29,9 +30,19 @@ const persistConfigAuth = {
   whitelist: ['user', 'refreshToken', 'sid'],
 };
 
+const persistConfigUserSettings = {
+  key: 'userSettings',
+  storage,
+  whitelist: ['language'],
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfigAuth, authReducer),
+    userSettings: persistReducer(
+      persistConfigUserSettings,
+      userSettingsReducer,
+    ),
     sprints: sprintSlice,
     projects: allProjectsReducers,
     tasks: () => '',

@@ -6,7 +6,8 @@ $trans-dur: 250ms;
 //shadow
 $shadow-auth: 0px 6px 26px rgba(0, 5, 97, 0.1);
 $shadow-btn: 0px 3px 4px rgba(255, 107, 8, 0.3);
-$shadow-project-hover: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$shadow-project-hover: 0px 4px 4px;
+//$shadow-project-hover: 0px 4px 4px rgba(0, 0, 0, 0.25);
 $shadow-modal: 0px 6px 26px rgba(0, 5, 97, 0.1);
 //colors
 @mixin light-theme {
