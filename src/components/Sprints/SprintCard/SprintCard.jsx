@@ -4,6 +4,7 @@ import { Link, useRouteMatch, useParams } from 'react-router-dom';
 import sprintOperations from '../../../redux/sprint/sprin-operations';
 import allSelectors from '../../../redux/sprint/sprin-selectors';
 import IconBtn from '../../IconBtn/IconBtn';
+import moment from 'moment';
 import s from './SprintCard.module.scss';
 
 const SprintCard = () => {
@@ -40,11 +41,13 @@ const SprintCard = () => {
                       <ul>
                         <li className={s.sprintItem}>
                           <span className={s.sprintText}>Дата початку</span>
-                          <span>{sprint.startDate}</span>
+                          <span>
+                            {moment(sprint.startDate).format('D MMM')}
+                          </span>
                         </li>
                         <li className={s.sprintItem}>
                           <span className={s.sprintText}>Дата закінченя</span>
-                          <span>{sprint.endDate}</span>
+                          <span>{moment(sprint.endDate).format('D MMM')}</span>
                         </li>
                         <li className={s.sprintItem}>
                           <span className={s.sprintText}>Тривалість</span>
