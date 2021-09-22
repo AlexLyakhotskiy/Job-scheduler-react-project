@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.tasksWrapper .tasksSection {
+.tasksSection {
   display: flex;
 }
 
@@ -51,24 +51,19 @@
 
 .addTask {
   position: fixed;
-  right: 20px;
+  right: 70px;
   bottom: 20px;
   @media screen and (min-width: 768px) {
-    position: absolute;
-    margin: 0;
-    right: 70px;
+    right: 50px;
     top: 155px;
     bottom: auto;
-    // top: 155px;
-    // right: 70px;
   }
   @media screen and (min-width: 1280px) {
     position: absolute;
     display: flex;
     align-items: center;
-    margin-right: 20px;
-    // right: 70px;
-    // top: -600px;
+    right: 0;
+    top: 90px;
   }
 }
 
@@ -86,13 +81,15 @@
 }
 
 .chartBtn {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
+  position: absolute;
+  @media screen and (max-width: 767px) {
+    left: 20px;
+    bottom: 20px;
+  }
+
   @media screen and (min-width: 768px) {
-    right: 80px;
-    bottom: 115px;
-    left: auto;
+    left: 20px;
+    // bottom: 115px;
   }
 }
 
@@ -101,12 +98,3 @@
     display: none;
   }
 }
-
-// .relative {
-//   @media screen and (min-width: 768px) {
-//     position: relative;
-//   }
-//   @media screen and (min-width: 1280) {
-//     position: relative;
-//   }
-// }
