@@ -20,6 +20,7 @@ import tasksReducer from './tasks/tasks-reducer';
 // import contactsReducer from './contacts/contacts-reducer';
 // import authReducer from './auth/auth-reducer';
 import authReducer from './auth/auth-reducer';
+import { userSettingsReducer } from './userSettings/userSettingsReducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -35,10 +36,20 @@ const persistConfigAuth = {
   whitelist: ['user', 'refreshToken', 'sid'],
 };
 
+const persistConfigUserSettings = {
+  key: 'userSettings',
+  storage,
+  whitelist: ['language'],
+};
+
 export const store = configureStore({
   reducer: {
     tasks: tasksReducer,
     auth: persistReducer(persistConfigAuth, authReducer),
+    userSettings: persistReducer(
+      persistConfigUserSettings,
+      userSettingsReducer,
+    ),
     sprints: sprintSlice,
     projects: allProjectsReducers,
   },

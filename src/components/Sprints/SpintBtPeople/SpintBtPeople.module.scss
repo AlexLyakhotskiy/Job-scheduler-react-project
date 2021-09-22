@@ -1,5 +1,8 @@
 .conteinerPeopleAdd {
   margin-bottom: 30px;
+  @media screen and (min-width: 768px) {
+    padding-left: 20px;
+  }
 }
 
 .iconPeopleAdd {
@@ -10,6 +13,7 @@
 
 .btnPeopleAdd {
   display: flex;
+  padding-left: 0px;
 
   border: none;
   background: none;

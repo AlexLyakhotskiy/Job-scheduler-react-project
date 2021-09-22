@@ -11,7 +11,7 @@ const getSprint = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(`sprint/${id}`);
-      return data;
+      return Array.isArray(data?.sprints) ? data : { sprints: [] };
     } catch (error) {
       if (error.response.status === 400) {
         return rejectWithValue('Bad request (invalid id) / No token provided');

@@ -15,7 +15,7 @@ const SpintBtAddSprint = ({ projectId }) => {
     <>
       <div className={s.conteinerBtnAddSrint} onClick={toggleModal}>
         <IconBtn icon={'add'} className={s.btnSprintAdd} />
-        <span className={s.btnSprintAddText}>Создать спринт</span>
+        <span className={s.btnSprintAddText}>Створити спринт</span>
       </div>
       {showModal && (
         <Modal closeModal={toggleModal}>
