@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import TaskItem from './TaskItem/TaskItem';
-import styles from './Tasks.module.scss';
 import { useEffect, useState } from 'react';
-import { addTask, fetchTasks } from '../../redux/tasks/tasks-operations';
+import { fetchTasks } from '../../redux/tasks/tasks-operations';
 import AddTaskForm from './AddTaskForm/AddTaskForm';
 import IconBtn from '../IconBtn/IconBtn';
 import {
@@ -19,11 +18,9 @@ import SideBar from './SideBar/SideBar';
 import TableHeader from './TableHeader/TableHeader';
 import sprintOperations from '../../redux/sprint/sprin-operations';
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
-
-// const initialState = {
-//   title: '',
-//   hoursPlanned: '',
-// };
+import s from './Tasks.module.scss';
+import BackToSprintsBtn from './SideBar/BackToSprintsBtn/BackToSprintsBtn';
+import FindForm from './FindForm/FindForm';
 
 const Tasks = () => {
   const tasks = useSelector(getTasksSelector);
@@ -54,27 +51,26 @@ const Tasks = () => {
   };
 
   return (
-    <section className={styles.sprintSection}>
-      {isLoadingSprints && isLoadingTasks ? (
-        <LoaderSpinner />
-      ) : (
-        <>
-          <div className={styles.sideBar}>
-            <SideBar sprints={sprints} />
+    <section>
+      <div className={s.tasksSection}>
+        <SideBar sprints={sprints} />
+        <div className={s.tasksContainer}>
+          <div className={s.backToSprints}>
+            <BackToSprintsBtn />
           </div>
-          <div className={styles.sectionWrapper}>
-            <div className={styles.mainBox}>
-              <div className={styles.headerWrapper}>
-                {tasks.length > 0 && <SprintPagination tasks={tasks} />}
-                <div className={styles.sectionHeader}>
+          <div className={s.relative}>
+            <div>
+              <div>
+                <div className={s.dayFindContainer}>
+                  {tasks.length > 0 && <SprintPagination tasks={tasks} />}
+                  <div className={s.findForm}>
+                    <FindForm className={s.findForm} />
+                  </div>
+                </div>
+
+                <div>
                   <SprintTitle sprints={sprints} sprintId={sprintId} />
                 </div>
-                <IconBtn
-                  onClick={toggleModal}
-                  icon="add"
-                  main
-                  className={styles.iconPencil}
-                />
               </div>
             </div>
             <TableHeader />
@@ -82,22 +78,20 @@ const Tasks = () => {
               {isLoadingTasks ? (
                 <LoaderSpinner />
               ) : tasks.length !== 0 ? (
-                <ul className={styles.tasksList}>
+                <ul className={s.tasksList}>
                   {filteredTasks.map(task => (
                     <TaskItem task={task} key={task.id || task._id} />
                   ))}
                 </ul>
               ) : (
-                <h2>
-                  Ваш спринт не має задач. Скористайтеся кнопкою "Створити
-                  задачу". Для появи аналітики вам треба додати мінімум 3
-                  завдання
-                </h2>
+                <h2 className={s.titleNoTask}>Ваш спринт не має задач.</h2>
               )}
             </div>
             {!showChart ? (
               tasks.length > 2 && (
-                <IconBtn icon="chart" main onClick={toggleChart} />
+                <div className={s.chartBtn}>
+                  <IconBtn icon="chart" main onClick={toggleChart} />
+                </div>
               )
             ) : (
               <Modal closeModal={toggleChart} chart>
@@ -105,8 +99,13 @@ const Tasks = () => {
               </Modal>
             )}
           </div>
-        </>
-      )}
+        </div>
+      </div>
+      <div className={s.addTask}>
+        <IconBtn onClick={toggleModal} icon="add" main />
+        <span className={s.addTaskText}>Створити задачу</span>
+      </div>
+
       {openModal && (
         <Modal closeModal={toggleModal}>
           <AddTaskForm toggleModal={toggleModal} sprintId={sprintId} />
