@@ -39,7 +39,6 @@ button {
 }
 
 body {
-  @include light-theme;
   overflow-x: hidden;
   margin: 0;
   font-size: 16px;
@@ -54,4 +53,12 @@ body {
   @media screen and (min-width: 768px) {
     font-size: 18px;
   }
+}
+
+.light-theme {
+  @include light-theme;
+}
+
+.dark-theme {
+  @include dark-theme;
 }
