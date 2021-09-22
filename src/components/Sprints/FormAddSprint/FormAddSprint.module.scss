@@ -74,13 +74,13 @@
   }
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.inputDays ::-webkit-outer-spin-button,
+.inputDays ::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type='number'] {
+.inputDays [type='number'] {
   -moz-appearance: textfield;
 }
 
