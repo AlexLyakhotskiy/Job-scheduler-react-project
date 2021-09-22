@@ -109,8 +109,8 @@
 }
 
 .sprintListProject::-webkit-scrollbar-track {
-  // -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
-  background-color: var(--color-btn-text);
+  border-radius: 5px;
+  background-color: var(--color-card-background);
 }
 
 .sprintListProject::-webkit-scrollbar-thumb {
