@@ -14,10 +14,10 @@ import { useParams } from 'react-router';
 import CancelBtn from '../../CancelBtn/CancelBtn';
 import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 import { useState } from 'react';
+import Svg from '../../Svg/Svg';
 
 export default function FormAddSprint({ toggleModal }) {
   const { calendarLocale } = languages[useSelector(getLanguage)];
-  console.log('locale ==> ', calendarLocale);
   const dispatch = useDispatch();
   const { projectId } = useParams();
   const curLanguage = useSelector(getCurrentLanguage);
@@ -32,6 +32,7 @@ export default function FormAddSprint({ toggleModal }) {
   });
 
   const [check, setCheck] = useState(false);
+  const [openCalend, setOpenCalend] = useState(true);
 
   const formik = useFormik({
     initialValues: { title: '', duration: '', date: new Date() },
@@ -81,9 +82,17 @@ export default function FormAddSprint({ toggleModal }) {
               <span className={s.datePickerLabel}>
                 {curLanguage.sprints.addSprintsForm.endDate}
               </span>
+              <Svg
+                icon={`#icon-${openCalend ? 'polygonDown' : 'polygon'}`}
+                className={s.iconPolygonDown}
+              />
             </label>
             <DatePicker
-              onBlur={() => formik.setFieldTouched('date', true)}
+              onBlur={() => {
+                setOpenCalend(!openCalend);
+                formik.setFieldTouched('date', true);
+              }}
+              onFocus={() => setOpenCalend(!openCalend)}
               locale={calendarLocale}
               id="datePicker"
               name="date"
@@ -94,6 +103,7 @@ export default function FormAddSprint({ toggleModal }) {
               className={s.date}
               selected={formik.values.date}
               onChange={date => {
+                setOpenCalend(!openCalend);
                 formik.setFieldValue('date', date);
               }}
             />

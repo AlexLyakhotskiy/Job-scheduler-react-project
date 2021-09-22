@@ -16,12 +16,18 @@ const SpintBtAddSprint = ({ projectId }) => {
 
   return (
     <>
-      <div className={s.conteinerBtnAddSrint} onClick={toggleModal}>
+      <button
+        type="button"
+        className={s.conteinerBtnAddSrint}
+        onClick={toggleModal}
+      >
         <IconBtn icon={'add'} className={s.btnSprintAdd} />
+
         <span className={s.btnSprintAddText}>
           {curLanguage.sprints.pageAddBtn}
         </span>
-      </div>
+      </button>
+
       {showModal && (
         <Modal closeModal={toggleModal}>
           <FormAddSprint toggleModal={toggleModal} />

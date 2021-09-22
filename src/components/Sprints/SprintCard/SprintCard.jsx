@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useRouteMatch, useParams } from 'react-router-dom';
 import sprintOperations from '../../../redux/sprint/sprin-operations';
@@ -14,12 +14,9 @@ const SprintCard = () => {
   const dispatch = useDispatch();
   const { url } = useRouteMatch();
   const { projectId } = useParams();
-  const dispatch = useDispatch();
   const curLanguage = useSelector(getCurrentLanguage);
 
   const isLoading = useSelector(allSelectors.getIsLoading);
-
-  // const [animate, setIsAnimate] = useState(false);
 
   useEffect(() => {
     dispatch(sprintOperations.getSprint(projectId));
@@ -40,7 +37,7 @@ const SprintCard = () => {
         isLoading ? (
           <LoaderSpinner />
         ) : (
-          <h1>{curLanguage.sprints.message}</h1>
+          <h2 className={s.titleNotSprint}>{curLanguage.sprints.message}</h2>
         )
       ) : (
         <div>
