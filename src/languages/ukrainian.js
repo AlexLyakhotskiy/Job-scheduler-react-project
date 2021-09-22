@@ -1,4 +1,11 @@
+import { registerLocale } from 'react-datepicker';
+import uk from 'date-fns/locale/uk';
+
+const calendarLocale = 'uk';
+registerLocale(calendarLocale, uk);
+
 export const ukrainian = {
+  calendarLocale,
   title: 'ukrainian',
   originalTitle: 'UA',
   //originalTitle: 'українська',
@@ -93,5 +100,9 @@ export const ukrainian = {
       btnAdd: 'Готово',
       btnCancel: 'Відміна',
     },
+  },
+  errors: {
+    error409: 'Надана електронна адреса вже існує',
+    error403: 'Електронна адреса або пароль невірні',
   },
 };

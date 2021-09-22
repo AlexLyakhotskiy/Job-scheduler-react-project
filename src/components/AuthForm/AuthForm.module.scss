@@ -1,12 +1,33 @@
 @import '../../styles/variables.scss';
 
+.section {
+  @media screen and (min-width: 768px) {
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-image: url(../../icons/bigpic.svg);
+    background-size: 1544px 702px;
+    background-position: center top 80px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-position: center top 25px;
+  }
+}
+
 .container {
   padding-left: 0;
   padding-right: 0;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 114px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-top: 56px;
+  }
 }
 
 .wrapper {
-  position: relative;
   margin: 0 auto;
   padding-top: 47px;
   padding-bottom: 79px;
@@ -18,56 +39,25 @@
 
   @media screen and (min-width: 768px) {
     width: 570px;
-    margin-top: 114px;
     padding-top: 60px;
     padding-bottom: 60px;
     padding-left: 70px;
     padding-right: 70px;
-
-    // &::before {
-    //   position: absolute;
-    //   content: '';
-    //   z-index: 1;
-    //   top: 0;
-    //   left: 0;
-    //   width: 332px;
-    //   height: 565px;
-    //   transform: translate(-250px, 80px);
-    //   opacity: 0.89;
-    //   background-size: cover;
-
-    //   background-image: url(../../icons/authLeftSide.svg);
-    // }
-
-    // &::after {
-    //   position: absolute;
-    //   content: '';
-    //   z-index: -1;
-    //   top: 0;
-    //   right: 0;
-    //   width: 603px;
-    //   height: 665px;
-    //   transform: translate(435px, -40px);
-    //   background-size: cover;
-
-    //   background-image: url(../../icons/authRightSide.svg);
-    // }
   }
+
   @media screen and (min-width: 1280px) {
     width: 570px;
-    margin-top: 56px;
   }
 }
 
 .authContainer {
-  text-align: center;
-
   .input:not(:last-child) {
     margin-bottom: 50px;
   }
 }
 
 .title {
+  text-align: center;
   margin-bottom: 25px;
 
   font-weight: 500;
@@ -81,8 +71,14 @@
 }
 
 .btn {
-  text-align: center;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
   margin-top: 40px;
+}
+
+.linkWrapper {
+  text-align: center;
 }
 
 .linkText {
