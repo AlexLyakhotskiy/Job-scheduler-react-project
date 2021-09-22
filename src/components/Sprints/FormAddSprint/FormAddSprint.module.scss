@@ -73,6 +73,17 @@
     margin: 0;
   }
 }
+
+.inputDays ::-webkit-outer-spin-button,
+.inputDays ::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputDays [type='number'] {
+  -moz-appearance: textfield;
+}
+
 .btnAddSprint {
   display: block;
   margin: 0 auto;

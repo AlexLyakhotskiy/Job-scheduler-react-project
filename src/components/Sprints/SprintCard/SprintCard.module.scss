@@ -7,15 +7,15 @@
     padding-left: 20px;
     overflow-y: auto;
     width: 490px;
-    max-height: 650px;
+    max-height: 55vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
   }
   @media screen and (min-width: 1280px) {
-    max-height: 450px;
     width: 885px;
+    max-height: 60vh;
     justify-content: flex-start;
   }
 }
