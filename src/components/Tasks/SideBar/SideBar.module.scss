@@ -14,7 +14,7 @@
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
   }
 }
 
@@ -88,7 +88,7 @@
 
 .sprintWrapper {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 }
 

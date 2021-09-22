@@ -33,20 +33,20 @@ $shadow-modal: 0px 6px 26px rgba(0, 5, 97, 0.1);
   --color-btn-background-hover: #ee5f00;
 }
 
-@mixin light-theme {
-  --color-main-text: #000000;
-  --color-main-title: #181c27;
-  --color-main-background: #f1f2f7;
-  --color-auth-background: #fafafa;
+@mixin dark-theme {
+  --color-main-text: #ffffff;
+  --color-main-title: #c7c9d1;
+  --color-main-background: #252525;
+  --color-auth-background: #5c5b5b;
 
-  --color-card-background: #ffffff;
-  --color-card-text: #ffffff;
-  --color-modal-background: #ffffff;
+  --color-card-background: #000000;
+  --color-card-text: #000000;
+  --color-modal-background: #1d1d1d;
 
-  --color-input-text: #181c27;
-  --color-label-input: rgba(24, 28, 39, 0.6);
-  --color-input-border: rgba(24, 28, 39, 0.2);
-  --color-input-background: #ffffff;
+  --color-input-text: #a2a5ac;
+  --color-label-input: rgba(255, 245, 245, 0.6);
+  --color-input-border: rgba(146, 148, 153, 0.2);
+  --color-input-background: #000000;
   --color-input-error: #ff0000;
 
   --color-btn-text: #ffffff;

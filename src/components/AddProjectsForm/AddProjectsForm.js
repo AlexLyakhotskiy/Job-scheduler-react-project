@@ -50,14 +50,8 @@ export default function AddProjectsForm({ closeModal }) {
           label={curLanguage.projects.addProjectsForm.description}
           className={s.descInput}
         />
-        <Button
-          className={s.btnSubmit}
-          title={curLanguage.projects.addProjectsForm.btnAdd}
-        />
-        <CancelBtn
-          onClick={closeModal}
-          title={curLanguage.projects.addProjectsForm.btnCancel}
-        />
+        <Button className={s.btnSubmit} />
+        <CancelBtn onClick={closeModal} />
       </form>
     </>
   );
