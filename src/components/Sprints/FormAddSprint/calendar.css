@@ -104,7 +104,7 @@
   display: inline-block;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 6px 26px rgba(0, 5, 97, 0.1);
+  box-shadow: var(--color-calendar-shadow);
 }
 
 .react-datepicker--time-only .react-datepicker__triangle {
@@ -188,12 +188,12 @@
 .react-datepicker-time__header,
 .react-datepicker-year-header {
   margin-top: 0;
-  color: #1b1c20;
+  color: var(--color-calendar-title);
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
   padding: 8px;
-  background-color: #fff;
+  background-color: var(--color-calendar-bk-title);
 }
 
 .react-datepicker-time__header {
@@ -268,7 +268,7 @@
 
 .react-datepicker__month-container {
   float: left;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: var(--color-calendar-bk-main);
   backdrop-filter: blur(24px);
 }
 
@@ -465,7 +465,7 @@
 .react-datepicker__day-name,
 .react-datepicker__day,
 .react-datepicker__time-name {
-  color: var(--color-main-title);
+  color: var(--color-calendar-main);
   display: inline-block;
   width: 32px;
   font-size: 14px;
@@ -475,7 +475,7 @@
 }
 
 .react-datepicker__day-name {
-  color: var(--color-btn-background);
+  color: var(--color-calendar-bk-accent);
   font-weight: 600;
   font-size: 12px;
   text-transform: uppercase;
@@ -572,8 +572,8 @@
 .react-datepicker__year-text--in-selecting-range,
 .react-datepicker__year-text--in-range {
   border-radius: 50%;
-  background-color: var(--color-btn-background);
-  color: #fff;
+  background-color: var(--color-calendar-bk-accent);
+  color: var(--color-calendar-accent);
 }
 .react-datepicker__day--selected:hover,
 .react-datepicker__day--in-selecting-range:hover,
@@ -587,7 +587,7 @@
 .react-datepicker__year-text--selected:hover,
 .react-datepicker__year-text--in-selecting-range:hover,
 .react-datepicker__year-text--in-range:hover {
-  background-color: var(--color-btn-background-hover);
+  background-color: var(--color-calendar-hover);
 }
 .react-datepicker__day--keyboard-selected,
 .react-datepicker__month-text--keyboard-selected,
@@ -625,7 +625,7 @@
 .react-datepicker__quarter-text--disabled,
 .react-datepicker__year-text--disabled {
   cursor: default;
-  color: #ccc;
+  color: var(--color-calendar-disabled);
 }
 .react-datepicker__day--disabled:hover,
 .react-datepicker__month-text--disabled:hover,
