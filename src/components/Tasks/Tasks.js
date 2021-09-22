@@ -77,7 +77,7 @@ const Tasks = () => {
             </div>
           </div>
           <TableHeader />
-          <div>
+          <div className={s.scrollBar}>
             {isLoadingTasks ? (
               <LoaderSpinner />
             ) : tasks.length !== 0 ? (
@@ -89,18 +89,18 @@ const Tasks = () => {
             ) : (
               <h2 className={s.titleNoTask}>Ваш спринт не має задач.</h2>
             )}
+            {!showChart ? (
+              tasks.length > 2 && (
+                <div className={s.chartBtn}>
+                  <IconBtn icon="chart" main onClick={toggleChart} />
+                </div>
+              )
+            ) : (
+              <Modal closeModal={toggleChart} chart>
+                <Chart tasks={tasks} />
+              </Modal>
+            )}
           </div>
-          {!showChart ? (
-            tasks.length > 2 && (
-              <div className={s.chartBtn}>
-                <IconBtn icon="chart" main onClick={toggleChart} />
-              </div>
-            )
-          ) : (
-            <Modal closeModal={toggleChart} chart>
-              <Chart tasks={tasks} />
-            </Modal>
-          )}
         </div>
 
         {openModal && (
