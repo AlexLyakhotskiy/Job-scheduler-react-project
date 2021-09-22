@@ -31,20 +31,6 @@ const ChangerTheme = () => {
 
   return (
     <>
-      {/* <div className={styles.checkbox}>
-        <input
-          name="ChangeTheme/Input"
-          type="checkbox"
-          id="unchecked"
-          checked={theme === dark}
-          onChange={handleChange}
-          className={styles.checkbox_input}
-        />
-        <label for="unchecked" className={styles.checkbox_label}></label>
-      </div> */}
-
-      {/* <div className={styles.toggle_button_cover}> */}
-      {/* <div className={styles.button_cover}> */}
       <div className={`${styles.button}  ${styles.r} ${styles.button_3}`}>
         <input
           className={styles.checkbox}
@@ -56,9 +42,8 @@ const ChangerTheme = () => {
         />
         <div className={styles.knobs}></div>
         <div className={styles.layer}></div>
-        {/* </div> */}
+   
       </div>
-      {/* </div> */}
     </>
   );
 };
