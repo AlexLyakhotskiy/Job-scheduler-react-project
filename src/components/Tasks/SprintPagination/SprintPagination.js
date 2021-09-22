@@ -22,17 +22,14 @@ const SprintPagination = ({ tasks }) => {
     if (day >= 0) return day;
     return duration - 1;
   };
+  const currentDate =
+    currentDayIndex && tasks[0].hoursWastedPerDay[currentDayIndex - 1]
+      ? tasks[0].hoursWastedPerDay[currentDayIndex - 1].currentDay
+      : '';
 
   useEffect(() => {
     dispatch(changeIndexCurrentDay(findCurrentDay() + 1));
-  }, [sprintId]);
-
-  const currentDate =
-    currentDayIndex &&
-    tasks[0].hoursWastedPerDay &&
-    tasks[0].hoursWastedPerDay[currentDayIndex - 1]
-      ? tasks[0].hoursWastedPerDay[currentDayIndex - 1].currentDay
-      : '';
+  }, [sprintId, currentDate]);
 
   const onChangeNext = e => {
     e.preventDefault();
