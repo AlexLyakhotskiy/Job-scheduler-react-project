@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .btGoBackLink {
   text-decoration: none;
   color: inherit;
@@ -84,6 +86,9 @@
 .sprintLink {
   text-decoration: none;
   color: inherit;
+}
+
+.active {
 }
 
 .sprintWrapper {
