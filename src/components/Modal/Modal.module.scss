@@ -54,12 +54,37 @@
 .chartModal {
   composes: modal;
   padding: 30px 20px;
+  overflow-y: auto;
 
-  max-height: calc(100vh - 24px);
+  max-height: calc(100vh - 20px);
   @media screen and (min-width: 768px) {
     max-width: calc(100vw - 48px);
     padding: 15px;
   }
+}
+
+.chartModal::-webkit-scrollbar {
+  height: 7px;
+}
+
+.chartModal::-webkit-scrollbar-track {
+  // -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: var(--color-btn-text);
+}
+
+.chartModal::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--color-btn-background);
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.25) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.25) 75%,
+    transparent 75%,
+    transparent
+  );
 }
 
 .icon {

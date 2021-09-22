@@ -51,7 +51,7 @@ const SprintPagination = ({ tasks }) => {
         </button>
         <p className={s.paginationText}>
           <span className={s.currentPage}>{currentDayIndex} </span> /{' '}
-          <span>{duration} </span>
+          <span className={s.lastPage}>{duration} </span>
         </p>
         <button onClick={onChangeNext} type="button" className={s.arrowBtn}>
           <Svg icon="#icon-arrow_forward" className={s.icon} />

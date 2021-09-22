@@ -3,7 +3,9 @@ import { Line } from 'react-chartjs-2';
 
 const Chart = ({ tasks }) => {
   const getperiodArr = () => {
-    const daysArr = tasks[0].hoursWastedPerDay.map(day => day.currentDay);
+    const daysArr = tasks[0].hoursWastedPerDay
+      .map(day => day.currentDay.slice(5))
+      .slice(0, 4);
     const sortedDaysArr = daysArr.sort(
       (a, b) => new Date(b.date) - new Date(a.date),
     );
@@ -55,20 +57,20 @@ const Chart = ({ tasks }) => {
         data: getPlanedHoursArr(),
         fill: false,
         lineTension: 0.1,
-        backgroundColor: 'rgba(75,192,192,0.4)',
+        backgroundColor: 'rgba(255, 0, 81, 1)',
         borderColor: 'rgba(255, 0, 81, 1)',
         borderCapStyle: 'butt',
         borderDash: [],
-        borderDashOffset: 0.0,
+        borderDashOffset: 1,
         borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
+        pointBorderColor: 'rgba(255, 0, 81, 1)',
         pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
+        pointBorderWidth: 5,
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: 'rgba(255, 0, 81, 1)',
+        pointHoverBorderColor: 'rgba(255, 0, 81, 1)',
         pointHoverBorderWidth: 2,
-        pointRadius: 1,
+        pointRadius: 3,
         pointHitRadius: 10,
         min: 0,
       },
@@ -76,21 +78,21 @@ const Chart = ({ tasks }) => {
         label: 'Актуальний залишок трудовитрат',
         data: getHoursWastedArr(),
         fill: false,
-        lineTension: 0.1,
-        backgroundColor: 'rgba(75,192,192,0.4)',
+        lineTension: 0.5,
+        backgroundColor: 'rgba(0, 0, 123, 1)',
         borderColor: 'rgba(0, 0, 123, 1)',
         borderCapStyle: 'butt',
-        borderDash: [5, 10],
+        borderDash: [],
         borderDashOffset: 0.0,
         borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
+        pointBorderColor: 'rgba(0, 0, 123, 1)',
         pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
+        pointBorderWidth: 5,
+        pointHoverRadius: 10,
+        pointHoverBackgroundColor: 'rgba(0, 0, 123, 1)',
+        pointHoverBorderColor: 'rgba(0, 0, 123, 1)',
         pointHoverBorderWidth: 2,
-        pointRadius: 1,
+        pointRadius: 3,
         pointHitRadius: 10,
         min: 0,
       },
@@ -98,9 +100,11 @@ const Chart = ({ tasks }) => {
   };
 
   return (
-    <div className={s.charContainer}>
-      <h2>Burndown Chart (Calendar team)</h2>
-      <Line data={data} />
+    <div className={s.scrol}>
+      <div className={s.charContainer}>
+        <h2 className={s.charTitle}>Burndown Chart (Calendar team)</h2>
+        <Line data={data} />
+      </div>
     </div>
   );
 };
