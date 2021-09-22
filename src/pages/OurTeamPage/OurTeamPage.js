@@ -92,13 +92,23 @@ export default function OurTeamPage() {
 
                 <ul className={s.listLink}>
                   <li className={s.itemLink}>
-                    <a href={github} className={s.iconLink}>
+                    <a
+                      href={github}
+                      className={s.iconLink}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
                       <Svg icon="#github" className={s.icon} />
                     </a>
                   </li>
 
                   <li className={s.itemLink}>
-                    <a href={linkedin} className={s.iconLink}>
+                    <a
+                      href={linkedin}
+                      className={s.iconLink}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
                       <Svg icon="#linkedin" className={s.icon} />
                     </a>
                   </li>
