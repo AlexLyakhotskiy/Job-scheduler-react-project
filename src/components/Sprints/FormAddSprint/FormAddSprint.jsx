@@ -13,6 +13,7 @@ import { languages } from '../../../languages';
 import { useParams } from 'react-router';
 import CancelBtn from '../../CancelBtn/CancelBtn';
 import { useState } from 'react';
+import Svg from '../../Svg/Svg';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required("Поле обов'язкове!"),
@@ -22,11 +23,11 @@ const validationSchema = Yup.object().shape({
 
 export default function FormAddSprint({ toggleModal }) {
   const { calendarLocale } = languages[useSelector(getLanguage)];
-  console.log('locale ==> ', calendarLocale);
   const dispatch = useDispatch();
   const { projectId } = useParams();
 
   const [check, setCheck] = useState(false);
+  const [openCalend, setOpenCalend] = useState(true);
 
   const formik = useFormik({
     initialValues: { title: '', duration: '', date: new Date() },
@@ -72,9 +73,17 @@ export default function FormAddSprint({ toggleModal }) {
           <div className={s.datePickerConteiner}>
             <label className={s.datePickerLabel} htmlFor="datePicker">
               <span className={s.datePickerLabel}>Дата закінчення</span>
+              <Svg
+                icon={`#icon-${openCalend ? 'polygonDown' : 'polygon'}`}
+                className={s.iconPolygonDown}
+              />
             </label>
             <DatePicker
-              onBlur={() => formik.setFieldTouched('date', true)}
+              onBlur={() => {
+                setOpenCalend(!openCalend);
+                formik.setFieldTouched('date', true);
+              }}
+              onFocus={() => setOpenCalend(!openCalend)}
               locale={calendarLocale}
               id="datePicker"
               name="date"
@@ -85,6 +94,7 @@ export default function FormAddSprint({ toggleModal }) {
               className={s.date}
               selected={formik.values.date}
               onChange={date => {
+                setOpenCalend(!openCalend);
                 formik.setFieldValue('date', date);
               }}
             />

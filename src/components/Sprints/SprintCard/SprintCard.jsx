@@ -43,7 +43,7 @@ const SprintCard = () => {
         isLoading ? (
           <LoaderSpinner />
         ) : (
-          <h1>Пока у вас нет спринтов</h1>
+          <h2 className={s.titleNotSprint}>Пока у вас не має спринтів</h2>
         )
       ) : (
         <div>

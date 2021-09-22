@@ -50,5 +50,11 @@
 <symbol id="icon-heart" viewBox="0 0 32 32">
 <path fill="#ff6b09" style="fill: var(--color1, #ff6b09)" d="M16 30.72l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z"></path>
 </symbol>
+<symbol id="icon-polygonDown" viewBox="0 0 48 32">
+<path d="M24 32l-20.785-30h41.569l-20.785 30z"></path>
+</symbol>
+<symbol id="icon-polygon" viewBox="0 0 48 32">
+<path d="M24 0l20.785 30h-41.569l20.785-30z"></path>
+</symbol>
 </defs>
 </svg>
