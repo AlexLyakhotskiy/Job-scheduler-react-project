@@ -7,7 +7,7 @@ const Chart = ({ tasks }) => {
     const sortedDaysArr = daysArr.sort(
       (a, b) => new Date(b.date) - new Date(a.date),
     );
-    // sortedDaysArr.unshift(0);
+    sortedDaysArr.unshift(0);
     return sortedDaysArr;
   };
 
