@@ -11,8 +11,7 @@ import { useSelector } from 'react-redux';
 import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 
 const SideBar = ({ sprints }) => {
-  const { projectId } = useParams();
-
+  const { projectId, sprintId } = useParams();
   const [openModal, setOpenModal] = useState(false);
   const curLanguage = useSelector(getCurrentLanguage);
 
@@ -27,15 +26,17 @@ const SideBar = ({ sprints }) => {
         <ul className={s.sprintsList}>
           {sprints?.length &&
             sprints.map(sprint => (
-              <li key={sprint._id} className={s.sprintItem}>
+              <li
+                key={sprint._id}
+                className={`${sprint._id === sprintId && s.active}  ${
+                  s.sprintItem
+                }`}
+              >
                 <Link
                   to={`${routes.projects}/${projectId}/sprints/${sprint._id}`}
                   className={s.sprintLink}
                 >
-                  <div className={s.sprintWrapper}>
-                    <div className={s.sprintBoxColor}></div>
-                    <span>{sprint.title}</span>
-                  </div>
+                  <span className={s.title}>{sprint.title}</span>
                 </Link>
               </li>
             ))}

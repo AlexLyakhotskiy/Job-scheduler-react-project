@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import s from '../SideBar.module.scss';
+import s from './BackToSprintsBtn.module.scss';
 import { routes } from '../../../../routes/routes';
 import Svg from '../../../Svg/Svg';
 import { useSelector } from 'react-redux';
