@@ -44,12 +44,12 @@ const Chart = ({ tasks }) => {
       }),
     );
     const daysWastedHoursArr = [hoursPlanedSum];
-
+    let hours = hoursPlanedSum;
     Object.values(daysWastedHours).forEach(dayWastedHours => {
-      let hours = hoursPlanedSum;
       hours -= dayWastedHours;
       daysWastedHoursArr.push(hours);
     });
+    console.log(`daysWastedHoursArr`, daysWastedHoursArr);
     return daysWastedHoursArr;
   };
 

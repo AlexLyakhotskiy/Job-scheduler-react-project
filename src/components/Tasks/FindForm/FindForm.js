@@ -6,10 +6,12 @@ import Input from '../../Input/Input';
 import s from './FindForm.module.scss';
 import Svg from '../../Svg/Svg';
 import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
+import { useRef } from 'react';
 
 const FindForm = ({ toggleFindInput }) => {
   const curLanguage = useSelector(getCurrentLanguage);
   const dispatch = useDispatch();
+  const formRef = useRef(null);
 
   const validationSchema = Yup.object().shape({
     query: Yup.string()
@@ -21,19 +23,27 @@ const FindForm = ({ toggleFindInput }) => {
     initialValues: { query: '' },
     validationSchema,
     onSubmit: data => {
+      console.log(`data`, data);
       dispatch(filterChange(data.query));
-      toggleFindInput();
     },
   });
 
   return (
     <div className={s.findBox}>
-      <form onSubmit={formik.handleSubmit}>
+      <form ref={formRef} onSubmit={formik.handleSubmit}>
         <Input
           formik={formik}
           type="text"
           name="query"
           label={curLanguage.tasks.find.label}
+          value={formik.values.query}
+          onBlur={() => toggleFindInput()}
+          onChange={e => {
+            formik.handleChange(e);
+            formRef.current.dispatchEvent(
+              new Event('submit', { bubbles: true, cancelable: true }),
+            );
+          }}
         />
 
         <button type="submit" className={s.iconBtn}>

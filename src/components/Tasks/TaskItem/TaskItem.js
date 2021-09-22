@@ -5,15 +5,18 @@ import { deleteTask, editTask } from '../../../redux/tasks/tasks-operations';
 import { getCurrentDayIndexSelector } from '../../../redux/tasks/tasks-selectors';
 import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 
+const arr = [1, 2, 3, 4, 5, 6, 7];
+
 const TaskItem = ({ task }) => {
   const currentDayIndex = useSelector(getCurrentDayIndexSelector);
   const dispatch = useDispatch();
   const curLanguage = useSelector(getCurrentLanguage);
 
-  const onChange = e => {
+  const onSubmit = e => {
     e.preventDefault();
+
     const { value } = e.target;
-    if (value > 0) {
+    if (e.target.value > 0) {
       dispatch(
         editTask({
           date:
@@ -42,24 +45,24 @@ const TaskItem = ({ task }) => {
         <div className={s.taskItem}>
           <span className={s.taskItemDesc}>{curLanguage.tasks.th333}</span>
           <span>
-            <form onSubmit={e => e.preventDefault()} className={s.taskItemForm}>
-              <input
-                className={s.taskItemInp}
-                type="number"
-                name="hours"
-                value={
-                  currentDayIndex &&
-                  task.hoursWastedPerDay &&
-                  task.hoursWastedPerDay[currentDayIndex - 1]
-                    ? task.hoursWastedPerDay[currentDayIndex - 1]
-                        .singleHoursWasted
-                    : ''
-                }
-                min="1"
-                max="8"
-                onChange={onChange}
-              />
-            </form>
+            <select
+              id="puttedNum"
+              onChange={onSubmit}
+              value={
+                currentDayIndex &&
+                task.hoursWastedPerDay &&
+                task.hoursWastedPerDay[currentDayIndex - 1]
+                  ? task.hoursWastedPerDay[currentDayIndex - 1]
+                      .singleHoursWasted
+                  : ''
+              }
+            >
+              {arr.map(num => (
+                <option key={num} value={num}>
+                  {num}
+                </option>
+              ))}
+            </select>
           </span>
         </div>
         <div className={s.taskItem}>
@@ -79,3 +82,21 @@ const TaskItem = ({ task }) => {
 };
 
 export default TaskItem;
+
+//<form onSubmit={e => e.preventDefault()} className={s.taskItemForm}></form>
+//  <input
+//    className={s.taskItemInp}
+//    type="number"
+//    name="hours"
+//    value={
+//      currentDayIndex &&
+//      task.hoursWastedPerDay &&
+//      task.hoursWastedPerDay[currentDayIndex - 1]
+//        ? task.hoursWastedPerDay[currentDayIndex - 1].singleHoursWasted
+//        : ''
+//    }
+//    min="0"
+//    max="8"
+//    onChange={onChange}
+//   </form>
+//  />;
