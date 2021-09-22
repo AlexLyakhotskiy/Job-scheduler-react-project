@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import IconBtn from '../../IconBtn/IconBtn';
-import styles from '../Tasks.module.scss';
 import sprintOperations from '../../../redux/sprint/sprin-operations';
 import { useParams } from 'react-router';
+import s from './SprintTitle.module.scss';
 
 const SprintTitle = ({ sprints }) => {
   const dispatch = useDispatch();
@@ -35,30 +35,26 @@ const SprintTitle = ({ sprints }) => {
   };
 
   return (
-    <>
+    <div className={s.titleBox}>
       {!openTitleInp ? (
-        <div>
-          <h2 className={styles.sprintTitle}>{title}</h2>
-          <IconBtn
-            onClick={toggleInputTitle}
-            icon="pencil"
-            secondary
-            className={styles.iconPencil}
-          />
+        <div className={s.sprintTitleWrapper}>
+          <h2 className={s.sprintTitle}>{title}</h2>
+          <IconBtn onClick={toggleInputTitle} icon="pencil" secondary />
         </div>
       ) : (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className={s.editForm}>
           <input
             type="text"
             name="title"
             value={title}
             onChange={onChangeTitle}
             required
+            className={s.editInp}
           ></input>
-          <button type="submit">Edit</button>
+          <IconBtn type="submit" icon="pencil" secondary />
         </form>
       )}
-    </>
+    </div>
   );
 };
 
