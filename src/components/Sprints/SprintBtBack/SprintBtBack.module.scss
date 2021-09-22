@@ -1,6 +1,6 @@
 .btGoBackLink {
   text-decoration: none;
-  color: inherit;
+  color: var(--color-main-title);
 }
 .btGoBack {
   margin-bottom: 40px;
@@ -14,11 +14,23 @@
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
+  }
+  .arrow {
+    fill: var(--color-main-title);
+  }
+  &:active,
+  &:hover,
+  &:focus {
+    font-weight: 550;
+    & .arrow {
+      fill: var(--color-btn-background-hover);
+    }
   }
 }
 
 .btGoBackTitel {
+  color: var(--color-main-title);
   @media screen and (min-width: 768px) {
     width: 70px;
     text-align: left;

@@ -1,0 +1,22 @@
+@import '../../../styles/variables.scss';
+
+.findBox {
+  margin-bottom: 20px;
+  position: relative;
+  @media screen and (min-width: 768px) {
+    margin-left: 20px;
+    width: 20pxpx;
+  }
+  // @media screen and (min-width: 1280px) {
+  //   display: none;
+  // }
+}
+
+.iconBtn {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  svg {
+    height: 20px;
+  }
+}

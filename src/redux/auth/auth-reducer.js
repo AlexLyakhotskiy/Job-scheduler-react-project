@@ -19,13 +19,13 @@ const authSlice = createSlice({
   extraReducers: {
     [signUp.pending](state) {
       state.loading = true;
+      state.error = null;
     },
     [signUp.fulfilled](state, { payload }) {
       state.user = payload.data.email;
       state.token = payload.accessToken;
       state.refreshToken = payload.refreshToken;
       state.sid = payload.sid;
-      state.error = null;
       state.isLoggedIn = true;
       state.loading = false;
     },
@@ -36,13 +36,13 @@ const authSlice = createSlice({
 
     [signIn.pending](state) {
       state.loading = true;
+      state.error = null;
     },
     [signIn.fulfilled](state, { payload }) {
       state.user = payload.data.email;
       state.token = payload.accessToken;
       state.refreshToken = payload.refreshToken;
       state.sid = payload.sid;
-      state.error = null;
       state.isLoggedIn = true;
       state.loading = false;
     },
@@ -53,13 +53,13 @@ const authSlice = createSlice({
 
     [logout.pending](state) {
       state.loading = true;
+      state.error = null;
     },
     [logout.fulfilled](state) {
       state.user = null;
       state.token = null;
       state.refreshToken = null;
       state.sid = null;
-      state.error = null;
       state.isLoggedIn = false;
       state.loading = false;
     },
@@ -74,17 +74,18 @@ const authSlice = createSlice({
 
     [resetUser.pending](state) {
       state.isResetingUser = true;
+      state.error = null;
     },
     [resetUser.fulfilled](state, { payload }) {
       state.token = payload.newAccessToken;
       state.refreshToken = payload.newRefreshToken;
       state.sid = payload.newSid;
-      state.error = null;
       state.isLoggedIn = true;
       state.isResetingUser = false;
     },
     [resetUser.rejected](state, { payload }) {
       state.isResetingUser = false;
+      state.isLoggedIn = false;
       state.error = payload;
     },
   },

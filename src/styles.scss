@@ -1,5 +1,5 @@
 @import 'modern-normalize/modern-normalize.css';
-@import 'react-datepicker/dist/react-datepicker.css';
+// @import 'react-datepicker/dist/react-datepicker.css';
 @import 'react-toastify/dist/ReactToastify.css';
 // @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
@@ -39,8 +39,6 @@ button {
 }
 
 body {
-  @include light-theme;
-
   overflow-x: hidden;
   margin: 0;
   font-size: 16px;
@@ -55,4 +53,12 @@ body {
   @media screen and (min-width: 768px) {
     font-size: 18px;
   }
+}
+
+.light-theme {
+  @include light-theme;
+}
+
+.dark-theme {
+  @include dark-theme;
 }

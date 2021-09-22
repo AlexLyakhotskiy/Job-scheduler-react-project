@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
 import { patchProject } from '../../../redux/projects/projectOperations';
 import IconBtn from '../../IconBtn/IconBtn';
 import SpintBtAddSprint from '../SpintBtAddSprint/SpintBtAddSprint';
@@ -10,12 +9,11 @@ const SprintPageTitele = ({ nowProject, projectId }) => {
   const dispatch = useDispatch();
 
   const [isInputOpen, setInputOpen] = useState(false);
-  const [isProjectTitel, setProjectTitel] = useState(nowProject.title);
+  const [isProjectTitel, setProjectTitel] = useState('title');
   const toggleInput = () => setInputOpen(state => !state);
 
   const handelSubmit = e => {
     e.preventDefault();
-    if (isProjectTitel === '') return alert('Введите название проекта');
 
     dispatch(patchProject({ projectId, titleData: { title: isProjectTitel } }));
     toggleInput();
@@ -27,7 +25,6 @@ const SprintPageTitele = ({ nowProject, projectId }) => {
   }, [projectId, nowProject.title]);
 
   const handleIputChange = e => {
-    console.log(e.currentTarget.value);
     setProjectTitel(e.currentTarget.value);
   };
 
@@ -47,6 +44,7 @@ const SprintPageTitele = ({ nowProject, projectId }) => {
               <input
                 autoFocus
                 type="text"
+                minLength="3"
                 maxLength="12"
                 value={isProjectTitel}
                 onChange={handleIputChange}

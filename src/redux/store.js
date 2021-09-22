@@ -13,7 +13,9 @@ import storage from 'redux-persist/lib/storage';
 
 import sprintSlice from './sprint/sprin-slice';
 import allProjectsReducers from './projects/projectReducer';
+import tasksReducer from './tasks/tasks-reducer';
 import authReducer from './auth/auth-reducer';
+import { userSettingsReducer } from './userSettings/userSettingsReducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -26,15 +28,25 @@ const middleware = [
 const persistConfigAuth = {
   key: 'auth',
   storage,
-  whitelist: ['user', 'refreshToken', 'sid'],
+  whitelist: ['user', 'refreshToken', 'sid', 'isLoggedIn'],
+};
+
+const persistConfigUserSettings = {
+  key: 'userSettings',
+  storage,
+  whitelist: ['language', 'theme'],
 };
 
 export const store = configureStore({
   reducer: {
+    tasks: tasksReducer,
     auth: persistReducer(persistConfigAuth, authReducer),
+    userSettings: persistReducer(
+      persistConfigUserSettings,
+      userSettingsReducer,
+    ),
     sprints: sprintSlice,
     projects: allProjectsReducers,
-    tasks: () => '',
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

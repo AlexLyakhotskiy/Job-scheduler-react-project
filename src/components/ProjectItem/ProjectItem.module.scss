@@ -26,16 +26,28 @@
   &:nth-child(3n + 1) {
     background-color: #8c72df;
     color: #8c72df;
+    &:hover,
+    &:focus {
+      box-shadow: $shadow-project-hover #8c72df;
+    }
   }
 
   &:nth-child(3n + 2) {
     background-color: #ff765f;
     color: #ff765f;
+    &:hover,
+    &:focus {
+      box-shadow: $shadow-project-hover #ff765f;
+    }
   }
 
   &:nth-child(3n + 3) {
     background-color: #71df87;
     color: #71df87;
+    &:hover,
+    &:focus {
+      box-shadow: $shadow-project-hover #71df87;
+    }
   }
 
   &:nth-child(4n + 1) {
@@ -99,11 +111,11 @@
   &:hover,
   &:focus {
     cursor: pointer;
-    box-shadow: $shadow-project-hover;
   }
 }
 
 .projectTitle {
+  hyphens: auto;
   margin-bottom: 6px;
   font-weight: 800;
   font-size: 16px;
@@ -122,9 +134,18 @@
 }
 
 .projectDescription {
+  hyphens: auto;
   font-size: 10px;
   line-height: 1.2;
   color: var(--color-card-text);
+  transform: scale(0);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .item:hover &,
+  .item:focus & {
+    transform: scale(100%);
+  }
+
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.22;

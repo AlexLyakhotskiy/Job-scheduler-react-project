@@ -1,41 +1,53 @@
-import React, { Component } from 'react';
-//import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import Container from '../Container/Container';
 import Logo from './Logo/Logo';
 import UserMenu from './UserMenu/UserMenu';
+import SelectLang from './SelectLang/SelectLang';
+import BurgerMenu from './BurgerMenu/BurgerMenu';
+import ChangerTheme from './ChangerTheme/ChangerTheme.jsx';
 
-//import { getIsLoggedIn } from '../../redux/auth/auth-selectors';
+import { getIsLoggedIn } from '../../redux/auth/auth-selectors';
 
 import styles from './Header.module.scss';
-import BurgerMenu from './BurgerMenu/BurgerMenu';
 
-export default class Header extends Component {
-  state = {
+export default function Header() {
+  const [windowWidth, setWindowWidth] = useState({
     width: window.innerWidth,
     breakPoint: 768,
-  };
+  });
+  const isLoggedIn = useSelector(getIsLoggedIn);
 
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResizeWindow);
+  useEffect(() => {
+    window.addEventListener('resize', handleResizeWindow);
+    return () => {
+      window.removeEventListener('resize', handleResizeWindow);
+    };
+  }, []);
+
+  function handleResizeWindow() {
+    setWindowWidth({ ...windowWidth, width: window.innerWidth });
   }
 
-  handleResizeWindow = () => this.setState({ width: window.innerWidth });
+  const { width, breakPoint } = windowWidth;
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.handleResizeWindow);
-  }
-
-  render() {
-    //const isLoggedIn = useSelector(getIsLoggedIn);
-    const { width, breakPoint } = this.state;
-    return (
-      <header className={styles.header}>
-        <Container className={styles.container}>
-          <Logo />
-          {width < breakPoint ? <BurgerMenu /> : <UserMenu />}
-        </Container>
-      </header>
-    );
-  }
+  return (
+    <header className={styles.header}>
+      <Container className={styles.container}>
+        <Logo />
+        <div className={styles.headerUtil}>
+          {width < breakPoint ? (
+            <BurgerMenu />
+          ) : (
+            <>
+              {isLoggedIn && <UserMenu />}
+              <SelectLang />
+              <ChangerTheme />
+            </>
+          )}
+        </div>
+      </Container>
+    </header>
+  );
 }

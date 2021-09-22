@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { lazy, Suspense } from 'react';
 import { Switch } from 'react-router';
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 import PrivateRoute from '../Routes/PrivateRoute';
 import PublicRoute from '../Routes/PublicRoute';
 
 import { routes } from '../../routes/routes';
+
+import styles from './Main.module.scss';
+import { getAuthError } from '../../redux/auth/auth-selectors';
+import { useSelector } from 'react-redux';
 
 const LoginPage = lazy(() =>
   import(
@@ -39,10 +43,21 @@ const NotFoundPage = lazy(() =>
     '../../pages/NotFoundPage/NotFoundPage' /* webpackChunkName: "not-found-page" */
   ),
 );
+const OurTeamPage = lazy(() =>
+  import(
+    '../../pages/OurTeamPage/OurTeamPage' /* webpackChunkName: "team-page" */
+  ),
+);
 
 export default function Main() {
+  const authError = useSelector(getAuthError);
+
+  useEffect(() => {
+    authError && toast.error(authError);
+  }, [authError]);
+
   return (
-    <main>
+    <main className={styles.main}>
       <Suspense fallback={<LoaderSpinner />}>
         <Switch>
           <PublicRoute
@@ -80,6 +95,10 @@ export default function Main() {
           <PrivateRoute path={routes.tasks} redirectedTo={routes.register}>
             <TasksPage />
           </PrivateRoute>
+
+          <PublicRoute path={routes.ourTeam}>
+            <OurTeamPage />
+          </PublicRoute>
 
           <PublicRoute>
             <NotFoundPage />
