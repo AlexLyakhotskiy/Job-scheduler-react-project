@@ -10,6 +10,8 @@ import { getIsLoggedIn } from '../../redux/auth/auth-selectors';
 import styles from './Header.module.scss';
 import SelectLang from './SelectLang/SelectLang';
 
+import ChangerTheme from './ChangerTheme/ChangerTheme.jsx';
+
 export default function Header() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   return (
@@ -17,8 +19,9 @@ export default function Header() {
       <Container className={styles.container}>
         <Logo />
         <div>
-          {isLoggedIn && <UserMenu />}
           <SelectLang />
+          <ChangerTheme />
+          {isLoggedIn && <UserMenu />}
         </div>
       </Container>
     </header>

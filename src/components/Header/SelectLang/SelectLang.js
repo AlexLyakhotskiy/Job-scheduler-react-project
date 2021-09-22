@@ -1,13 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from './SelectLang.module.scss';
 
 import * as actions from '../../../redux/userSettings/userSettingsActions';
 import { languages } from '../../../languages';
 import { getLanguage } from '../../../redux/userSettings/userSettingsSelectors';
-
-const styles = {
-  select: { marginLeft: 20 },
-};
 
 export default function SelectLang() {
   const language = useSelector(getLanguage);
@@ -18,7 +15,7 @@ export default function SelectLang() {
       name="languageSelector"
       onChange={e => dispatch(actions.changeLanguage(e.target.value))}
       defaultValue={language}
-      style={styles.select}
+      className={styles.select__css}
     >
       {languages.list.map(lang => (
         <option value={lang} key={lang}>

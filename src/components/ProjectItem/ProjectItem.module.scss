@@ -138,6 +138,13 @@
   font-size: 10px;
   line-height: 1.2;
   color: var(--color-card-text);
+  transform: scale(0);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .item:hover &,
+  .item:focus & {
+    transform: scale(100%);
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
