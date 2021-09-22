@@ -136,7 +136,8 @@
 }
 
 .sprintCardList::-webkit-scrollbar-track {
-  background-color: var(--color-btn-text);
+  border-radius: 5px;
+  background-color: var(--color-card-background);
 }
 
 .sprintCardList::-webkit-scrollbar-thumb {
