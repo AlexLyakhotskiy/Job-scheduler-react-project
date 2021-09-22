@@ -10,15 +10,6 @@ export const russian = {
   originalTitle: 'RU',
   //originalTitle: 'русский',
   header: {
-    //     navigation: {
-    //       home: 'Главная',
-    //       courses: 'Курсы',
-    //       groups: 'Группы',
-    //       profile: 'Профиль',
-    //       admin: 'Админ',
-    //       signin: 'Войти',
-    //       signup: 'Зарегистрироваться',
-    //     },
     //     burgerMenu: {
     //       toggleTheme: 'Темная тема',
     //       changeLanguage: 'Язык',
@@ -34,8 +25,8 @@ export const russian = {
       confirmPassword: 'Пароль',
       btnSignUp: 'Зарегистрироваться',
       signUpQuestion: 'Есть акаунт?',
-      signUpLink: 'Ввойти',
-      btnSignIn: 'Ввойти',
+      signUpLink: 'Войти',
+      btnSignIn: 'Войти',
       signInQuestion: 'Нет акаунта?',
       signInLink: 'Зарегистрироваться',
       validEmail: 'Неверный почтовый ящик',

@@ -85,6 +85,7 @@ const authSlice = createSlice({
     },
     [resetUser.rejected](state, { payload }) {
       state.isResetingUser = false;
+      state.isLoggedIn = false;
       state.error = payload;
     },
   },
