@@ -1,7 +1,11 @@
 import s from './Chart.module.scss';
 import { Line } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
+import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 
 const Chart = ({ tasks }) => {
+  const curLanguage = useSelector(getCurrentLanguage);
+
   const getperiodArr = () => {
     const daysArr = tasks[0].hoursWastedPerDay.map(day => day.currentDay);
     const sortedDaysArr = daysArr.sort(
@@ -51,7 +55,7 @@ const Chart = ({ tasks }) => {
     labels: getperiodArr(),
     datasets: [
       {
-        label: 'Запланований залишок трудовитрат',
+        label: curLanguage.tasks.chart.labelone,
         data: getPlanedHoursArr(),
         fill: false,
         lineTension: 0.1,
@@ -73,7 +77,7 @@ const Chart = ({ tasks }) => {
         min: 0,
       },
       {
-        label: 'Актуальний залишок трудовитрат',
+        label: curLanguage.tasks.chart.labeltwo,
         data: getHoursWastedArr(),
         fill: false,
         lineTension: 0.1,
