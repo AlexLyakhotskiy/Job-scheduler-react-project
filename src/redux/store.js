@@ -39,7 +39,7 @@ const persistConfigAuth = {
 const persistConfigUserSettings = {
   key: 'userSettings',
   storage,
-  whitelist: ['language'],
+  whitelist: ['language', 'theme'],
 };
 
 export const store = configureStore({
