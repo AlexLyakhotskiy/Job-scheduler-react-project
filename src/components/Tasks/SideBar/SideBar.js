@@ -7,11 +7,14 @@ import IconBtn from '../../IconBtn/IconBtn';
 import Modal from '../../Modal/Modal';
 import FormAddSprint from '../../Sprints/FormAddSprint/FormAddSprint';
 import BackToSprintsBtn from './BackToSprintsBtn/BackToSprintsBtn';
+import { useSelector } from 'react-redux';
+import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 
 const SideBar = ({ sprints }) => {
   const { projectId } = useParams();
 
   const [openModal, setOpenModal] = useState(false);
+  const curLanguage = useSelector(getCurrentLanguage);
 
   const toggleModal = () => {
     setOpenModal(prev => !prev);
@@ -43,7 +46,9 @@ const SideBar = ({ sprints }) => {
             className={s.btnProjAdd}
             onClick={toggleModal}
           />
-          <span className={s.btnSprintAddText}>Створити спринт</span>
+          <span className={s.btnSprintAddText}>
+            {curLanguage.tasks.sideBar.btnDesc}
+          </span>
         </div>
       </div>
       {openModal && (

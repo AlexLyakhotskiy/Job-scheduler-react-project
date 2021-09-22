@@ -89,10 +89,17 @@ export const english = {
   },
   tasks: {
     pageAddBtn: 'Create task',
+    th111: 'Task',
+    th222: 'Scheduled hours',
+    th333: 'Spent hours / day ',
+    th444: 'Spent hours',
     th1: 'Task',
-    th2: 'Scheduled hours',
-    th3: 'Spent hours / day ',
-    th4: 'Spent hours',
+    th21: 'Scheduled',
+    th22: 'hours',
+    th31: 'Spent',
+    th32: 'hours / day',
+    th41: 'Spent',
+    th42: 'hours',
 
     message: 'Your task collection is empty, use the "Create task" button',
     sideBar: {
@@ -103,6 +110,20 @@ export const english = {
       formTitle: 'Task creation',
       title: 'Task name',
       duration: 'Scheduled hours',
+      validMin: 'Name too short, min 4 characters!',
+      validMax20: 'Name is too long, max 20 characters!',
+      valMin: 'Min 1 hour!',
+      valMax: 'Max 8 hours!',
+      validReq: 'Field is required!',
+    },
+    chart: {
+      labelone: 'Planned balance of labor costs',
+      labeltwo: 'Actual balance of labor costs',
+    },
+    find: {
+      label: 'Search',
+      validMin: 'Name too short, min 1 characters!',
+      validMax20: 'Name is too long, max 20 characters!',
     },
   },
   btn: 'Create',
@@ -115,4 +136,5 @@ export const english = {
       error403: 'Email or Password is wrong',
     },
   },
+  teamTitle: 'Our Team',
 };
