@@ -2,12 +2,11 @@
   position: relative;
   display: none;
   width: 256px;
-
   padding: 20px 26px 80px 0px;
-  border-right: var(--color-secondary-btn-background);
 
   @media screen and (min-width: 768px) {
     display: block;
+    border-right: 1px solid var(--color-input-border);
     width: 189px;
     height: 88vh;
     font-size: 14px;
@@ -24,7 +23,6 @@
 .sprintListProject {
   overflow-y: auto;
   max-height: 63vh;
-  // margin-bottom: 150px;
 
   @media screen and (min-width: 1280px) {
     max-height: 55vh;
