@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -16,7 +15,6 @@ import Button from '../../components/Button/Button';
 import moment from 'moment';
 
 import { getLanguage } from '../../redux/userSettings/userSettingsSelectors';
-import { useSelector } from 'react-redux';
 
 import ukrainian from 'date-fns/locale/uk';
 import russian from 'date-fns/locale/ru';
