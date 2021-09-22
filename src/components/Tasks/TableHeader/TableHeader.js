@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 import FindForm from '../FindForm/FindForm';
 import sprite from '../sprite.svg';
 import s from './TableHeader.module.scss';
 
 const TableHeader = () => {
   const [openFindInp, setOpenFindInp] = useState(false);
+  const curLanguage = useSelector(getCurrentLanguage);
 
   const toggleFindInput = () => {
     setOpenFindInp(prev => !prev);
@@ -13,21 +16,21 @@ const TableHeader = () => {
   return (
     <div className={s.tableWrapper}>
       <ul className={s.tableHeaderList}>
-        <li>Задача</li>
+        <li>{curLanguage.tasks.th1}</li>
         <li>
-          Заплановано
+          {curLanguage.tasks.th21}
           <br />
-          годин
+          {curLanguage.tasks.th22}
         </li>
         <li>
-          Витрачено
+          {curLanguage.tasks.th31}
           <br />
-          год / день
+          {curLanguage.tasks.th32}
         </li>
         <li>
-          Витрачено
+          {curLanguage.tasks.th41}
           <br />
-          годин
+          {curLanguage.tasks.th42}
         </li>
         <li>
           {!openFindInp ? (
