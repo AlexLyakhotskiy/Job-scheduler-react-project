@@ -110,9 +110,9 @@ export const english = {
   nfp: {
     title: '404 Oh! Page not found',
     link: "Maybe you're lost? Click to return to the site.",
-    errors: {
-      error409: 'Provided email already exists',
-      error403: 'Email or Password is wrong',
-    },
+  },
+  errors: {
+    error409: 'Provided email already exists',
+    error403: 'Email or Password is wrong',
   },
 };
