@@ -38,6 +38,7 @@
 }
 
 .datePickerConteiner {
+  position: relative;
   margin-right: 30px;
 }
 
@@ -74,7 +75,15 @@
   display: block;
   margin: 0 auto;
 }
-
+.iconPolygonDown {
+  position: absolute;
+  z-index: 999;
+  fill: rgba(24, 28, 39, 0.6);
+  bottom: 10px;
+  right: 10px;
+  width: 12px;
+  height: 10px;
+}
 //чекбокс
 /* для элемента input c type="radio" */
 .checkbox {

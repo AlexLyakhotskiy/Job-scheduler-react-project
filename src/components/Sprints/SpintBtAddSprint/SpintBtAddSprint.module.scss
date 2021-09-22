@@ -20,6 +20,12 @@
 
 .conteinerBtnAddSrint {
   text-align: center;
+  border: none;
+  background: none;
+
+  &:hover {
+    color: var(--color-btn-background);
+  }
   @media screen and (min-width: 1280px) {
     display: flex;
     justify-content: center;

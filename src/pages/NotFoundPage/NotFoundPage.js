@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import React, { useState } from 'react';
@@ -5,6 +6,7 @@ import DatePicker, { registerLocale } from 'react-datepicker';
 import { Link } from 'react-router-dom';
 
 import Container from '../../components/Container/Container';
+import { getCurrentLanguage } from '../../redux/userSettings/userSettingsSelectors';
 
 import { routes } from '../../routes/routes';
 
@@ -13,7 +15,6 @@ import Button from '../../components/Button/Button';
 import moment from 'moment';
 
 import { getLanguage } from '../../redux/userSettings/userSettingsSelectors';
-import { useSelector } from 'react-redux';
 
 import ukrainian from 'date-fns/locale/uk';
 import russian from 'date-fns/locale/ru';
@@ -26,13 +27,13 @@ const chooseLang = {
 };
 
 export default function NotFoundPage() {
+  const curLanguage = useSelector(getCurrentLanguage);
   return (
     <Container className={styles.container}>
       <div className={styles.wrapper}>
-        <Test />
-        <h1>404 Ой! Сторінка не знайдена</h1>
+        <h1>{curLanguage.nfp.title}</h1>
         <Link to={routes.register} className={styles.link}>
-          Можливо ви загубились? натисніть щоб повернутись до сайту.
+          {curLanguage.nfp.link}
         </Link>
       </div>
     </Container>
