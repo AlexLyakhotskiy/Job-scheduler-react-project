@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
@@ -17,7 +17,7 @@ function Modal({ closeModal, children, chart = false }) {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
     };
-  }, []); /* eslint-disable-line*/
+  }, []);
 
   function onCloseBtnClick() {
     closeModal();

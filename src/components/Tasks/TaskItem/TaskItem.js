@@ -3,10 +3,12 @@ import IconBtn from '../../IconBtn/IconBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTask, editTask } from '../../../redux/tasks/tasks-operations';
 import { getCurrentDayIndexSelector } from '../../../redux/tasks/tasks-selectors';
+import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 
 const TaskItem = ({ task }) => {
   const currentDayIndex = useSelector(getCurrentDayIndexSelector);
   const dispatch = useDispatch();
+  const curLanguage = useSelector(getCurrentLanguage);
 
   const onChange = e => {
     e.preventDefault();
@@ -34,11 +36,11 @@ const TaskItem = ({ task }) => {
           <span>{task.title}</span>
         </div>
         <div className={s.taskItem}>
-          <span className={s.taskItemDesc}>Заплановано годин</span>
+          <span className={s.taskItemDesc}>{curLanguage.tasks.th222}</span>
           <span>{task.hoursPlanned}</span>
         </div>
         <div className={s.taskItem}>
-          <span className={s.taskItemDesc}>Витрачено год / день</span>
+          <span className={s.taskItemDesc}>{curLanguage.tasks.th333}</span>
           <span>
             <form onSubmit={e => e.preventDefault()} className={s.taskItemForm}>
               <input
@@ -61,7 +63,7 @@ const TaskItem = ({ task }) => {
           </span>
         </div>
         <div className={s.taskItem}>
-          <span className={s.taskItemDesc}>Витрачено годин</span>
+          <span className={s.taskItemDesc}>{curLanguage.tasks.th444}</span>
           <span>{task.hoursWasted}</span>
         </div>
         <div className={s.removeBtn}>
