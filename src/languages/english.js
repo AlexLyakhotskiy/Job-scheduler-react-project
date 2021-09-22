@@ -11,15 +11,6 @@ export const english = {
   momentTitle: 'en-gb',
   //originalTitle: 'english',
   header: {
-    //     navigation: {
-    //       home: 'home',
-    //       courses: 'courses',
-    //       groups: 'groups',
-    //       profile: 'profile',
-    //       admin: 'admin',
-    //       signin: 'signin',
-    //       signup: 'signup',
-    //     },
     //     burgerMenu: {
     //       toggleTheme: 'Dark theme',
     //       changeLanguage: 'Language',
