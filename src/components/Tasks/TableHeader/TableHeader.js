@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FindForm from '../FindForm/FindForm';
 import sprite from '../sprite.svg';
-import styles from '../Tasks.module.scss';
+import s from './TableHeader.module.scss';
 
 const TableHeader = () => {
   const [openFindInp, setOpenFindInp] = useState(false);
@@ -9,22 +9,22 @@ const TableHeader = () => {
   const toggleFindInput = () => {
     setOpenFindInp(prev => !prev);
   };
-  //
+
   return (
-    <div className={styles.tableWrapper}>
-      <ul className={styles.tableTitleList}>
-        <li className={styles.tableTitle}>Задача</li>
-        <li className={styles.tableTitle}>
+    <div className={s.tableWrapper}>
+      <ul className={s.tableHeaderList}>
+        <li>Задача</li>
+        <li>
           Заплановано
           <br />
           годин
         </li>
-        <li className={styles.tableTitle}>
+        <li>
           Витрачено
           <br />
           год / день
         </li>
-        <li className={styles.tableTitle}>
+        <li>
           Витрачено
           <br />
           годин
@@ -33,15 +33,18 @@ const TableHeader = () => {
           {!openFindInp ? (
             <button
               type="button"
-              className={styles.tasksBtn}
               onClick={toggleFindInput}
+              className={s.findFormBtn}
             >
-              <svg className={styles.findIcon}>
-                <use href={sprite + '#icon-find'} />
+              <svg>
+                <use href={sprite + '#icon-find'} width="20px" height="20px" />
               </svg>
             </button>
           ) : (
-            <FindForm toggleFindInput={toggleFindInput} />
+            <div className={s.findFormTable}>
+              {' '}
+              <FindForm toggleFindInput={toggleFindInput} />
+            </div>
           )}
         </li>
       </ul>

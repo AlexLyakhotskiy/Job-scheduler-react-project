@@ -1,34 +1,36 @@
-import { useRef } from 'react';
+import * as Yup from 'yup';
+import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { filterChange } from '../../../redux/tasks/tasks-actions';
-import sprite from '../sprite.svg';
-import styles from '../Tasks.module.scss';
+import Input from '../../Input/Input';
+import s from './FindForm.module.scss';
+import Svg from '../../Svg/Svg';
+
+const validationSchema = Yup.object().shape({
+  query: Yup.string()
+    .min(1, 'Занадто коротка назва, мін 1 символ!')
+    .max(20, 'Занадто довга назва, макс 10 символів!'),
+});
 
 const FindForm = ({ toggleFindInput }) => {
   const dispatch = useDispatch();
-  const textInput = useRef(null);
 
-  const onSubmit = e => {
-    e.preventDefault();
-    toggleFindInput();
-    dispatch(filterChange(textInput.current.value));
-  };
+  const formik = useFormik({
+    initialValues: { query: '' },
+    validationSchema,
+    onSubmit: data => {
+      dispatch(filterChange(data.query));
+      toggleFindInput();
+    },
+  });
+
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input
-          ref={textInput}
-          type="name"
-          name="name"
-          label="Find task by name"
-          required
-          placeholder="Search task"
-        />
+    <div className={s.findBox}>
+      <form onSubmit={formik.handleSubmit}>
+        <Input formik={formik} type="text" name="query" label="Пошук" />
 
-        <button type="submit" className={styles.tasksBtn} onClick={onSubmit}>
-          <svg className={styles.findIcon}>
-            <use href={sprite + '#icon-find'} />
-          </svg>
+        <button type="submit" className={s.iconBtn}>
+          <Svg icon="#icon-find" className={s.icon} />
         </button>
       </form>
     </div>

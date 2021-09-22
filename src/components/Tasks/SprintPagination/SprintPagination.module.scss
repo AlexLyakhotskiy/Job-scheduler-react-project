@@ -1,0 +1,60 @@
+@import '../../../styles/variables.scss';
+
+.paginationContainer,
+.paginationWrapper {
+  display: flex;
+
+  font-size: 12px;
+  line-height: 1.25;
+  color: var(--color-label-input);
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 20px;
+  }
+}
+
+.paginationContainer {
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 20px;
+  margin-left: 20px;
+  @media screen and (min-width: 1280px) {
+    margin-left: 0;
+  }
+}
+
+.paginationWrapper {
+  align-items: center;
+  @media screen and (min-width: 1280px) {
+    margin-right: 39px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .paginationText {
+    margin-right: 20px;
+  }
+}
+
+.arrowBtn {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover,
+  &:focus {
+    svg {
+      transform: scale(1.5);
+    }
+  }
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  fill: var(--color-main-title);
+}
+
+.currentPage {
+  font-size: 18px;
+  line-height: 1.22;
+  color: var(--color-main-title);
+}

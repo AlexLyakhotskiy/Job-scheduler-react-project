@@ -5,6 +5,8 @@ import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import IconBtn from '../../IconBtn/IconBtn';
 import Modal from '../../Modal/Modal';
+import FormAddSprint from '../../Sprints/FormAddSprint/FormAddSprint';
+import BackToSprintsBtn from './BackToSprintsBtn/BackToSprintsBtn';
 
 const SideBar = ({ sprints }) => {
   const { projectId } = useParams();
@@ -18,15 +20,7 @@ const SideBar = ({ sprints }) => {
   return (
     <>
       <div className={s.sprintsConteiner}>
-        <Link
-          to={`${routes.projects}/${projectId}/sprints`}
-          className={s.btGoBackLink}
-        >
-          <button className={s.btGoBack}>
-            <Svg icon={'#icon-arrow'} className={s.arrow} />
-            <span className={s.btGoBackTitel}>Показати спринти</span>
-          </button>
-        </Link>
+        <BackToSprintsBtn />
         <ul className={s.sprintsList}>
           {sprints?.length &&
             sprints.map(sprint => (
@@ -52,7 +46,11 @@ const SideBar = ({ sprints }) => {
           <span className={s.btnSprintAddText}>Створити спринт</span>
         </div>
       </div>
-      {openModal && <Modal closeModal={toggleModal} />}
+      {openModal && (
+        <Modal closeModal={toggleModal}>
+          <FormAddSprint toggleModal={toggleModal} />
+        </Modal>
+      )}
     </>
   );
 };

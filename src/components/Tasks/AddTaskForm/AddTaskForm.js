@@ -5,6 +5,7 @@ import Button from '../../Button/Button';
 import CancelBtn from '../../CancelBtn/CancelBtn';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../../../redux/tasks/tasks-operations';
+import s from './AddTaskForm.module.scss';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string()
@@ -36,15 +37,24 @@ const AddTaskForm = ({ sprintId, toggleModal }) => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <h2>Створення задачі</h2>
-      <Input formik={formik} type="text" name="title" label="Назва задачі" />
+      <h2 className={s.formTitle}>Створення задачі</h2>
+      <Input
+        formik={formik}
+        type="text"
+        name="title"
+        label="Назва задачі"
+        className={s.titleInput}
+      />
       <Input
         formik={formik}
         type="number"
         name="hoursPlanned"
         label="Заплановано годин"
+        className={s.descInput}
       />
-      <Button type="submit">Готово</Button>
+      <Button type="submit" className={s.btnSubmit}>
+        Готово
+      </Button>
       <CancelBtn onClick={toggleModal}>Відміна</CancelBtn>
     </form>
   );

@@ -3,6 +3,8 @@ import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentDayIndexSelector } from '../../../redux/tasks/tasks-selectors';
 import { changeIndexCurrentDay } from '../../../redux/tasks/tasks-actions';
+import s from './SprintPagination.module.scss';
+import Svg from '../../Svg/Svg';
 
 const SprintPagination = ({ tasks }) => {
   const currentDayIndex = useSelector(getCurrentDayIndexSelector);
@@ -42,17 +44,21 @@ const SprintPagination = ({ tasks }) => {
   };
 
   return (
-    <div>
-      <button onClick={onChangePrev} type="button">
-        {'<'}
-      </button>
-      <p>
-        <span>{currentDayIndex}</span>/<span>{duration}</span>
-      </p>
-      <button onClick={onChangeNext} type="button">
-        {'>'}
-      </button>
-      <p>{currentDate}</p>
+    <div className={s.paginationContainer}>
+      <div className={s.paginationWrapper}>
+        <button onClick={onChangePrev} type="button" className={s.arrowBtn}>
+          <Svg icon="#icon-arrow_back" className={s.icon} />
+        </button>
+        <p className={s.paginationText}>
+          <span className={s.currentPage}>{currentDayIndex} </span> /{' '}
+          <span>{duration} </span>
+        </p>
+        <button onClick={onChangeNext} type="button" className={s.arrowBtn}>
+          <Svg icon="#icon-arrow_forward" className={s.icon} />
+        </button>
+      </div>
+
+      <p className={s.currentDay}>{currentDate}</p>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import styles from './TaskItem.module.scss';
+import s from './TaskItem.module.scss';
 import IconBtn from '../../IconBtn/IconBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTask, editTask } from '../../../redux/tasks/tasks-operations';
@@ -28,38 +28,50 @@ const TaskItem = ({ task }) => {
   };
 
   return (
-    <li className={styles.taskItem}>
-      <ul className={styles.taskItemBox}>
-        <li className={styles.taskColomn}>{task.title}</li>
-        <li className={styles.taskColomn}>{task.hoursPlanned}</li>
-        <li className={styles.taskColomn}>
-          <form onSubmit={e => e.preventDefault()}>
-            <input
-              className={styles.hoursWasted}
-              type="number"
-              name="hours"
-              value={
-                currentDayIndex &&
-                task.hoursWastedPerDay &&
-                task.hoursWastedPerDay[currentDayIndex - 1]
-                  ? task.hoursWastedPerDay[currentDayIndex - 1]
-                      .singleHoursWasted
-                  : ''
-              }
-              max="8"
-              onChange={onChange}
-            />
-          </form>
-        </li>
-        <li className={styles.taskColomn}>{task.hoursWasted}</li>
-        <li className={styles.taskColomn}>
+    <li className={s.taskWrapper}>
+      <div className={s.taskCard}>
+        <div className={s.taskTitle}>
+          <span>{task.title}</span>
+        </div>
+        <div className={s.taskItem}>
+          <span className={s.taskItemDesc}>Заплановано годин</span>
+          <span>{task.hoursPlanned}</span>
+        </div>
+        <div className={s.taskItem}>
+          <span className={s.taskItemDesc}>Витрачено год / день</span>
+          <span>
+            <form onSubmit={e => e.preventDefault()} className={s.taskItemForm}>
+              <input
+                className={s.taskItemInp}
+                type="number"
+                name="hours"
+                value={
+                  currentDayIndex &&
+                  task.hoursWastedPerDay &&
+                  task.hoursWastedPerDay[currentDayIndex - 1]
+                    ? task.hoursWastedPerDay[currentDayIndex - 1]
+                        .singleHoursWasted
+                    : ''
+                }
+                min="1"
+                max="8"
+                onChange={onChange}
+              />
+            </form>
+          </span>
+        </div>
+        <div className={s.taskItem}>
+          <span className={s.taskItemDesc}>Витрачено годин</span>
+          <span>{task.hoursWasted}</span>
+        </div>
+        <div className={s.removeBtn}>
           <IconBtn
             icon="bin"
             secondary
             onClick={() => dispatch(deleteTask(task.id || task._id))}
           />
-        </li>
-      </ul>
+        </div>
+      </div>
     </li>
   );
 };
