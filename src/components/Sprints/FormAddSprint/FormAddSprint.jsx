@@ -5,14 +5,19 @@ import Input from '../../Input/Input';
 import Button from '../../Button/Button';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import 'react-datepicker/dist/react-datepicker.css';
+import './calendar.css';
 import { useDispatch, useSelector } from 'react-redux';
 import sprintOperations from '../../../redux/sprint/sprin-operations';
+import { getLanguage } from '../../../redux/userSettings/userSettingsSelectors.js';
+import { languages } from '../../../languages';
 import { useParams } from 'react-router';
 import CancelBtn from '../../CancelBtn/CancelBtn';
 import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
+import { useState } from 'react';
 
 export default function FormAddSprint({ toggleModal }) {
+  const { calendarLocale } = languages[useSelector(getLanguage)];
+  console.log('locale ==> ', calendarLocale);
   const dispatch = useDispatch();
   const { projectId } = useParams();
   const curLanguage = useSelector(getCurrentLanguage);
@@ -25,6 +30,8 @@ export default function FormAddSprint({ toggleModal }) {
       .required(curLanguage.sprints.addSprintsForm.validReq)
       .min(2, curLanguage.sprints.addSprintsForm.validMin),
   });
+
+  const [check, setCheck] = useState(false);
 
   const formik = useFormik({
     initialValues: { title: '', duration: '', date: new Date() },
@@ -59,10 +66,11 @@ export default function FormAddSprint({ toggleModal }) {
         />
         <input
           className={s.checkbox}
-          name="color"
+          name="check"
           type="checkbox"
           id="green"
           value="green"
+          onChange={() => setCheck(!check)}
         />
         <label className={s.checkboxLabel} htmlFor="green">
           {curLanguage.sprints.addSprintsForm.prevDays}
@@ -75,10 +83,13 @@ export default function FormAddSprint({ toggleModal }) {
               </span>
             </label>
             <DatePicker
+              onBlur={() => formik.setFieldTouched('date', true)}
+              locale={calendarLocale}
               id="datePicker"
               name="date"
+              dateFormatCalendar="LLLL"
               autocomplete="off"
-              minDate={null}
+              minDate={check ? null : new Date()}
               dateFormat="dd MMM"
               className={s.date}
               selected={formik.values.date}
@@ -86,6 +97,9 @@ export default function FormAddSprint({ toggleModal }) {
                 formik.setFieldValue('date', date);
               }}
             />
+            {formik.errors.date && formik.touched.date && (
+              <span className={s.errorsDate}>{formik.errors.date}</span>
+            )}
           </div>
 
           <Input

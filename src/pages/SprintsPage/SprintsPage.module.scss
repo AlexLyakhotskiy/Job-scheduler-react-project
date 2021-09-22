@@ -5,11 +5,11 @@
 .containerPageSprint {
   width: 280px;
   @media screen and (min-width: 768px) {
-    margin-left: 20px;
-    width: 452px;
+    width: 490px;
+    padding-left: 0px;
   }
-  @media screen and (min-width: 768px) {
-    margin-left: 70px;
+  @media screen and (min-width: 1280px) {
+    padding-left: 50px;
   }
 }
 

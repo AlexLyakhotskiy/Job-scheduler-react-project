@@ -29,7 +29,6 @@ export default function FormAddPeople({ toggleModal }) {
     initialValues: { email: '' },
     validationSchema,
     onSubmit: values => {
-      console.log(values);
       dispatch(
         addProjectMembers({
           projectId,

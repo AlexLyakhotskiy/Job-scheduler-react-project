@@ -1,4 +1,11 @@
+import { registerLocale } from 'react-datepicker';
+import ru from 'date-fns/locale/ru';
+
+const calendarLocale = 'ru';
+registerLocale(calendarLocale, ru);
+
 export const russian = {
+  calendarLocale,
   title: 'russian',
   originalTitle: 'RU',
   //originalTitle: 'русский',
@@ -106,5 +113,8 @@ export const russian = {
   nfp: {
     title: '404 Ой! Страница не найдена',
     link: 'Возможно вы потерялись? Hажмите чтобы вернуться на сайт.',
+  errors: {
+    error409: 'Указанный адрес электронной почты уже существует',
+    error403: 'Электронная почта или пароль неверны',
   },
 };
