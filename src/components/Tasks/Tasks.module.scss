@@ -1,0 +1,112 @@
+@import '../../styles/variables.scss';
+
+.tasksSection {
+  display: flex;
+}
+
+.tasksContainer {
+  width: 280px;
+  position: relative;
+  @media screen and (min-width: 768px) {
+    width: 472px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 70px;
+    width: 870px;
+  }
+}
+
+.backToSprints {
+  border-bottom: 1px solid var(--color-input-border);
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.dayFindContainer {
+  @media screen and (min-width: 768px) {
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  @media screen and (min-width: 1280px) {
+    margin: 0;
+  }
+}
+
+.titleNoTask {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.23;
+  color: var(--color-input-border);
+}
+
+.tasksList {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.addTask {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    margin: 0;
+    right: 70px;
+    top: 155px;
+    bottom: auto;
+    // top: 155px;
+    // right: 70px;
+  }
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    // right: 70px;
+    // top: -600px;
+  }
+}
+
+.addTaskText {
+  display: none;
+
+  @media screen and (min-width: 1280px) {
+    display: block;
+    margin-left: 20px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.22;
+    color: var(--color-main-title);
+  }
+}
+
+.chartBtn {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  @media screen and (min-width: 768px) {
+    right: 80px;
+    bottom: 115px;
+    left: auto;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .findForm {
+    display: none;
+  }
+}
+
+// .relative {
+//   @media screen and (min-width: 768px) {
+//     position: relative;
+//   }
+//   @media screen and (min-width: 1280) {
+//     position: relative;
+//   }
+// }
