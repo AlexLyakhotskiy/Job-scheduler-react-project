@@ -5,10 +5,12 @@ import { getCurrentDayIndexSelector } from '../../../redux/tasks/tasks-selectors
 import { changeIndexCurrentDay } from '../../../redux/tasks/tasks-actions';
 import s from './SprintPagination.module.scss';
 import Svg from '../../Svg/Svg';
+import { useParams } from 'react-router';
 
 const SprintPagination = ({ tasks }) => {
   const currentDayIndex = useSelector(getCurrentDayIndexSelector);
   const dispatch = useDispatch();
+  const { sprintId } = useParams();
 
   const duration = tasks[0].hoursWastedPerDay.length;
 
@@ -23,7 +25,7 @@ const SprintPagination = ({ tasks }) => {
 
   useEffect(() => {
     dispatch(changeIndexCurrentDay(findCurrentDay() + 1));
-  }, [tasks]);
+  }, [sprintId]);
 
   const currentDate =
     currentDayIndex &&
