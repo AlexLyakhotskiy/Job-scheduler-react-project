@@ -18,6 +18,12 @@ const SprintCard = () => {
 
   // const [animate, setIsAnimate] = useState(false);
 
+  // const delCartAnimate = () => setIsAnimate(state => !state);
+  // useEffect(() => {
+
+  //   delCartAnimate();
+  // }, [animate]);
+
   useEffect(() => {
     dispatch(sprintOperations.getSprint(projectId));
     return () => dispatch(sprintClearState());
