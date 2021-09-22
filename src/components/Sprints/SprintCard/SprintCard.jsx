@@ -6,11 +6,13 @@ import allSelectors from '../../../redux/sprint/sprin-selectors';
 import IconBtn from '../../IconBtn/IconBtn';
 import moment from 'moment';
 import s from './SprintCard.module.scss';
+import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 
 const SprintCard = () => {
   const { url } = useRouteMatch();
   const { projectId } = useParams();
   const dispatch = useDispatch();
+  const curLanguage = useSelector(getCurrentLanguage);
 
   useEffect(() => {
     dispatch(sprintOperations.getSprint(projectId));
@@ -25,7 +27,7 @@ const SprintCard = () => {
   return (
     <>
       {!sprints ? (
-        <h1> Пока у вас нет спринтов</h1>
+        <h1>{curLanguage.sprints.message}</h1>
       ) : (
         <div>
           <ul className={s.sprintCardList}>
@@ -40,17 +42,23 @@ const SprintCard = () => {
                       <h2 className={s.sprintTitel}>{sprint.title}</h2>
                       <ul>
                         <li className={s.sprintItem}>
-                          <span className={s.sprintText}>Дата початку</span>
+                          <span className={s.sprintText}>
+                            {curLanguage.sprints.addSprintsForm.startDate}
+                          </span>
                           <span>
                             {moment(sprint.startDate).format('D MMM')}
                           </span>
                         </li>
                         <li className={s.sprintItem}>
-                          <span className={s.sprintText}>Дата закінченя</span>
+                          <span className={s.sprintText}>
+                            {curLanguage.sprints.addSprintsForm.endDate}
+                          </span>
                           <span>{moment(sprint.endDate).format('D MMM')}</span>
                         </li>
                         <li className={s.sprintItem}>
-                          <span className={s.sprintText}>Тривалість</span>
+                          <span className={s.sprintText}>
+                            {curLanguage.sprints.addSprintsForm.duration}
+                          </span>
                           <span>{sprint.duration}</span>
                         </li>
                       </ul>

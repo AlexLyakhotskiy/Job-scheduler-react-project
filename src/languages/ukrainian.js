@@ -43,12 +43,12 @@ export const ukrainian = {
   projects: {
     pageTitle: 'Проекти',
     pageAddBtn: 'Створити проект',
+    message:
+      'Ваша колекція проектів порожня, скористайтесь кнопкою "Створити проект"',
     addProjectsForm: {
       formTitle: 'Створення проекту',
       title: 'Назва проекту',
       description: 'Опис',
-      btnAdd: 'Готово',
-      btnCancel: 'Відміна',
       validMin: 'Занадто коротка назва, мін 4 символа!',
       validMax12: 'Занадто довга назва, макс 12 символів!',
       validMax70: 'Занадто довга назва, макс 70 символів!',
@@ -67,10 +67,18 @@ export const ukrainian = {
     addSprintsForm: {
       formTitle: 'Створення спринта',
       title: 'Назва спринта',
+      startDate: 'Дата початку',
       endDate: 'Дата закінчення',
       duration: 'Тривалість',
-      btnAdd: 'Готово',
-      btnCancel: 'Відміна',
+      prevDays: 'Попередні дні',
+      validReq: "Поле обов'язкове!",
+      validMin: 'Мінімум 2 дні!',
+    },
+    addMem: {
+      email: 'Введіть Email',
+      addedMem: 'Додані користувачі :',
+      message: 'Ви ще не додали жодного користувача',
+      validEmail: 'Невірна поштова скринька',
     },
   },
   tasks: {
@@ -90,8 +98,12 @@ export const ukrainian = {
       formTitle: 'Створення задачі',
       title: 'Назва задачі',
       duration: 'Заплановано годин',
-      btnAdd: 'Готово',
-      btnCancel: 'Відміна',
     },
+  },
+  btn: 'Готово',
+  btnCancel: 'Відміна',
+  nfp: {
+    title: '404 Ой! Сторінка не знайдена',
+    link: 'Можливо ви загубились? Hатисніть щоб повернутись до сайту.',
   },
 };

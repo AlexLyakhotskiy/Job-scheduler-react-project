@@ -6,21 +6,25 @@ import Button from '../../Button/Button';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import sprintOperations from '../../../redux/sprint/sprin-operations';
 import { useParams } from 'react-router';
 import CancelBtn from '../../CancelBtn/CancelBtn';
-
-const validationSchema = Yup.object().shape({
-  title: Yup.string().required("Поле обов'язкове!"),
-  //   date: Yup.date(),
-  date: Yup.date().required("Поле обов'язкове!"),
-  duration: Yup.number().required("Поле обов'язкове!").min(2, 'Min is 2 day'),
-});
+import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 
 export default function FormAddSprint({ toggleModal }) {
   const dispatch = useDispatch();
   const { projectId } = useParams();
+  const curLanguage = useSelector(getCurrentLanguage);
+
+  const validationSchema = Yup.object().shape({
+    title: Yup.string().required(curLanguage.sprints.addSprintsForm.validReq),
+    //   date: Yup.date(),
+    date: Yup.date().required(curLanguage.sprints.addSprintsForm.validReq),
+    duration: Yup.number()
+      .required(curLanguage.sprints.addSprintsForm.validReq)
+      .min(2, curLanguage.sprints.addSprintsForm.validMin),
+  });
 
   const formik = useFormik({
     initialValues: { title: '', duration: '', date: new Date() },
@@ -44,11 +48,13 @@ export default function FormAddSprint({ toggleModal }) {
   return (
     <>
       <form onSubmit={formik.handleSubmit} className={s.formAddSprint}>
-        <p className={s.titel}>Створення спринта</p>
+        <p className={s.titel}>
+          {curLanguage.sprints.addSprintsForm.formTitle}
+        </p>
         <Input
           formik={formik}
           name="title"
-          label="Назва спринта"
+          label={curLanguage.sprints.addSprintsForm.title}
           className={s.inputNameSprint}
         />
         <input
@@ -59,12 +65,14 @@ export default function FormAddSprint({ toggleModal }) {
           value="green"
         />
         <label className={s.checkboxLabel} htmlFor="green">
-          Попередні дні
+          {curLanguage.sprints.addSprintsForm.prevDays}
         </label>
         <div className={s.containerDate}>
           <div className={s.datePickerConteiner}>
             <label className={s.datePickerLabel} htmlFor="datePicker">
-              <span className={s.datePickerLabel}>Дата закінчення</span>
+              <span className={s.datePickerLabel}>
+                {curLanguage.sprints.addSprintsForm.endDate}
+              </span>
             </label>
             <DatePicker
               id="datePicker"
@@ -84,7 +92,7 @@ export default function FormAddSprint({ toggleModal }) {
             formik={formik}
             type="number"
             name="duration"
-            label="Тривалисть"
+            label={curLanguage.sprints.addSprintsForm.duration}
             className={s.inputDays}
           />
         </div>

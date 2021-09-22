@@ -43,12 +43,13 @@ export const russian = {
   projects: {
     pageTitle: 'Проекты',
     pageAddBtn: 'Создать проект',
+    message:
+      'Ваша коллекция проектов пуста, воспользуйтесь кнопкой "Создать проект"',
     addProjectsForm: {
       formTitle: 'Создание проекта',
       title: 'Название проекта',
       description: 'Описание',
-      btnAdd: 'Готово',
-      btnCancel: 'Отмена',
+
       validMin: 'Слишком короткое название, мин 4 символа!',
       validMax12: 'Слишком длинное название, макс 12 символов!',
       validMax70: 'Слишком длинное название, макс 70 символов!',
@@ -67,10 +68,18 @@ export const russian = {
     addSprintsForm: {
       formTitle: 'Создание спринта',
       title: 'Название спринта',
+      startDate: 'Дата начала',
       endDate: 'Дата окончания',
       duration: 'Продолжительность',
-      btnAdd: 'Готово',
-      btnCancel: 'Отмена',
+      prevDays: 'Педыдущие дни',
+      validReq: 'Поле обязательное!',
+      validMin: 'Минимум 2 дня!',
+    },
+    addMem: {
+      email: 'Введите Email',
+      addedMem: 'Добавленыe пользователи :',
+      message: 'Вы еще не добавили ни одного пользователя',
+      validEmail: 'Неверный почтовый ящик',
     },
   },
   tasks: {
@@ -90,8 +99,12 @@ export const russian = {
       formTitle: 'Создание задачи',
       title: 'Название задачи',
       duration: 'Запланировано часов',
-      btnAdd: 'Готово',
-      btnCancel: 'Отмена',
     },
+  },
+  btn: 'Готово',
+  btnCancel: 'Отмена',
+  nfp: {
+    title: '404 Ой! Страница не найдена',
+    link: 'Возможно вы потерялись? Hажмите чтобы вернуться на сайт.',
   },
 };

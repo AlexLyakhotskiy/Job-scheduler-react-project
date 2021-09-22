@@ -7,9 +7,11 @@ import { logout } from '../../../redux/auth/auth-operations';
 import { getUser } from '../../../redux/auth/auth-selectors';
 
 import styles from './UserMenu.module.scss';
+import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 
 export default function UserMenu() {
   const email = useSelector(getUser);
+  const curLanguage = useSelector(getCurrentLanguage);
   const dispatch = useDispatch();
 
   const handleLogOut = () => dispatch(logout());
@@ -19,7 +21,9 @@ export default function UserMenu() {
       <p className={styles.text}>{email.slice(0, email.indexOf('@'))}</p>
       <button className={styles.btn} type="button" onClick={handleLogOut}>
         <Svg icon="#icon-exit" className={styles.icon} />
-        <span className={styles.btnText}>Log Out</span>
+        <span className={styles.btnText}>
+          {curLanguage.header.userMenu.btnText}
+        </span>
       </button>
     </div>
   );
