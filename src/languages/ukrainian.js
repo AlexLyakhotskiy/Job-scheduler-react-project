@@ -10,15 +10,6 @@ export const ukrainian = {
   originalTitle: 'UA',
   //originalTitle: 'українська',
   header: {
-    //     navigation: {
-    //       home: 'Головна',
-    //       courses: 'Курси',
-    //       groups: 'Групи',
-    //       profile: 'Профіль',
-    //       admin: 'Адмін',
-    //       signin: 'Увійти',
-    //       signup: 'Зареєструватись',
-    //     },
     //     burgerMenu: {
     //       toggleTheme: 'Темна тема',
     //       changeLanguage: 'Мова',
