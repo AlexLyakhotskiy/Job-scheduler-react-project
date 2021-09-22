@@ -8,6 +8,7 @@ export const russian = {
   calendarLocale,
   title: 'russian',
   originalTitle: 'RU',
+  momentTitle: 'ru',
   //originalTitle: 'русский',
   header: {
     //     burgerMenu: {

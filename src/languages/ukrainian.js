@@ -8,6 +8,7 @@ export const ukrainian = {
   calendarLocale,
   title: 'ukrainian',
   originalTitle: 'UA',
+  momentTitle: 'uk',
   //originalTitle: 'українська',
   header: {
     //     burgerMenu: {
