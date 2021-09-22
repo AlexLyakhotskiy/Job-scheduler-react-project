@@ -13,7 +13,7 @@ const validationSchema = Yup.object().shape({
     .min(4, 'Занадто коротка назва, мін 2 символа!')
     .max(20, 'Занадто довга назва, макс 20 символів!')
     .required("Поле обов'язкове!"),
-  hoursPlanned: Yup.string()
+  hoursPlanned: Yup.number()
     .min(1, 'Мін 1 година!')
     .max(8, 'Макс 8 годин!')
     .required("Поле обов'язкове!"),
