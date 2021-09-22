@@ -36,7 +36,7 @@ export const english = {
       signUpQuestion: 'Have you got an account?',
       signUpLink: 'Sign In',
       btnSignIn: 'Sign In',
-      signInQuestion: 'Haven`t got an account yet?',
+      signInQuestion: "Haven't got an account yet?",
       signInLink: 'Sign Up',
       validEmail: 'Invalid email',
       validEmailReq: 'Email is required',
@@ -50,12 +50,12 @@ export const english = {
   projects: {
     pageTitle: 'Projects',
     pageAddBtn: 'Сreate project',
+    message:
+      'Your project collection is empty, use the "Create project" button',
     addProjectsForm: {
       formTitle: 'Project creation',
       title: 'Project name',
       description: 'Description',
-      btnAdd: 'Create',
-      btnCancel: 'Cancel',
       validMin: 'Name too short, min 4 characters!',
       validMax12: 'Name is too long, max 12 characters!',
       validMax70: 'Name is too long, max 70 characters!',
@@ -73,10 +73,18 @@ export const english = {
     addSprintsForm: {
       formTitle: 'Sprint creation',
       title: 'Sprint name',
+      startDate: 'Start date',
       endDate: 'Expire date',
       duration: 'Duration',
-      btnAdd: 'Create',
-      btnCancel: 'Cancel',
+      prevDays: 'Previous days',
+      validReq: 'Field is required!',
+      validMin: 'Min 2 days',
+    },
+    addMem: {
+      email: 'Enter Email',
+      addedMem: 'Added users :',
+      message: 'You have not added any users yet',
+      validEmail: 'Invalid email',
     },
   },
   tasks: {
@@ -95,10 +103,13 @@ export const english = {
       formTitle: 'Task creation',
       title: 'Task name',
       duration: 'Scheduled hours',
-      btnAdd: 'Create',
-      btnCancel: 'Cancel',
     },
   },
+  btn: 'Create',
+  btnCancel: 'Cancel',
+  nfp: {
+    title: '404 Oh! Page not found',
+    link: "Maybe you're lost? Click to return to the site.",
   errors: {
     error409: 'Provided email already exists',
     error403: 'Email or Password is wrong',

@@ -45,6 +45,9 @@ const Projects = () => {
         {isLoading && <LoaderSpinner />}
 
         <ul className={s.list}>
+          {projects.length === 0 && (
+            <h2 className={s.message}>{curLanguage.projects.message}</h2>
+          )}
           {projects.length > 0 &&
             projects.map(({ title, _id, description }) => (
               <ProjectItem
