@@ -51,7 +51,7 @@ const Tasks = () => {
   };
 
   return (
-    <section>
+    <section className={s.tasksWrapper}>
       <div className={s.tasksSection}>
         <SideBar sprints={sprints} />
         <div className={s.tasksContainer}>
