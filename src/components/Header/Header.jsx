@@ -18,10 +18,10 @@ export default function Header() {
     <header className={styles.header}>
       <Container className={styles.container}>
         <Logo />
-        <div>
+        <div className={styles.headerUtil}>
+          {isLoggedIn && <UserMenu />}
           <SelectLang />
           <ChangerTheme />
-          {isLoggedIn && <UserMenu />}
         </div>
       </Container>
     </header>
