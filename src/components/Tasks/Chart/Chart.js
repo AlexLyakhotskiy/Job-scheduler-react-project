@@ -7,9 +7,9 @@ const Chart = ({ tasks }) => {
   const curLanguage = useSelector(getCurrentLanguage);
 
   const getperiodArr = () => {
-    const daysArr = tasks[0].hoursWastedPerDay
-      .map(day => day.currentDay.slice(5))
-      .slice(0, 4);
+    const daysArr = tasks[0].hoursWastedPerDay.map(day =>
+      day.currentDay.slice(5),
+    );
     const sortedDaysArr = daysArr.sort(
       (a, b) => new Date(b.date) - new Date(a.date),
     );
@@ -53,8 +53,38 @@ const Chart = ({ tasks }) => {
     return daysWastedHoursArr;
   };
 
+  const options = {
+    scales: {
+      yAxis: {
+        min: 0,
+      },
+    },
+  };
+
   const data = {
     labels: getperiodArr(),
+    options: {
+      scales: {
+        xAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+              max: 1000,
+              min: 0,
+            },
+          },
+        ],
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: false,
+              max: 8,
+              min: -3,
+            },
+          },
+        ],
+      },
+    },
     datasets: [
       {
         label: curLanguage.tasks.chart.labelone,
@@ -76,7 +106,6 @@ const Chart = ({ tasks }) => {
         pointHoverBorderWidth: 2,
         pointRadius: 3,
         pointHitRadius: 10,
-        min: 0,
       },
       {
         label: curLanguage.tasks.chart.labeltwo,
@@ -98,7 +127,6 @@ const Chart = ({ tasks }) => {
         pointHoverBorderWidth: 2,
         pointRadius: 3,
         pointHitRadius: 10,
-        min: 0,
       },
     ],
   };
@@ -107,7 +135,7 @@ const Chart = ({ tasks }) => {
     <div className={s.scrol}>
       <div className={s.charContainer}>
         <h2 className={s.charTitle}>Burndown Chart (Calendar team)</h2>
-        <Line data={data} />
+        <Line data={data} options={options} />
       </div>
     </div>
   );
