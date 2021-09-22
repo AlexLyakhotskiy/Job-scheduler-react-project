@@ -79,12 +79,16 @@
 }
 .iconPolygonDown {
   position: absolute;
-  z-index: 999;
-  fill: rgba(24, 28, 39, 0.6);
-  bottom: 10px;
+  z-index: 100;
+  fill: var(--color-secondary-btn-background);
+  top: 30px;
   right: 10px;
   width: 12px;
   height: 10px;
+
+  &:hover {
+    fill: var(--color-btn-background-hover);
+  }
 }
 //чекбокс
 /* для элемента input c type="radio" */
