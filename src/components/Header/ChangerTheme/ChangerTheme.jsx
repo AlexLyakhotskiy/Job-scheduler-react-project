@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeTheme } from '../../../redux/userSettings/userSettingsActions.js';
 import { getTheme } from '../../../redux/userSettings/userSettingsSelectors.js';
+import styles from './ChangerTheme.module.scss';
 
 const light = 'light';
 const dark = 'dark';
@@ -29,12 +30,19 @@ const ChangerTheme = () => {
     dispatch(changeTheme(theme === light ? dark : light));
 
   return (
-    <input
-      name="ChangeTheme/Input"
-      type="checkbox"
-      checked={theme === dark}
-      onChange={handleChange}
-    />
+    <>
+      <div className={styles.checkbox}>
+        <input
+          name="ChangeTheme/Input"
+          type="checkbox"
+          id="unchecked"
+          checked={theme === dark}
+          onChange={handleChange}
+          className={styles.checkbox_input}
+        />
+        <label for="unchecked" className={styles.checkbox_label}></label>
+      </div>
+    </>
   );
 };
 
