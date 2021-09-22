@@ -35,6 +35,7 @@ export default function FormAddPeople({ toggleModal }) {
           contributorData: values,
         }),
       );
+      toggleModal();
     },
   });
 
