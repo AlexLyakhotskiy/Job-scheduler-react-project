@@ -9,8 +9,8 @@
 }
 
 .icon {
-  width: 90%;
-  height: 90%;
+  width: 24px;
+  height: 24px;
   color: var(--color-btn-background);
 }
 
@@ -21,7 +21,7 @@
   left: 0;
   width: 100%;
   height: calc(100% - 66px);
-  z-index: 5;
+  z-index: 200;
 }
 
 .container {

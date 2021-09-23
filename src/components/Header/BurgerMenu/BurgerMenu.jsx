@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Svg from '../../Svg/Svg';
 import Container from '../../Container/Container';
@@ -7,6 +7,15 @@ import styles from './BurgerMenu.module.scss';
 
 const BurgerMenu = ({ children }) => {
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isBurgerMenuOpen) {
+      document.body.style.overflow = '';
+    }
+    if (isBurgerMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+  }, [isBurgerMenuOpen]);
 
   const toggleModal = () => setBurgerMenuOpen(prev => !prev);
 
@@ -23,7 +32,7 @@ const BurgerMenu = ({ children }) => {
     <>
       <button type="button" className={styles.btn} onClick={toggleModal}>
         <Svg
-          icon={isBurgerMenuOpen ? '#icon-polygonDown' : '#icon-polygon'}
+          icon={isBurgerMenuOpen ? '#icon-cross' : '#icon-menu'}
           className={styles.icon}
         />
       </button>
