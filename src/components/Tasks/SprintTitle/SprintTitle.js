@@ -50,6 +50,7 @@ const SprintTitle = ({ sprints }) => {
             onChange={onChangeTitle}
             required
             className={s.editInp}
+            maxlength="20"
           ></input>
           <IconBtn type="submit" icon="pencil" secondary />
         </form>

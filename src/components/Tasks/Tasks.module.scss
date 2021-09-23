@@ -65,24 +65,23 @@
   z-index: 100;
   bottom: 100px;
   @media screen and (min-width: 768px) {
-    position: absolute;
-    right: 0;
-    bottom: -105px;
+    right: calc(50% - 305px);
+
+    bottom: 105px;
   }
 
   @media screen and (min-width: 1280px) {
-    right: -15px;
-    bottom: -105px;
+    right: calc(50% - 580px);
   }
 }
 
 .addTask {
   position: fixed;
-  right: 70px;
+  right: calc(50% - 140px);
   bottom: 100px;
   z-index: 100;
   @media screen and (min-width: 768px) {
-    right: 50px;
+    right: calc(50% - 305px);
     top: 155px;
     bottom: auto;
   }
