@@ -13,7 +13,7 @@ const Chart = ({ tasks }) => {
     const sortedDaysArr = daysArr.sort(
       (a, b) => new Date(b.date) - new Date(a.date),
     );
-    sortedDaysArr.unshift(0);
+    sortedDaysArr.push("deadline");
     return sortedDaysArr;
   };
 
@@ -51,35 +51,36 @@ const Chart = ({ tasks }) => {
   console.log(`daysWastedHours`, daysWastedHours);
   // фактические затраченные чвсы за день
 
-  const daysWastedHoursArr = []; //[hoursPlanedSum]
-  let hoursFact = hoursPlanedSum;
-  Object.values(daysWastedHours).forEach(dayWastedHours => {
-    hoursFact -= dayWastedHours;
-    daysWastedHoursArr.push(hoursFact);
-  });
+//  const daysWastedHoursArr = []; //[hoursPlanedSum]
+//  let hoursFact = hoursPlanedSum;
+//  Object.values(daysWastedHours).forEach(dayWastedHours => {
+//    hoursFact -= dayWastedHours;
+//    daysWastedHoursArr.push(hoursFact);
+//  });
 
-  console.log(`daysWastedHoursArr`, daysWastedHoursArr);
+//  console.log(`daysWastedHoursArr`, daysWastedHoursArr);
 
   //возвращает масив для запланировыныхтрудозатрат
-  const mainHoursArr = [];
+//  const mainHoursArr = [];
+//
+//  planedHoursArr.forEach((item, index) => {
+//    if (daysWastedHoursArr[index] <= item) {
+//      mainHoursArr.push(daysWastedHoursArr[index]);
+//    } else {
+//      mainHoursArr.push(
+//        (Number(item) / Number(daysWastedHoursArr[index])) * Number(item) +
+//          Number(item),
+//      );
+//    }
+//  });
+//  console.log(`mainHoursArr`, mainHoursArr);
 
-  planedHoursArr.forEach((item, index) => {
-    if (daysWastedHoursArr[index] <= item) {
-      mainHoursArr.push(daysWastedHoursArr[index]);
-    } else {
-      mainHoursArr.push(
-        (Number(item) / Number(daysWastedHoursArr[index])) * Number(item) +
-          Number(item),
-      );
-    }
-  });
-  console.log(`mainHoursArr`, mainHoursArr);
+//  const updateSum = mainHoursArr.reduce(
+//    (acc, hourItem) => acc + Number(hourItem),
+//    0,
+//  );
 
-  const updateSum = mainHoursArr.reduce(
-    (acc, hourItem) => acc + Number(hourItem),
-    0,
-  );
-
+	const updateSum=100;
   const redLine = [];
 
   console.log(`updateSum`, updateSum);
@@ -93,8 +94,9 @@ const Chart = ({ tasks }) => {
   console.log(`daysWastedHours`, daysWastedHours);
   const blueLine = [];
   let currentBlueLine = updateSum;
+	const realSum=Object.values(daysWastedHours).reduce((a,c)=>a+c,0)
   Object.values(daysWastedHours).forEach(dayWastedHours => {
-    currentBlueLine -= dayWastedHours;
+    currentBlueLine -= dayWastedHours*100/realSum;
     blueLine.push(currentBlueLine);
   });
   console.log(`object`, blueLine);
