@@ -5,12 +5,12 @@ import { getTheme } from '../../../redux/userSettings/userSettingsSelectors.js';
 import styles from './ChangerTheme.module.scss';
 import { light, dark } from '../../App.js';
 
-const ChangerTheme = ({ onCloseBurger }) => {
+const ChangerTheme = ({ onCloseBurger = false }) => {
   const theme = useSelector(getTheme);
   const dispatch = useDispatch();
 
   const handleChange = () => {
-    onCloseBurger();
+    onCloseBurger && onCloseBurger();
     dispatch(changeTheme(theme === light ? dark : light));
   };
 
