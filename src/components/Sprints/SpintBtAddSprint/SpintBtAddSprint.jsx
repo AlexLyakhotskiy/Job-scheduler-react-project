@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import 'react-datepicker/dist/react-datepicker.css';
 import IconBtn from '../../IconBtn/IconBtn';
 import Modal from '../../Modal';
 import s from './SpintBtAddSprint.module.scss';

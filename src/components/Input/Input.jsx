@@ -15,6 +15,7 @@ export default function Input({
   label,
   className = '',
   type = 'text',
+  ...rest
 }) {
   const inputId = shortid.generate();
   const isError = formik.errors[name] && formik.touched[name];
@@ -29,6 +30,7 @@ export default function Input({
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values[name]}
+        {...rest}
       />
       <div
         className={`${styles.bottomLine} ${isError && styles.bottomLineError}`}

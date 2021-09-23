@@ -5,11 +5,7 @@
   position: relative;
   @media screen and (min-width: 768px) {
     margin-left: 20px;
-    width: 20pxpx;
   }
-  // @media screen and (min-width: 1280px) {
-  //   display: none;
-  // }
 }
 
 .iconBtn {
@@ -18,5 +14,6 @@
   right: 10px;
   svg {
     height: 20px;
+    width: 20px;
   }
 }

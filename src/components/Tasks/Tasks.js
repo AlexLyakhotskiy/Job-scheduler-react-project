@@ -21,13 +21,14 @@ import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 import s from './Tasks.module.scss';
 import BackToSprintsBtn from './SideBar/BackToSprintsBtn/BackToSprintsBtn';
 import FindForm from './FindForm/FindForm';
+import { getCurrentLanguage } from '../../redux/userSettings/userSettingsSelectors';
 
 const Tasks = () => {
   const tasks = useSelector(getTasksSelector);
   const isLoadingTasks = useSelector(getLoadingSelector);
-  const isLoadingSprints = useSelector(state => state.sprints.isLoading);
   const filteredTasks = useSelector(getFilterTasksSelector);
   const sprints = useSelector(state => state.sprints.items);
+  const curLanguage = useSelector(getCurrentLanguage);
 
   const { sprintId, projectId } = useParams();
   const dispatch = useDispatch();
@@ -73,7 +74,9 @@ const Tasks = () => {
             </div>
             <div className={s.addTask}>
               <IconBtn onClick={toggleModal} icon="add" main />
-              <span className={s.addTaskText}>Створити задачу</span>
+              <span className={s.addTaskText}>
+                {curLanguage.tasks.pageAddBtn}
+              </span>
             </div>
           </div>
           <TableHeader />
@@ -87,7 +90,7 @@ const Tasks = () => {
                 ))}
               </ul>
             ) : (
-              <h2 className={s.titleNoTask}>Ваш спринт не має задач.</h2>
+              <h2 className={s.titleNoTask}>{curLanguage.tasks.message}</h2>
             )}
             {!showChart ? (
               tasks.length > 2 && (
