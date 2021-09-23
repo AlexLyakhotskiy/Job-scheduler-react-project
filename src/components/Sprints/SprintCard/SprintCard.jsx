@@ -9,14 +9,18 @@ import s from './SprintCard.module.scss';
 import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 import { sprintClearState } from '../../../redux/sprint/sprin-actions';
 import LoaderSpinner from '../../LoaderSpinner/LoaderSpinner';
+import 'moment/locale/uk';
+import 'moment/locale/ru';
+import 'moment/locale/en-gb';
 
 const SprintCard = () => {
   const dispatch = useDispatch();
   const { url } = useRouteMatch();
   const { projectId } = useParams();
   const curLanguage = useSelector(getCurrentLanguage);
-
   const isLoading = useSelector(allSelectors.getIsLoading);
+
+  moment.locale(curLanguage.momentTitle);
 
   useEffect(() => {
     dispatch(sprintOperations.getSprint(projectId));

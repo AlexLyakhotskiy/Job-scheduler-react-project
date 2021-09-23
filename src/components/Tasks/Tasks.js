@@ -21,15 +21,13 @@ import LoaderSpinner from '../LoaderSpinner/LoaderSpinner';
 import s from './Tasks.module.scss';
 import BackToSprintsBtn from './SideBar/BackToSprintsBtn/BackToSprintsBtn';
 import FindForm from './FindForm/FindForm';
-import allSelectors from '../../redux/sprint/sprin-selectors';
 import { getCurrentLanguage } from '../../redux/userSettings/userSettingsSelectors';
 
 const Tasks = () => {
   const tasks = useSelector(getTasksSelector);
   const isLoadingTasks = useSelector(getLoadingSelector);
   const filteredTasks = useSelector(getFilterTasksSelector);
-  const sprints = useSelector(allSelectors.allSprints);
-
+  const sprints = useSelector(state => state.sprints.items);
   const curLanguage = useSelector(getCurrentLanguage);
 
   const { sprintId, projectId } = useParams();
@@ -77,9 +75,7 @@ const Tasks = () => {
             <div className={s.addTask}>
               <IconBtn onClick={toggleModal} icon="add" main />
               <span className={s.addTaskText}>
-                <span className={s.addTaskText}>
-                  {curLanguage.tasks.pageAddBtn}
-                </span>
+                {curLanguage.tasks.pageAddBtn}
               </span>
             </div>
           </div>

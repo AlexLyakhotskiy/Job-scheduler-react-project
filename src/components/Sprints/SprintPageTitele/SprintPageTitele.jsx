@@ -44,6 +44,7 @@ const SprintPageTitele = ({ nowProject, projectId }) => {
               <input
                 autoFocus
                 type="text"
+                required
                 minLength="3"
                 maxLength="12"
                 value={isProjectTitel}

@@ -8,17 +8,9 @@ export const ukrainian = {
   calendarLocale,
   title: 'ukrainian',
   originalTitle: 'UA',
+  momentTitle: 'uk',
   //originalTitle: 'українська',
   header: {
-    //     navigation: {
-    //       home: 'Головна',
-    //       courses: 'Курси',
-    //       groups: 'Групи',
-    //       profile: 'Профіль',
-    //       admin: 'Адмін',
-    //       signin: 'Увійти',
-    //       signup: 'Зареєструватись',
-    //     },
     //     burgerMenu: {
     //       toggleTheme: 'Темна тема',
     //       changeLanguage: 'Мова',
