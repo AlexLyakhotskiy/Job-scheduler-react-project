@@ -102,7 +102,9 @@
   // Additional resets for further consistency
   background-color: transparent;
   border: none;
-  padding: 0;
+  text-align: center;
+  border-radius: 5px;
+  padding: 3px;
   margin: 0;
   border-bottom: 1px solid var(--color-input-border);
   width: 30px;
