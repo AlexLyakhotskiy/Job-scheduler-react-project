@@ -26,7 +26,6 @@ import { getCurrentLanguage } from '../../redux/userSettings/userSettingsSelecto
 const Tasks = () => {
   const tasks = useSelector(getTasksSelector);
   const isLoadingTasks = useSelector(getLoadingSelector);
-  const isLoadingSprints = useSelector(state => state.sprints.isLoading);
   const filteredTasks = useSelector(getFilterTasksSelector);
   const sprints = useSelector(state => state.sprints.items);
   const curLanguage = useSelector(getCurrentLanguage);

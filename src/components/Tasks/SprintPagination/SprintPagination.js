@@ -25,6 +25,7 @@ const SprintPagination = ({ tasks }) => {
     if (day >= 0) return day;
     return duration - 1;
   };
+
   const currentDate =
     currentDayIndex && tasks[0].hoursWastedPerDay[currentDayIndex - 1]
       ? tasks[0].hoursWastedPerDay[currentDayIndex - 1].currentDay
@@ -52,7 +53,7 @@ const SprintPagination = ({ tasks }) => {
           <Svg icon="#icon-arrow_back" className={s.icon} />
         </button>
         <p className={s.paginationText}>
-          <span className={s.currentPage}>{currentDayIndex} </span> /{' '}
+          <span className={s.currentPage}>{currentDayIndex} </span> /
           <span className={s.lastPage}>{duration} </span>
         </p>
         <button onClick={onChangeNext} type="button" className={s.arrowBtn}>
