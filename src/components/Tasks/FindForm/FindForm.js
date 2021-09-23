@@ -37,7 +37,7 @@ const FindForm = ({ toggleFindInput }) => {
           name="query"
           label={curLanguage.tasks.find.label}
           value={formik.values.query}
-          onBlur={() => toggleFindInput()}
+          onBlur={toggleFindInput}
           onChange={e => {
             formik.handleChange(e);
             formRef.current.dispatchEvent(
