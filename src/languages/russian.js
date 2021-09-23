@@ -23,7 +23,7 @@ export const russian = {
       signInTitle: 'Вход',
       email: 'E-mail',
       password: 'Пароль',
-      confirmPassword: 'Пароль',
+      confirmPassword: 'Подтвердите пароль',
       btnSignUp: 'Зарегистрироваться',
       signUpQuestion: 'Есть акаунт?',
       signUpLink: 'Войти',

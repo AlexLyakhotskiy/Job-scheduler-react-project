@@ -23,7 +23,7 @@ export const ukrainian = {
       signInTitle: 'Вхід',
       email: 'E-mail',
       password: 'Пароль',
-      confirmPassword: 'Пароль',
+      confirmPassword: 'Підтвердіть пароль',
       btnSignUp: 'Зареєструватись',
       signUpQuestion: 'Маєте акаунт?',
       signUpLink: 'Увійти',
