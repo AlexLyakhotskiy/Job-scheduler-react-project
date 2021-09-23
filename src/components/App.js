@@ -7,7 +7,7 @@ import Main from './Main/Main';
 import Footer from './Footer/Footer';
 
 import { resetUser } from '../redux/auth/auth-operations';
-import { getIsResetingUser} from '../redux/auth/auth-selectors';
+import { getIsResetingUser } from '../redux/auth/auth-selectors';
 import { getTheme } from '../redux/userSettings/userSettingsSelectors.js';
 import { changeTheme } from '../redux/userSettings/userSettingsActions.js';
 
@@ -34,7 +34,6 @@ function App() {
         dispatch(changeTheme(light));
     }
   }, [theme]);
-
 
   useEffect(() => {
     const emptyPath = history.location.pathname === '/';

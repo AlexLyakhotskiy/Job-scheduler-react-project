@@ -1,32 +1,37 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 
 import Svg from '../../Svg/Svg';
-
-import { getIsLoggedIn, getUser } from '../../../redux/auth/auth-selectors';
-
-import styles from './BurgerMenu.module.scss';
-import ChangerTheme from '../ChangerTheme/ChangerTheme';
-import SelectLang from '../SelectLang/SelectLang';
-
 import Container from '../../Container/Container';
 
-const BurgerMenu = ({children}) => {
+import styles from './BurgerMenu.module.scss';
+
+const BurgerMenu = ({ children }) => {
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false);
-  const isLoggedIn = useSelector(getIsLoggedIn);
 
   const toggleModal = () => setBurgerMenuOpen(prev => !prev);
+
+  const onCloseBurger = () => {
+    toggleModal();
+  };
+
+  const childs = React.Children.map(children, c => {
+    if (React.isValidElement(c))
+      return React.cloneElement(c, { onCloseBurger });
+  });
 
   return (
     <>
       <button type="button" className={styles.btn} onClick={toggleModal}>
-        <Svg icon="#icon-heart" className={styles.icon}  />
+        <Svg
+          icon={isBurgerMenuOpen ? '#icon-polygonDown' : '#icon-polygon'}
+          className={styles.icon}
+        />
       </button>
-	  {isBurgerMenuOpen && <div className={styles.menu} >
-		  <Container className={styles.container} >
-	  {children}
-		  </Container>
-	  </div>}
+      {isBurgerMenuOpen && (
+        <div className={styles.menu}>
+          <Container className={styles.container}>{childs}</Container>
+        </div>
+      )}
     </>
   );
 };

@@ -39,11 +39,9 @@ export default function Header() {
         <div className={styles.headerUtil}>
           {width < breakPoint ? (
             <BurgerMenu>
-		  <>
               {isLoggedIn && <UserMenu />}
               <ChangerTheme />
               <SelectLang />
-            	</>
             </BurgerMenu>
           ) : (
             <>

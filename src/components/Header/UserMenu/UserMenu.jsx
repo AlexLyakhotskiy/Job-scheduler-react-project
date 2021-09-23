@@ -9,13 +9,15 @@ import { getUser } from '../../../redux/auth/auth-selectors';
 import styles from './UserMenu.module.scss';
 import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 
-export default function UserMenu({onCloseBurger}) {
-	console.log("func => ",onCloseBurger)
+export default function UserMenu({ onCloseBurger }) {
   const email = useSelector(getUser);
   const curLanguage = useSelector(getCurrentLanguage);
   const dispatch = useDispatch();
 
-  const handleLogOut = () => dispatch(logout());
+  const handleLogOut = () => {
+    onCloseBurger();
+    dispatch(logout());
+  };
 
   return (
     <div className={styles.userContainer}>
