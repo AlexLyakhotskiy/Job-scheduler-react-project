@@ -6,7 +6,7 @@ import * as actions from '../../../redux/userSettings/userSettingsActions';
 import { languages } from '../../../languages';
 import { getLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 
-export default function SelectLang({ onCloseBurger = false }) {
+export default function SelectLang() {
   const language = useSelector(getLanguage);
   const dispatch = useDispatch();
 
@@ -14,7 +14,6 @@ export default function SelectLang({ onCloseBurger = false }) {
     <select
       name="languageSelector"
       onChange={e => {
-        onCloseBurger && onCloseBurger();
         dispatch(actions.changeLanguage(e.target.value));
       }}
       defaultValue={language}
