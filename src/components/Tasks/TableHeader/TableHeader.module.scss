@@ -1,14 +1,5 @@
 @import '../../../styles/variables.scss';
 
-button {
-  padding: 0;
-  margin: 0;
-  border: none;
-  font: inherit;
-  color: inherit;
-  background-color: transparent;
-}
-
 .tableWrapper {
   display: none;
   @media screen and (min-width: 1280px) {
