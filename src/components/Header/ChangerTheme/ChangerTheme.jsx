@@ -42,7 +42,6 @@ const ChangerTheme = () => {
         />
         <div className={styles.knobs}></div>
         <div className={styles.layer}></div>
-   
       </div>
     </>
   );
