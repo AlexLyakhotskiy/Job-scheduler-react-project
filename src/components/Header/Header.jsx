@@ -38,12 +38,18 @@ export default function Header() {
         <Logo />
         <div className={styles.headerUtil}>
           {width < breakPoint ? (
-            <BurgerMenu />
+            <BurgerMenu>
+		  <>
+              {isLoggedIn && <UserMenu />}
+              <ChangerTheme />
+              <SelectLang />
+            	</>
+            </BurgerMenu>
           ) : (
             <>
-              {isLoggedIn && <UserMenu />}
-              <SelectLang />
               <ChangerTheme />
+              <SelectLang />
+              {isLoggedIn && <UserMenu />}
             </>
           )}
         </div>
