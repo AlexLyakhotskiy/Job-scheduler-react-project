@@ -67,7 +67,9 @@ const SprintCard = () => {
                           <span className={s.sprintText}>
                             {curLanguage.sprints.addSprintsForm.endDate}
                           </span>
-                          <span>{moment(sprint.endDate).format('D MMM')}</span>
+                          <span>
+                            {moment(sprint.endDate).local('uk').format('D MMM')}
+                          </span>
                         </li>
                         <li className={s.sprintItem}>
                           <span className={s.sprintText}>
