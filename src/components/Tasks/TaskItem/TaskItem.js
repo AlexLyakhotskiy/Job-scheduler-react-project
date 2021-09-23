@@ -46,6 +46,7 @@ const TaskItem = ({ task }) => {
           <span className={s.taskItemDesc}>{curLanguage.tasks.th333}</span>
           <span>
             <select
+              className={s.select}
               id="puttedNum"
               onChange={onSubmit}
               value={
