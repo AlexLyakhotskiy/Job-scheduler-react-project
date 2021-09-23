@@ -23,7 +23,6 @@ const FindForm = ({ toggleFindInput }) => {
     initialValues: { query: '' },
     validationSchema,
     onSubmit: data => {
-      console.log(`data`, data);
       dispatch(filterChange(data.query));
     },
   });
