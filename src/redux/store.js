@@ -28,7 +28,7 @@ const middleware = [
 const persistConfigAuth = {
   key: 'auth',
   storage,
-  whitelist: ['user', 'refreshToken', 'sid'],
+  whitelist: ['user', 'refreshToken', 'sid', 'isLoggedIn'],
 };
 
 const persistConfigUserSettings = {

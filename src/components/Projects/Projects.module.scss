@@ -2,7 +2,7 @@
   @media screen and (max-width: 767px) {
     position: relative;
     padding-top: 20px;
-    padding-bottom: 118px;
+    padding-bottom: 111px;
   }
 }
 .projectsHeader {
@@ -53,22 +53,30 @@
 }
 
 .list {
-  overflow-y: auto;
-  max-height: 70vh;
   display: flex;
   flex-wrap: wrap;
-  margin-top: -10px;
+
   margin-left: -10px;
+
+  padding-bottom: 7px;
+  padding-right: 10px;
   list-style: none;
 
+  @media screen and (max-width: 767px) {
+    margin-top: -10px;
+  }
   @media screen and (min-width: 768px) {
-    margin-top: -20px;
+    overflow-y: auto;
+    max-height: 70vh;
+    //  margin-top: -20px;
     margin-left: -20px;
+    padding-right: 20px;
   }
 
   @media screen and (min-width: 1280px) {
-    margin-top: -30px;
+    // margin-top: -30px;
     margin-left: -30px;
+    padding-right: 30px;
   }
 }
 
@@ -87,25 +95,29 @@
   }
 }
 //Стили скрола
-.list::-webkit-scrollbar {
-  width: 7px;
-}
+@media screen and (min-width: 768px) {
+  .list::-webkit-scrollbar {
+    width: 7px;
+  }
 
-.list::-webkit-scrollbar-track {
-  // -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
-  background-color: #f9f9fd;
-}
+  .list::-webkit-scrollbar-track {
+    // -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    border-radius: 5px;
+    background-color: var(--color-card-background);
+  }
 
-.list::-webkit-scrollbar-thumb {
-  background-color: var(--color-btn-background);
-  background-image: -webkit-linear-gradient(
-    45deg,
-    rgba(255, 255, 255, 0.25) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 255, 255, 0.25) 50%,
-    rgba(255, 255, 255, 0.25) 75%,
-    transparent 75%,
-    transparent
-  );
+  .list::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: var(--color-btn-background);
+    background-image: -webkit-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.25) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.25) 50%,
+      rgba(255, 255, 255, 0.25) 75%,
+      transparent 75%,
+      transparent
+    );
+  }
 }

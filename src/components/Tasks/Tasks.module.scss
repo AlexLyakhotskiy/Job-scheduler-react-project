@@ -1,6 +1,6 @@
 @import '../../styles/variables.scss';
 
-.tasksWrapper .tasksSection {
+.tasksSection {
   display: flex;
 }
 
@@ -31,6 +31,7 @@
     align-items: baseline;
   }
   @media screen and (min-width: 1280px) {
+    height: 85px;
     margin: 0;
   }
 }
@@ -46,29 +47,50 @@
   @media screen and (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
+    max-height: 620px;
+    overflow-y: auto;
+  }
+  @media screen and (min-width: 1280px) {
+    max-height: 523px;
+  }
+}
+
+.scrollBar {
+  @media screen and (min-width: 768px) {
+    position: relative;
+  }
+}
+.chartBtn {
+  position: fixed;
+  z-index: 100;
+  bottom: 100px;
+  @media screen and (min-width: 768px) {
+    right: calc(50% - 305px);
+
+    bottom: 105px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: calc(50% - 580px);
   }
 }
 
 .addTask {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: calc(50% - 140px);
+  bottom: 100px;
+  z-index: 100;
   @media screen and (min-width: 768px) {
-    position: absolute;
-    margin: 0;
-    right: 70px;
+    right: calc(50% - 305px);
     top: 155px;
     bottom: auto;
-    // top: 155px;
-    // right: 70px;
   }
   @media screen and (min-width: 1280px) {
     position: absolute;
     display: flex;
     align-items: center;
-    margin-right: 20px;
-    // right: 70px;
-    // top: -600px;
+    right: 0;
+    top: 90px;
   }
 }
 
@@ -85,28 +107,35 @@
   }
 }
 
-.chartBtn {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  @media screen and (min-width: 768px) {
-    right: 80px;
-    bottom: 115px;
-    left: auto;
-  }
-}
-
 @media screen and (min-width: 1280px) {
   .findForm {
     display: none;
   }
 }
 
-// .relative {
-//   @media screen and (min-width: 768px) {
-//     position: relative;
-//   }
-//   @media screen and (min-width: 1280) {
-//     position: relative;
-//   }
-// }
+//Стили скрола
+@media screen and (min-width: 1280px) {
+  .tasksList::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  .tasksList::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: var(--color-card-background);
+  }
+
+  .tasksList::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: var(--color-btn-background);
+    background-image: -webkit-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.25) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.25) 50%,
+      rgba(255, 255, 255, 0.25) 75%,
+      transparent 75%,
+      transparent
+    );
+  }
+}

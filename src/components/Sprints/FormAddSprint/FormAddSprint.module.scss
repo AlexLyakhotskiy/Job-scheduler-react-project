@@ -22,6 +22,8 @@
 }
 .date {
   outline: none;
+  background: none;
+  color: var(--color-main-title);
   @media screen and (min-width: 768px) {
     width: 200px;
     height: 32px;
@@ -71,18 +73,34 @@
     margin: 0;
   }
 }
+
+.inputDays ::-webkit-outer-spin-button,
+.inputDays ::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputDays [type='number'] {
+  -moz-appearance: textfield;
+}
+
 .btnAddSprint {
   display: block;
   margin: 0 auto;
 }
 .iconPolygonDown {
   position: absolute;
-  z-index: 999;
-  fill: rgba(24, 28, 39, 0.6);
-  bottom: 10px;
+  cursor: pointer;
+  z-index: 100;
+  fill: var(--color-secondary-btn-background);
+  top: 30px;
   right: 10px;
   width: 12px;
   height: 10px;
+
+  &:hover {
+    fill: var(--color-btn-background-hover);
+  }
 }
 //чекбокс
 /* для элемента input c type="radio" */
@@ -90,6 +108,9 @@
   position: absolute;
   z-index: -1;
   opacity: 0;
+}
+.checkboxLabel {
+  color: var(--color-main-title);
 }
 /* для элемента label связанного с .checkbox */
 .checkbox + label {

@@ -85,20 +85,36 @@ export default function OurTeamPage() {
             <li className={s.item} key={github}>
               <img className={s.images} src={preview} alt={nameEn} />
               <div className={s.desc}>
-                {userLanguage === 'ukrainian' && <h3>{nameUa}</h3>}
-                {userLanguage === 'russian' && <h3>{nameRu}</h3>}
-                {userLanguage === 'english' && <h3>{nameEn}</h3>}
-                <p>{position}</p>
+                {userLanguage === 'ukrainian' && (
+                  <h3 className={s.name}>{nameUa}</h3>
+                )}
+                {userLanguage === 'russian' && (
+                  <h3 className={s.name}>{nameRu}</h3>
+                )}
+                {userLanguage === 'english' && (
+                  <h3 className={s.name}>{nameEn}</h3>
+                )}
+                <p className={s.position}>{position}</p>
 
                 <ul className={s.listLink}>
                   <li className={s.itemLink}>
-                    <a href={github} className={s.iconLink}>
+                    <a
+                      href={github}
+                      className={s.iconLink}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
                       <Svg icon="#github" className={s.icon} />
                     </a>
                   </li>
 
                   <li className={s.itemLink}>
-                    <a href={linkedin} className={s.iconLink}>
+                    <a
+                      href={linkedin}
+                      className={s.iconLink}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
                       <Svg icon="#linkedin" className={s.icon} />
                     </a>
                   </li>
