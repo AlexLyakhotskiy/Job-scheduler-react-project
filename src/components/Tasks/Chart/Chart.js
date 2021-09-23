@@ -17,10 +17,14 @@ const Chart = ({ tasks }) => {
     return sortedDaysArr;
   };
 
+  console.log(`tasks`, tasks);
+
   const hoursPlanedSum = tasks.reduce(
     (acc, task) => acc + Number(task.hoursPlanned),
     0,
   );
+
+  console.log(`hoursPlanedSum`, hoursPlanedSum);
   // планир. затраченные чвсы за день
 
   const planedHoursArr = []; //[hoursPlanedSum]
@@ -31,7 +35,8 @@ const Chart = ({ tasks }) => {
     planedHoursArr.push(hoursScheduled);
   }
 
-  // const getHoursWastedArr = () => {
+  console.log(`planedHoursArr`, planedHoursArr);
+
   const daysWastedHours = {};
   tasks.forEach(task =>
     task.hoursWastedPerDay.forEach(day => {
@@ -42,6 +47,8 @@ const Chart = ({ tasks }) => {
       }
     }),
   );
+
+  console.log(`daysWastedHours`, daysWastedHours);
   // фактические затраченные чвсы за день
 
   const daysWastedHoursArr = []; //[hoursPlanedSum]
@@ -51,27 +58,54 @@ const Chart = ({ tasks }) => {
     daysWastedHoursArr.push(hoursFact);
   });
 
-  // возвращает масив для запланировыныхтрудозатрат
-  // const mainHoursArr = [];
+  console.log(`daysWastedHoursArr`, daysWastedHoursArr);
 
-  // planedHoursArr.forEach((item, index) => {
-  //     if (daysWastedHoursArr[index] <= item) {
-  //       mainHoursArr.push(daysWastedHoursArr[index])
+  //возвращает масив для запланировыныхтрудозатрат
+  const mainHoursArr = [];
 
-  //     } else {
-  //       mainHoursArr.push(Number(item) / Number(daysWastedHoursArr[index]) + Number(item));
-  //     }
-  //   }
+  planedHoursArr.forEach((item, index) => {
+    if (daysWastedHoursArr[index] <= item) {
+      mainHoursArr.push(daysWastedHoursArr[index]);
+    } else {
+      mainHoursArr.push(
+        (Number(item) / Number(daysWastedHoursArr[index])) * Number(item) +
+          Number(item),
+      );
+    }
+  });
+  console.log(`mainHoursArr`, mainHoursArr);
 
-  // const updateSum = mainHoursArr.reduce(
-  //   (acc, hourItem) => acc + Number(hourItem),
-  //   0,
-  // );
-  // const redLine = [];
+  const updateSum = mainHoursArr.reduce(
+    (acc, hourItem) => acc + Number(hourItem),
+    0,
+  );
+
+  const redLine = [];
+
+  console.log(`updateSum`, updateSum);
+
+  let currentRedLine = updateSum;
+  for (let i = 0; i < tasks[0].hoursWastedPerDay.length; i += 1) {
+    currentRedLine =
+      currentRedLine - updateSum / tasks[0].hoursWastedPerDay.length;
+    redLine.push(currentRedLine);
+  }
+  console.log(`daysWastedHours`, daysWastedHours);
+  const blueLine = [];
+  let currentBlueLine = updateSum;
+  Object.values(daysWastedHours).forEach(dayWastedHours => {
+    currentBlueLine -= dayWastedHours;
+    blueLine.push(currentBlueLine);
+  });
+  console.log(`object`, blueLine);
 
   // mainHoursArr.forEach(item => {
-  //   redLine.push(updateSum - item / item.length);
+  //   redLine.push(updateSum - item / tasks[0].hoursWastedPerDay.length);
   // });
+
+  console.log(`mainHocurrentRedLineursArr`, redLine);
+
+  console.log(`planedHoursArr`, planedHoursArr);
 
   const options = {
     scales: {
@@ -108,7 +142,7 @@ const Chart = ({ tasks }) => {
     datasets: [
       {
         label: curLanguage.tasks.chart.labelone,
-        data: [hoursPlanedSum, ...planedHoursArr],
+        data: [updateSum, ...redLine],
         fill: false,
         lineTension: 0.1,
         backgroundColor: 'rgba(255, 0, 81, 1)',
@@ -129,7 +163,7 @@ const Chart = ({ tasks }) => {
       },
       {
         label: curLanguage.tasks.chart.labeltwo,
-        data: [hoursPlanedSum, ...daysWastedHoursArr],
+        data: [updateSum, ...blueLine],
         fill: false,
         lineTension: 0.5,
         backgroundColor: 'rgba(0, 0, 123, 1)',
