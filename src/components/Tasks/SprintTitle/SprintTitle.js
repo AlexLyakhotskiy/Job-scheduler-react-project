@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+
 import IconBtn from '../../IconBtn/IconBtn';
-import sprintOperations from '../../../redux/sprint/sprin-operations';
+
 import { useParams } from 'react-router';
 import s from './SprintTitle.module.scss';
 
+import SprintTitleInput from './SprintTitleInput';
+
 const SprintTitle = ({ sprints }) => {
-  const dispatch = useDispatch();
   const { sprintId } = useParams();
 
   const [title, setTitle] = useState('');
@@ -25,17 +26,7 @@ const SprintTitle = ({ sprints }) => {
   const toggleInputTitle = () => {
     setOpenTitleInp(prev => !prev);
   };
-
-  const onSubmit = e => {
-    e.preventDefault();
-    dispatch(sprintOperations.patchSprint({ id: sprintId, title: title }));
-    toggleInputTitle();
-  };
-
-  const onChangeTitle = e => {
-    const sprintTitle = e.target.value;
-    setTitle(sprintTitle);
-  };
+  console.log(`title`, title);
 
   return (
     <div className={s.titleBox}>
@@ -45,18 +36,11 @@ const SprintTitle = ({ sprints }) => {
           <IconBtn onClick={toggleInputTitle} icon="pencil" secondary />
         </div>
       ) : (
-        <form onSubmit={onSubmit} className={s.editForm}>
-          <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={onChangeTitle}
-            required
-            className={s.editInp}
-            maxlength="20"
-          ></input>
-          <IconBtn type="submit" icon="pencil" secondary />
-        </form>
+        <SprintTitleInput
+          title={title}
+          toggleInputTitle={toggleInputTitle}
+          sprintId={sprintId}
+        />
       )}
     </div>
   );
