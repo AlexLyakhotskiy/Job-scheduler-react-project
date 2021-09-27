@@ -17,6 +17,7 @@
 .item {
   position: relative;
   flex-basis: calc(100% / 2 - 10px);
+  max-width: 135px;
   margin-top: 10px;
   margin-left: 10px;
 
@@ -96,6 +97,7 @@
 
   @media screen and (min-width: 768px) {
     flex-basis: calc(100% / 3 - 20px);
+    max-width: 206px;
     margin-top: 20px;
     margin-left: 20px;
     min-height: 216px;
@@ -103,6 +105,7 @@
 
   @media screen and (min-width: 1280px) {
     flex-basis: calc(100% / 4 - 30px);
+    max-width: 260px;
     margin-top: 30px;
     margin-left: 30px;
     min-height: 270px;
@@ -127,7 +130,10 @@
 }
 
 .projectTitle {
-  hyphens: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
   margin-bottom: 6px;
   font-weight: 800;
   font-size: 16px;

@@ -23,7 +23,7 @@ export const russian = {
       signInTitle: 'Вход',
       email: 'E-mail',
       password: 'Пароль',
-      confirmPassword: 'Пароль',
+      confirmPassword: 'Подтвердите пароль',
       btnSignUp: 'Зарегистрироваться',
       signUpQuestion: 'Есть акаунт?',
       signUpLink: 'Войти',
@@ -49,7 +49,7 @@ export const russian = {
       title: 'Название проекта',
       description: 'Описание',
 
-      validMin: 'Слишком короткое название, мин 4 символа!',
+      validMin: 'Слишком короткое название, мин 2 символа!',
       validMax12: 'Слишком длинное название, макс 12 символов!',
       validMax70: 'Слишком длинное название, макс 70 символов!',
       validReq: 'Поле обязательное!',

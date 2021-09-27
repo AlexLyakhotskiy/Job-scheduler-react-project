@@ -5,7 +5,7 @@ import { deleteTask, editTask } from '../../../redux/tasks/tasks-operations';
 import { getCurrentDayIndexSelector } from '../../../redux/tasks/tasks-selectors';
 import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
 
-const arr = [1, 2, 3, 4, 5, 6, 7];
+const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
 const TaskItem = ({ task }) => {
   const currentDayIndex = useSelector(getCurrentDayIndexSelector);
