@@ -18,9 +18,10 @@
 
 .addBtn {
   @media screen and (max-width: 767px) {
-    position: absolute;
-    bottom: 20px;
-    right: 0;
+    position: fixed;
+    right: calc(50% - 140px);
+    bottom: 100px;
+    z-index: 100;
   }
 }
 .labeladdBtn {
@@ -59,7 +60,6 @@
   margin-left: -10px;
 
   padding-bottom: 7px;
-  padding-right: 10px;
   list-style: none;
 
   @media screen and (max-width: 767px) {
@@ -82,18 +82,11 @@
 
 .message {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 26px;
   line-height: 1.23;
-  letter-spacing: 0.04em;
-  color: rgb(170, 167, 167);
-  text-align: center;
-  margin-top: 30px;
-
-  @media screen and (min-width: 768px) {
-    font-size: 30px;
-    line-height: 1.25;
-  }
+  color: var(--color-input-border);
 }
+
 //Стили скрола
 @media screen and (min-width: 768px) {
   .list::-webkit-scrollbar {

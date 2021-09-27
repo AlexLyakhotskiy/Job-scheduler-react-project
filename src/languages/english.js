@@ -48,7 +48,7 @@ export const english = {
       formTitle: 'Project creation',
       title: 'Project name',
       description: 'Description',
-      validMin: 'Name too short, min 4 characters!',
+      validMin: 'Name too short, min 2 characters!',
       validMax12: 'Name is too long, max 12 characters!',
       validMax70: 'Name is too long, max 70 characters!',
       validReq: 'Field is required!',
