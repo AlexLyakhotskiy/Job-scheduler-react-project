@@ -22,8 +22,11 @@ const Projects = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    if (projects.length > 0) {
+      return;
+    }
     dispatch(getProjects());
-  }, [dispatch]);
+  }, [dispatch]); /* eslint-disable-line*/
 
   const toggleModal = () => {
     setShowModal(prevState => !prevState);
@@ -44,10 +47,10 @@ const Projects = () => {
 
         {isLoading && <LoaderSpinner />}
 
+        {projects.length === 0 && (
+          <h2 className={s.message}>{curLanguage.projects.message}</h2>
+        )}
         <ul className={s.list}>
-          {projects.length === 0 && (
-            <h2 className={s.message}>{curLanguage.projects.message}</h2>
-          )}
           {projects.length > 0 &&
             projects.map(({ title, _id, description }) => (
               <ProjectItem
