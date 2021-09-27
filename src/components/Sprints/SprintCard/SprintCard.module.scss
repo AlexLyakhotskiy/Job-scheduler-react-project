@@ -64,8 +64,16 @@
 }
 
 .titleNotSprint {
+  width: 100%;
+  color: var(--color-input-border);
+  font-weight: 500;
+  font-size: 26px;
   @media screen and (min-width: 768px) {
+    width: 440px;
     padding-left: 20px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 900px;
   }
 }
 .sprintTitel {
