@@ -8,6 +8,7 @@ import s from './SprintTitle.module.scss';
 const SprintTitle = ({ sprints }) => {
   const dispatch = useDispatch();
   const { sprintId } = useParams();
+
   const [title, setTitle] = useState('');
   const [openTitleInp, setOpenTitleInp] = useState(false);
 
@@ -15,9 +16,11 @@ const SprintTitle = ({ sprints }) => {
     ? sprints.find(sprint => sprint._id === sprintId)
     : '';
 
+  const currentSprintTitle = currentSprint ? currentSprint.title : '';
+
   useEffect(() => {
-    setTitle(currentSprint.title);
-  }, [currentSprint.title]);
+    setTitle(currentSprintTitle);
+  }, [currentSprintTitle]);
 
   const toggleInputTitle = () => {
     setOpenTitleInp(prev => !prev);

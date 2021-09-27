@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { fetchTasks } from '../../redux/tasks/tasks-operations';
 import AddTaskForm from './AddTaskForm/AddTaskForm';
 import IconBtn from '../IconBtn/IconBtn';
+import { routes } from '../../routes/routes';
 import {
   getFilterTasksSelector,
   getLoadingSelector,
@@ -12,7 +13,7 @@ import {
 import Modal from '../Modal/Modal';
 import SprintTitle from './SprintTitle/SprintTitle';
 import Chart from './Chart/Chart';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import SprintPagination from './SprintPagination/SprintPagination';
 import SideBar from './SideBar/SideBar';
 import TableHeader from './TableHeader/TableHeader';
@@ -32,13 +33,18 @@ const Tasks = () => {
 
   const { sprintId, projectId } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [openModal, setOpenModal] = useState(false);
   const [showChart, setShowChart] = useState(false);
 
   useEffect(() => {
     dispatch(sprintOperations.getSprint(projectId));
-    dispatch(fetchTasks(sprintId));
+    dispatch(fetchTasks(sprintId)).then(data => {
+      if (data.error && data.payload !== 'No tasks found') {
+        history.push(`${routes.projects}/${projectId}/sprints`);
+      }
+    });
   }, [sprintId, projectId]);
 
   const toggleChart = () => {
