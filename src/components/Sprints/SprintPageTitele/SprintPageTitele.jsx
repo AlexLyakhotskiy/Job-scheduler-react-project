@@ -1,32 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { patchProject } from '../../../redux/projects/projectOperations';
 import IconBtn from '../../IconBtn/IconBtn';
+import FormEditTitel from '../FormEditTitel/FormEditTitel';
 import SpintBtAddSprint from '../SpintBtAddSprint/SpintBtAddSprint';
 import s from './SprintPageTitele.module.scss';
 
 const SprintPageTitele = ({ nowProject, projectId }) => {
-  const dispatch = useDispatch();
-
   const [isInputOpen, setInputOpen] = useState(false);
-  const [isProjectTitel, setProjectTitel] = useState('title');
   const toggleInput = () => setInputOpen(state => !state);
 
-  const handelSubmit = e => {
-    e.preventDefault();
-
-    dispatch(patchProject({ projectId, titleData: { title: isProjectTitel } }));
-    toggleInput();
-  };
-
   useEffect(() => {
-    setProjectTitel(nowProject.title);
     setInputOpen(false);
   }, [projectId, nowProject.title]);
-
-  const handleIputChange = e => {
-    setProjectTitel(e.currentTarget.value);
-  };
 
   return (
     <div className={s.btnConteinerTitel}>
@@ -40,19 +24,11 @@ const SprintPageTitele = ({ nowProject, projectId }) => {
           )}
 
           {isInputOpen && (
-            <form className={s.editorForm} onSubmit={handelSubmit}>
-              <input
-                autoFocus
-                type="text"
-                required
-                minLength="3"
-                maxLength="12"
-                value={isProjectTitel}
-                onChange={handleIputChange}
-                className={s.editorInput}
-              />
-              <IconBtn icon={'pencil'} secondary type="submit" />
-            </form>
+            <FormEditTitel
+              nowProject={nowProject}
+              toggleInput={toggleInput}
+              projectId={projectId}
+            />
           )}
         </div>
 
