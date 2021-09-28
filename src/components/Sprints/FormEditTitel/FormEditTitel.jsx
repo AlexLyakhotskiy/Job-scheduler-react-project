@@ -13,8 +13,8 @@ export default function FormEditTitel({ nowProject, toggleInput, projectId }) {
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
-      .min(4, curLanguage.projects.addProjectsForm.validMin)
-      .max(12, curLanguage.projects.addProjectsForm.validMax12)
+      .min(2, curLanguage.projects.addProjectsForm.validMin)
+      .max(20, curLanguage.projects.addProjectsForm.validMax12)
       .required(curLanguage.projects.addProjectsForm.validReq),
   });
   const formik = useFormik({

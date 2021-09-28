@@ -21,12 +21,12 @@ const SprintTitle = ({ sprints }) => {
 
   useEffect(() => {
     setTitle(currentSprintTitle);
+    setOpenTitleInp(false);
   }, [currentSprintTitle]);
 
   const toggleInputTitle = () => {
     setOpenTitleInp(prev => !prev);
   };
-  console.log(`title`, title);
 
   return (
     <div className={s.titleBox}>
