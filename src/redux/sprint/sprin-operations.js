@@ -37,7 +37,7 @@ const patchSprint = createAsyncThunk(
   '/sprint/patchSprint',
   async ({ id, title }, { rejectWithValue }) => {
     try {
-      const newTitelSprint = await apiChangeSprintTitleById(id, title);
+      const newTitelSprint = await apiChangeSprintTitleById(id, { title });
       return { ...newTitelSprint, id };
     } catch (error) {
       return rejectWithValue(error.message);

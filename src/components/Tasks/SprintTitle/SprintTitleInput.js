@@ -37,6 +37,7 @@ const SprintTitleInput = ({ title, toggleInputTitle, sprintId }) => {
         type="text"
         name="title"
         className={s.editInp}
+        autoFocus
       />
       <IconBtn type="submit" icon="pencil" secondary />
     </form>

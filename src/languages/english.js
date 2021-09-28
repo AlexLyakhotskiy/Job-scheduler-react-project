@@ -49,7 +49,7 @@ export const english = {
       title: 'Project name',
       description: 'Description',
       validMin: 'Name too short, min 2 characters!',
-      validMax12: 'Name is too long, max 12 characters!',
+      validMax12: 'Name is too long, max 20 characters!',
       validMax70: 'Name is too long, max 70 characters!',
       validReq: 'Field is required!',
     },
