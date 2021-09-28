@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteTask, editTask } from '../../../redux/tasks/tasks-operations';
 import { getCurrentDayIndexSelector } from '../../../redux/tasks/tasks-selectors';
 import { getCurrentLanguage } from '../../../redux/userSettings/userSettingsSelectors';
-import Svg from '../../Svg/Svg';
 
 const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
