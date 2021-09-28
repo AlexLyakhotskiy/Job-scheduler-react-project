@@ -25,10 +25,10 @@
 
 .sprintsList {
   overflow-y: auto;
-  max-height: 640px;
-  margin-bottom: 150px;
+  max-height: 63vh;
+
   @media screen and (min-width: 1280px) {
-    max-height: 440px;
+    max-height: 55vh;
   }
 }
 
@@ -115,6 +115,7 @@
 
 .sprintsList::-webkit-scrollbar {
   width: 7px;
+  height: 7px;
 }
 
 .sprintsList::-webkit-scrollbar-track {

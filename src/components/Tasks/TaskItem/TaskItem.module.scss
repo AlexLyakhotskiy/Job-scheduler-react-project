@@ -18,9 +18,14 @@
     margin-bottom: 20px;
   }
   @media screen and (min-width: 1280px) {
-    margin-left: 0;
+    margin-left: 5px;
     width: 869px;
-    min-height: 114px;
+    min-height: 65px;
+    transition: all, $trans-func $trans-dur;
+    &:hover,
+    &:focus {
+      transform: scale(1.01);
+    }
   }
 }
 
@@ -31,8 +36,7 @@
     justify-content: space-between;
     justify-self: baseline;
     align-items: center;
-    min-height: 114px;
-    padding: 20px 40px 30px 30px;
+    padding: 20px 40px 20px 30px;
   }
 }
 
@@ -96,45 +100,42 @@
   align-items: center;
 }
 
-.select {
-  // A reset of styles, including removing the default dropdown arrow
-  appearance: none;
-  // Additional resets for further consistency
-  background-color: transparent;
+.selectBox {
+  width: 50px;
+  overflow: hidden;
   border: none;
-  text-align: center;
-  border-radius: 5px;
-  padding: 3px;
-  margin: 0;
+  position: relative;
+  padding: 0;
+  padding-bottom: 5px;
+  font-size: 14px;
   border-bottom: 1px solid var(--color-input-border);
-  width: 30px;
-  justify-content: flex-end;
-  cursor: pointer;
-  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
-  font-size: 20px;
-  cursor: inherit;
-  line-height: inherit;
-  outline: none;
-
-  &::-ms-expand {
-    display: none;
+  @media screen and (min-width: 1280px) {
+    font-size: 16px;
   }
 }
-
-.select-arrow {
-  color: #333;
-  right: 0px;
-  top: 10px;
-  width: 30px;
+.selectBox:after {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--color-btn-background);
   position: absolute;
-  display: block;
-  z-index: 10;
-  margin: 0 0 0 0;
-  pointer-events: none;
+  top: 40%;
+  right: 5px;
+  content: '';
+  z-index: 98;
 }
-
-.select::-ms-expand {
-  display: none;
+.selectBox {
+  select {
+    width: 50px;
+    border: none;
+    position: relative;
+    z-index: 99;
+    background: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+  }
 }
 
 .taskItemInp {
