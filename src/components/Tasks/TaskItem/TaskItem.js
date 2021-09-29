@@ -44,9 +44,8 @@ const TaskItem = ({ task }) => {
         </div>
         <div className={s.taskItem}>
           <span className={s.taskItemDesc}>{curLanguage.tasks.th333}</span>
-          <span>
+          <span className={s.selectBox}>
             <select
-              className={s.select}
               id="puttedNum"
               onChange={onSubmit}
               value={

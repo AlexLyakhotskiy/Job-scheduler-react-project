@@ -16,18 +16,18 @@ const TableHeader = () => {
   return (
     <div className={s.tableWrapper}>
       <ul className={s.tableHeaderList}>
-        <li>{curLanguage.tasks.th1}</li>
-        <li>
+        <li className={s.tableHeaderItem}>{curLanguage.tasks.th1}</li>
+        <li className={s.tableHeaderItem}>
           {curLanguage.tasks.th21}
           <br />
           {curLanguage.tasks.th22}
         </li>
-        <li>
+        <li className={s.tableHeaderItem}>
           {curLanguage.tasks.th31}
           <br />
           {curLanguage.tasks.th32}
         </li>
-        <li>
+        <li className={s.tableHeaderItem}>
           {curLanguage.tasks.th41}
           <br />
           {curLanguage.tasks.th42}

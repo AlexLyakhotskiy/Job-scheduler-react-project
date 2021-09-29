@@ -24,8 +24,9 @@ export default function FormAddSprint({ toggleModal }) {
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required(curLanguage.sprints.addSprintsForm.validReq),
-    //   date: Yup.date(),
-    date: Yup.date().required(curLanguage.sprints.addSprintsForm.validReq),
+    date: Yup.date()
+      .nullable()
+      .required(curLanguage.sprints.addSprintsForm.validReq),
     duration: Yup.number()
       .required(curLanguage.sprints.addSprintsForm.validReq)
       .min(2, curLanguage.sprints.addSprintsForm.validMin),

@@ -13,11 +13,11 @@ export default function AddProjectsForm({ closeModal }) {
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
-      .min(4, curLanguage.projects.addProjectsForm.validMin)
+      .min(2, curLanguage.projects.addProjectsForm.validMin)
       .max(20, curLanguage.projects.addProjectsForm.validMax12)
       .required(curLanguage.projects.addProjectsForm.validReq),
     description: Yup.string()
-      .min(4, curLanguage.projects.addProjectsForm.validMin)
+      .min(2, curLanguage.projects.addProjectsForm.validMin)
       .max(70, curLanguage.projects.addProjectsForm.validMax70)
       .required(curLanguage.projects.addProjectsForm.validReq),
   });
