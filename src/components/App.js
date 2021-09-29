@@ -33,7 +33,7 @@ function App() {
       default:
         dispatch(changeTheme(light));
     }
-  }, [theme]);
+  }, [theme, dispatch]);
 
   useEffect(() => {
     const emptyPath = history.location.pathname === '/';
